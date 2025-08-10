@@ -1,2 +1,3 @@
 out/
-*.db
+**.db
+**.db-journal
