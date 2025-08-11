@@ -1,3 +1,5 @@
 out/
 **.db
 **.db-journal
+finder/drizzle/
+.env

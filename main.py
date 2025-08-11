@@ -4,10 +4,12 @@ import time
 import os
 
 def download_data(product_id: str):
+    from dotenv import load_dotenv
+    load_dotenv()
     headers = {
-        'Cookie': 'set your cookie here',
+        'Cookie': os.getenv('COOKIE'),
     }
-    if headers['Cookie'] == 'set your cookie here':
+    if not headers['Cookie']:
         raise ValueError("Please set your cookie here before running.")
 
     url = f"https://psref.lenovo.com/api/search/DefinitionFilterAndSearch/ShowModel?pageindex=1&pagesize=300000&product_key={product_id}"
