@@ -27,57 +27,10 @@ A high-performance, feature-rich data table application built with SvelteKit, de
 ## 🛠️ Tech Stack
 
 - **SvelteKit**: Full-stack web framework
-- **TypeScript**: Type safety and enhanced developer experience  
+- **TypeScript**: Type safety and enhanced developer experience
 - **Tailwind CSS**: Utility-first CSS framework for rapid styling
 - **Svelte Headless Table**: Powerful table functionality similar to TanStack Table
 - **Lucide Svelte**: Beautiful, consistent icon set
-
-## 📦 Project Structure
-
-```
-src/
-├── app.css              # Global styles and Tailwind configuration
-├── app.html            # HTML template
-├── lib/
-│   ├── components/
-│   │   ├── DataTable.svelte        # Main table component
-│   │   ├── TableSkeleton.svelte    # Loading skeleton
-│   │   ├── StatusBadge.svelte      # Status indicator component
-│   │   └── PerformanceRating.svelte # Performance rating display
-│   ├── data/
-│   │   └── demoData.ts            # Demo data generation
-│   └── types.ts                   # TypeScript type definitions
-└── routes/
-    ├── +layout.svelte             # Layout component
-    └── +page.svelte              # Main page
-```
-
-## 🚀 Getting Started
-
-### Prerequisites
-- Node.js 18+ 
-- npm, pnpm, or yarn package manager
-
-### Installation & Development
-
-1. **Install dependencies**:
-   ```bash
-   npm install
-   ```
-
-2. **Start development server**:
-   ```bash
-   npm run dev
-   ```
-
-3. **Open your browser**: Navigate to `http://localhost:5173`
-
-### Build for Production
-
-```bash
-npm run build
-npm run preview
-```
 
 ## 📊 Demo Data
 
@@ -100,7 +53,7 @@ The application includes 1,500+ realistic employee records with:
 
 Replace the demo data in `src/routes/+page.svelte`:
 
-```typescript
+```tsx
 import DataTable from '$lib/components/DataTable.svelte';
 // import { demoEmployees } from '$lib/data/demoData.js';
 
@@ -114,7 +67,7 @@ export let data: Employee[];
 
 Edit the columns definition in `src/lib/components/DataTable.svelte`:
 
-```typescript
+```ts
 const columns = table.createColumns([
   table.column({
     accessor: 'customField',
@@ -127,16 +80,6 @@ const columns = table.createColumns([
   // ... other columns
 ]);
 ```
-
-### Styling Customization
-
-The application uses Tailwind CSS with custom component classes defined in `src/app.css`. Key classes:
-
-- `.table-container`: Main table wrapper
-- `.table-cell`: Individual table cells
-- `.table-header-cell`: Column headers
-- `.btn-primary`, `.btn-secondary`: Button styles
-- `.skeleton`: Loading animation styles
 
 ## 🎯 Performance Considerations
 
@@ -157,21 +100,3 @@ The current implementation stores all data in memory for demo purposes. For prod
 2. Use API calls for data fetching
 3. Implement data caching strategies
 4. Consider using web workers for heavy computations
-
-## 🤝 Contributing
-
-This is a demonstration project. For production use, consider:
-
-1. Adding comprehensive error handling
-2. Implementing proper loading states for API calls
-3. Adding unit and integration tests
-4. Implementing accessibility improvements
-5. Adding export functionality (CSV, Excel, PDF)
-
-## 📝 License
-
-This project is provided as-is for demonstration purposes. Feel free to use and modify for your needs.
-
----
-
-Built with ❤️ using SvelteKit and modern web technologies.
