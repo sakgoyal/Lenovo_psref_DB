@@ -13,7 +13,7 @@
 <tbody
 	bind:this={ref}
 	data-slot="table-body"
-	class={cn("[&_tr:last-child]:border-0 [&_tr:nth-child(odd)]:bg-accent [&_tr:nth-child(odd)]:text-foreground", className)}
+	class={cn("[&_tr:last-child]:border-0 [&_tr:nth-child(odd)]:bg-accent/30 text-foreground", className)}
 	{...restProps}
 >
 	{@render children?.()}
