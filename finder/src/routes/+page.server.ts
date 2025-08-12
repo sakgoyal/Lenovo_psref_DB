@@ -1,22 +1,33 @@
-import { drizzle } from 'drizzle-orm/libsql';
-import { DatabaseSync } from 'node:sqlite';
-const database = new DatabaseSync('C:/Users/Saksham/Documents/projects/black_hole/products.db', {readOnly: true });
+import { db } from '$lib/schema';
+import type { ColumnDef } from '@tanstack/table-core';
 
 
-const db = drizzle({
-	connection: {
-		url: 'file:../products.db',
-	},
-});
-
+type Data = {
+	header: string;
+	accessorKey: string;
+}
 
 export async function load() {
+	const results = await db.$client.execute("PRAGMA table_info(products);");
+	const columns = results.rows.map(row => ({header: row.name, accessorKey: row.name})) as Data[];
+	const products = await db.query.products.findMany({
+	columns: {
+		"ean /Upc /Jan": false,
+		model: false,
+		topSeller: false,
+		monitorCable: false,
+		controls: false,
+		others: false,
+		isvCertifications: false,
+	},
+	extras: {
 
-	const results = await db.$client.execute("PRAGMA table_info(products);")
-	const columns = results.rows.map(row => row.name)
+	},
+	limit: 100,
+	offset: 0,
+});
 	return {
-		post: {
-			cols: columns,
-		}
+		columns: columns satisfies ColumnDef<Data, string>[],
+		products,
 	};
 };

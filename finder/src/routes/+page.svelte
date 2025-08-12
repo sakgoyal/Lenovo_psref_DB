@@ -1,23 +1,33 @@
 <script lang="ts">
-	import '../app.css';
-	import type { PageProps } from './$types';
+	import "../app.css";
+	import type { PageProps } from "./$types";
+	import { columns } from "./data";
+	import DataTable from "./data-table.svelte";
 
 	let { data }: PageProps = $props();
-</script>
 
-{#each data.post.cols as col}
-	<div>{col} </div>
-{/each}
-
-
-<!-- <script lang="ts">
-  import DataTable from '$lib/components/DataTable.svelte';
-  import { demoEmployees } from '$lib/data/demoData.js';
+	import { getFilterValues } from "./data.remote";
+	import ColumnFilter from "./ColumnFilter.svelte";
 </script>
 
 <svelte:head>
-  <title>DataTable Pro - Advanced Employee Management</title>
-  <meta name="description" content="Advanced data table with filtering, sorting, pagination, and column management" />
+	<title>Lenovo Finder</title>
+	<meta name="description" content="Advanced data table with filtering, sorting, pagination, and column management" />
 </svelte:head>
 
-<DataTable data={demoEmployees} /> -->
+<div class="px-5 py-3">
+	<div class="p-5 grid grid-cols-2 gap-x-3">
+		{#await getFilterValues()}
+			<p>Loading...</p>
+		{:then filterValues}
+			{#each filterValues as filterValue}
+				<ColumnFilter filterName={filterValue.column_name} options={filterValue.value} />
+			{/each}
+		{:catch error}
+			<p>Error: {error.message}</p>
+		{/await}
+	</div>
+	<div class="w-90% h-dvh">
+		<DataTable {columns} data={data.products} />
+	</div>
+</div>

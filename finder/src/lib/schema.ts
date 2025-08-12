@@ -1,5 +1,6 @@
 import { sqliteTable, index, text } from "drizzle-orm/sqlite-core"
-  import { sql } from "drizzle-orm"
+import { drizzle } from 'drizzle-orm/libsql';
+
 
 export const products = sqliteTable("products", {
 	model: text("Model").primaryKey(),
@@ -81,4 +82,14 @@ export const products = sqliteTable("products", {
 export const filterValues = sqliteTable("filter_values", {
 	columnName: text("column_name"),
 	distinctValuesJson: text("distinct_values_json"),
+});
+
+export const db = drizzle({
+	connection: {
+		url: 'file:../products.db',
+	},
+	schema: {
+		products,
+		filterValues,
+	},
 });
