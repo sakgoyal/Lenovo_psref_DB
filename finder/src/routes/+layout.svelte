@@ -4,4 +4,6 @@
 </script>
 
 <ModeWatcher themeColors={{ dark: "dark", light: "white" }} />
-{@render children()}
+<div class="px-5 py-3">
+	{@render children()}
+</div>

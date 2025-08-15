@@ -4,7 +4,7 @@ import csv
 conn = sqlite3.connect("products.db")
 cur = conn.cursor()
 
-with open("out/out.csv", encoding="utf-16") as f:
+with open("out/out.csv", encoding="utf-8") as f:
     reader = csv.reader(f)
     headers = next(reader)
     cols = ", ".join(f'"{h}" TEXT' if h != "Model" else '"Model" TEXT PRIMARY KEY' for h in headers)
