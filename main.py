@@ -121,35 +121,6 @@ def get_product_ids():
 
     return IDs
 
-def merge_csv_files():
-    output_filename = './out/zzz.csv'
-    all_files = glob.glob('./out/*.csv')
-    input_files = [f for f in all_files if not f.endswith('zzz.csv')]
-
-    df_list = []
-
-    for file in input_files:
-        try:
-            df = pd.read_csv(file, encoding='ascii')
-            df_list.append(df)
-        except Exception as e:
-            print(f"  - FAILED to process {file}. Error: {e}")
-
-    combined_df = pd.concat(df_list, ignore_index=True)
-    drop_cols = ["Included Upgrade", "EAN / UPC / JAN", "TopSeller"]
-    df = df.drop(columns=drop_cols, errors="raise")
-
-    combined_df.to_csv(output_filename, index=False, na_rep='', encoding='ascii')
-    print(f"\nSuccessfully combined {len(df_list)} files into {output_filename}.")
-    print("Run conv2db.py next")
-
-
-if "--merge" in sys.argv:
-    print("Merging CSV files and Postprocessing...")
-    merge_csv_files()
-    sys.exit(0)
-
-
 for product_id in get_product_ids():
     print(f"Downloading {product_id}")
     download_data(product_id)
