@@ -4,6 +4,13 @@
 </script>
 
 <ModeWatcher themeColors={{ dark: "dark", light: "white" }} />
-<div class="px-5 py-3">
-	{@render children()}
-</div>
+
+<svelte:boundary>
+	<div class="px-5 py-3">
+		{@render children()}
+	</div>
+
+	{#snippet pending()}
+		<p>loading...</p>
+	{/snippet}
+</svelte:boundary>

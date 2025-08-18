@@ -1,21 +1,14 @@
 import requests
-import json
 import os
-import sys
-import re
-import glob
-import pandas as pd
 import re
 
 ## TODO: make postprocessing more useful by splitting CPU details into separate columns
-## for more granular filtering options
+## for more granular filtering options. ignore for now
 
 def download_data(product_id: str):
     from dotenv import load_dotenv
     load_dotenv()
-    headers = {
-        'cookie': os.getenv('COOKIE'),
-    }
+    headers = { 'cookie': os.getenv('COOKIE') }
     if not headers['cookie']:
         raise ValueError("Please set your cookie here before running.")
 
@@ -49,7 +42,7 @@ def download_data(product_id: str):
     for row in rows:
         out.append(",".join(escape_csv(item) for item in row))
 
-    with open(f"out/{product_id}.csv", "w", encoding="ascii") as f:
+    with open(f"out/{product_id}.csv", "w", encoding="utf-8") as f:
         text = "\n".join(out)
         replacement = {
             r"(\^\|\^)?Various docking.*?</u></a>": "Various",
@@ -59,7 +52,7 @@ def download_data(product_id: str):
             r"TGP ": "",
             r"None": "",
             r"RoHS compliant": "RoHS",
-            r"MIL-STD-810H military test passed": "MIL-STD-810H",
+            r"military test passed": "",
             r"Integrated AMD Radeon ": "AMD Radeon ",
             r"Memory soldered to systemboard, no slots": "No Slots",
             r"microSD Card Reader": "microSD",
@@ -67,8 +60,7 @@ def download_data(product_id: str):
             r"1x Ethernet \(RJ-45\)": "Ethernet",
             r"100/1000M \(RJ-45\)": "1GbE",
             r"2.5GbE \(RJ-45\)": "2.5GbE",
-            r"No Onboard Ethernet": "",
-            r"No onboard Ethernet": "",
+            r"No [oO]nboard Ethernet": "",
             r"Pen Not Supported": "",
             r"No support": "",
             r"No card reader": "",
@@ -81,23 +73,10 @@ def download_data(product_id: str):
             r"Headphone \/ microphone combo jack \(3.5mm\)": "3.5mm Combo Jack",
             r"\^\|\^": " | ",
             r"IR camera for Windows Hello \(facial recognition\)": "Windows Hello IR Camera",
-            r"Ü": "U",
-            r"ü": "u",
-            r"•": " | ",
-            r"°": "",
-            r"–": "-",
-            r"≤": "<=",
-            r"è": "e",
             r"\xa0": " ", # incoming data is UTF-16. so we need to strip all these out to compress them
         }
         for pattern, repl in replacement.items():
             text = re.sub(pattern, repl, text)
-
-        # Check for non-ASCII characters
-        check = set(ch for ch in text if ord(ch) > 127)
-        if len(check) > 0:
-            raise f"Non-ASCII characters found in {product_id}: {check}"
-
         f.write(text)
 
 def extract_product_ids(data: list[dict]) -> list[str]:
@@ -112,15 +91,53 @@ def extract_product_ids(data: list[dict]) -> list[str]:
 def get_product_ids():
     response = requests.get('https://psref.lenovo.com/api/home/Menu/info')
     response.raise_for_status()
-    json_data: dict = response.json()
-    data: list[dict] = json_data.get('data')
+    data: list[dict] = response.json()['data'] # data from all device categories. deeply nested
 
-    IDs = extract_product_ids(data[0].get('subcollection', []))
-    with open("product_ids.json", "w", encoding="ascii") as f:
-        json.dump(IDs, f)
-
-    return IDs
+    return extract_product_ids(data[0].get('subcollection', [])) # get only laptop subcollection which is the first item
 
 for product_id in get_product_ids():
     print(f"Downloading {product_id}")
     download_data(product_id)
+
+
+import duckdb
+import json
+duckdb.sql("CREATE TABLE products AS FROM read_csv('./out/*.csv', union_by_name = true);")
+
+def get_cols() -> list[str]:
+    omit_list = ["EAN / UPC / JAN", "Model", "Machine Type", "TopSeller", "Monitor Cable", "Controls", "Others", "ISV Certifications", "Base Warranty", "Other Certifications", "Included Upgrade", "End of Support", "Announce Date"]
+    rows = duckdb.execute("SELECT name FROM pragma_table_info('products')").fetchall()
+    column_names: list[str] = [row[0] for row in rows]
+    return [col for col in column_names if col not in omit_list]
+
+def get_distinct_values(column_names: list[str]):
+    distinct_values_dict: dict[str, list[str]] = {}
+
+    for column in column_names:
+        rows = duckdb.execute(f'SELECT DISTINCT "{column}" FROM "products"').fetchall()
+        results = [row[0] for row in rows]
+        distinct_values_dict[column] = results
+
+    return distinct_values_dict
+
+def create_filter_values_table(distinct_values: dict[str, list[str]]):
+    duckdb.execute("DROP TABLE IF EXISTS filter_values")
+    duckdb.execute("""
+        CREATE TABLE filter_values (
+            column_name TEXT,
+            distinct_values_json TEXT
+        );
+    """)
+
+    for column, values in distinct_values.items():
+        values_json = json.dumps(values)
+        duckdb.execute("INSERT INTO filter_values (column_name, distinct_values_json) VALUES (?, ?)", (column, values_json))
+
+column_names = get_cols()
+distinct_values_dict = get_distinct_values(column_names)
+
+create_filter_values_table(distinct_values_dict)
+
+duckdb.execute("EXPORT DATABASE 'finder/static/export' (FORMAT parquet);")
+import shutil
+shutil.rmtree('/out')
