@@ -125,13 +125,13 @@ def create_filter_values_table(distinct_values: dict[str, list[str]]):
     duckdb.execute("""
         CREATE TABLE filter_values (
             column_name TEXT,
-            distinct_values_json TEXT
+            options TEXT
         );
     """)
 
     for column, values in distinct_values.items():
         values_json = json.dumps(values)
-        duckdb.execute("INSERT INTO filter_values (column_name, distinct_values_json) VALUES (?, ?)", (column, values_json))
+        duckdb.execute("INSERT INTO filter_values (column_name, options) VALUES (?, ?)", (column, values_json))
 
 column_names = get_cols()
 distinct_values_dict = get_distinct_values(column_names)
@@ -139,5 +139,3 @@ distinct_values_dict = get_distinct_values(column_names)
 create_filter_values_table(distinct_values_dict)
 
 duckdb.execute("EXPORT DATABASE 'finder/static/export' (FORMAT parquet);")
-import shutil
-shutil.rmtree('/out')

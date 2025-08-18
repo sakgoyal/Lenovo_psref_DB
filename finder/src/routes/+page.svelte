@@ -1,33 +1,37 @@
 <script lang="ts">
 	import "../app.css";
-	import DataTable from "./data-table.svelte";
+	// import DataTable from "./data-table.svelte";
+	import { instantiateDuckDb } from "$lib/duckdb";
 	import ColumnFilter from "./ColumnFilter.svelte";
-	import * as duckdb from "@duckdb/duckdb-wasm";
-	import duckdb_wasm from "@duckdb/duckdb-wasm/dist/duckdb-mvp.wasm?url";
-	import mvp_worker from "@duckdb/duckdb-wasm/dist/duckdb-browser-mvp.worker.js?url";
-	import duckdb_wasm_eh from "@duckdb/duckdb-wasm/dist/duckdb-eh.wasm?url";
-	import eh_worker from "@duckdb/duckdb-wasm/dist/duckdb-browser-eh.worker.js?url";
 
-	const MANUAL_BUNDLES: duckdb.DuckDBBundles = {
-		mvp: {
-			mainModule: duckdb_wasm,
-			mainWorker: mvp_worker,
-		},
-		eh: {
-			mainModule: duckdb_wasm_eh,
-			mainWorker: eh_worker,
-		},
-	};
-	// Select a bundle based on browser checks
-	const bundle = await duckdb.selectBundle(MANUAL_BUNDLES);
-	// Instantiate the asynchronus version of DuckDB-wasm
-	const worker = new Worker(bundle.mainWorker!);
-	const logger = new duckdb.ConsoleLogger();
-	const db = new duckdb.AsyncDuckDB(logger, worker);
-	window.db = db; // Expose db for debugging
-	await db.instantiate(bundle.mainModule, bundle.pthreadWorker);
-	const conn = await db.connect();
-	await conn.query(`IMPORT DATABASE 'http://localhost:5173/export';`);
+	async function load_db() {
+		// A simple case of a db of a single parquet file.
+		const db = await instantiateDuckDb();
+		const conn = await db.connect();
+		await conn.query(`IMPORT DATABASE 'http://localhost:5173/export';`);
+
+		window.conn = conn; // Expose conn for debugging
+		return conn;
+	}
+
+	// Set up the db connection as an empty promise.
+	const conn_prom = load_db();
+
+	async function get_filters() {
+		const conn = await conn_prom;
+		const filterValues = (await conn.query("SELECT * FROM filter_values WHERE column_name NOT IN ('Optical', 'Docking', 'Included Upgrade', 'Announce Date', 'Display', 'Standard Ports', 'Operating System', 'Dimensions (WxDxH)', 'Product', 'Processor', 'End of Support');"))
+			.toArray()
+			.map((r) => Object.fromEntries(r)) as { column_name: string; options: string[] }[];
+
+		filterValues.forEach((column, i) => { filterValues[i].options = JSON.parse(column.options) as string[]; })
+		// remove null values from options
+		filterValues.forEach((column, i) => {
+			filterValues[i].options = filterValues[i].options.filter((option) => option !== null);
+		});
+
+		return filterValues;
+	}
+
 	// const res = (await conn.query("SELECT * FROM products LIMIT 10")).toArray().map((r) => Object.fromEntries(r));
 </script>
 
@@ -37,15 +41,15 @@
 </svelte:head>
 
 <div class="p-5 grid grid-cols-3 gap-x-3">
-	<!-- {#await getFilterValues()}
+	{#await get_filters()}
 		<p>Loading...</p>
 	{:then filterValues}
 		{#each filterValues as filterValue}
-			<ColumnFilter filterName={filterValue.column_name} options={filterValue.value} />
+			<ColumnFilter filterName={filterValue.column_name} options={filterValue.options} />
 		{/each}
 	{:catch error}
 		<p>Error: {error.message}</p>
-	{/await} -->
+	{/await}
 </div>
 <div class="w-90% h-dvh">
 	<!-- <DataTable {columns} data={data.products} /> -->
