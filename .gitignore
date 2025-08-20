@@ -3,3 +3,4 @@ out/
 **.db-journal
 finder/drizzle/
 .env
+finder/src/routes/data.ts

@@ -99,9 +99,6 @@ for product_id in get_product_ids():
     print(f"Downloading {product_id}")
     download_data(product_id)
 
-
-import duckdb
-import json
 duckdb.sql("CREATE TABLE products AS FROM read_csv('./out/*.csv', union_by_name = true);")
 
 def get_cols() -> list[str]:
@@ -139,3 +136,14 @@ distinct_values_dict = get_distinct_values(column_names)
 create_filter_values_table(distinct_values_dict)
 
 duckdb.execute("EXPORT DATABASE 'finder/static/export' (FORMAT parquet);")
+
+
+filter: list[tuple[str, str]] = duckdb.query("SELECT * FROM filter_values WHERE column_name NOT IN ('Optical', 'Docking', 'Included Upgrade', 'Announce Date', 'Display', 'Standard Ports', 'Operating System', 'Dimensions (WxDxH)', 'Product', 'Processor', 'End of Support');").fetchall()
+filter_dict = {}
+for column, options in filter:
+    val = json.loads(options)
+    filter_dict[column] = [v for v in val if v]
+
+with open('finder/src/routes/data.ts', 'w') as f:
+    f.write("export const filters = ")
+    f.write(json.dumps(filter_dict, indent=4))

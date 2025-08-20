@@ -2,15 +2,15 @@ import duckdb_wasm from '@duckdb/duckdb-wasm/dist/duckdb-mvp.wasm?url';
 import mvp_worker from '@duckdb/duckdb-wasm/dist/duckdb-browser-mvp.worker.js?url';
 import duckdb_wasm_eh from '@duckdb/duckdb-wasm/dist/duckdb-eh.wasm?url';
 import eh_worker from '@duckdb/duckdb-wasm/dist/duckdb-browser-eh.worker.js?url';
-import type { AsyncDuckDB, DuckDBBundles } from '@duckdb/duckdb-wasm';
+import type { AsyncDuckDBConnection, DuckDBBundles } from '@duckdb/duckdb-wasm';
 import { browser } from '$app/environment';
 
-let db: AsyncDuckDB | null = null;
+let conn: AsyncDuckDBConnection | null = null;
 
-export async function instantiateDuckDb(): Promise<AsyncDuckDB> {
+export async function instantiateDuckDb(): Promise<AsyncDuckDBConnection> {
 
-  if (db) {
-    return db;
+  if (conn) {
+    return conn;
   }
 
   if (!browser) {
@@ -33,8 +33,11 @@ export async function instantiateDuckDb(): Promise<AsyncDuckDB> {
   const bundle = await duckdb.selectBundle(MANUAL_BUNDLES);
   // Instantiate the asynchronus version of DuckDB-wasm
   const worker = new Worker(bundle.mainWorker!);
-  const logger = new duckdb.ConsoleLogger();
-  db = new duckdb.AsyncDuckDB(logger, worker);
+  const logger = new duckdb.VoidLogger();
+  const db = new duckdb.AsyncDuckDB(logger, worker);
   await db.instantiate(bundle.mainModule, bundle.pthreadWorker);
-  return db;
+  conn = await db.connect();
+  await conn.query(`IMPORT DATABASE 'http://localhost:5173/export';`);
+
+  return conn;
 }
