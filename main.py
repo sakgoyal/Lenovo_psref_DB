@@ -1,6 +1,8 @@
 import requests
 import os
 import re
+import duckdb
+import json
 
 ## TODO: make postprocessing more useful by splitting CPU details into separate columns
 ## for more granular filtering options. ignore for now
@@ -138,11 +140,13 @@ create_filter_values_table(distinct_values_dict)
 duckdb.execute("EXPORT DATABASE 'finder/static/export' (FORMAT parquet);")
 
 
-filter: list[tuple[str, str]] = duckdb.query("SELECT * FROM filter_values WHERE column_name NOT IN ('Optical', 'Docking', 'Included Upgrade', 'Announce Date', 'Display', 'Standard Ports', 'Operating System', 'Dimensions (WxDxH)', 'Product', 'Processor', 'End of Support');").fetchall()
+filter: list[tuple[str, str]] = duckdb.query("SELECT * FROM filter_values WHERE column_name NOT IN ('Optical', 'Docking', 'Included Upgrade', 'Announce Date', 'Display', 'Standard Ports', 'Operating System', 'Dimensions (WxDxH)', 'Product', 'End of Support');").fetchall()
 filter_dict = {}
 for column, options in filter:
     val = json.loads(options)
-    filter_dict[column] = [v for v in val if v]
+    # sort values and remove empty strings
+    val = sorted([v for v in val if v])
+    filter_dict[column] = val
 
 with open('finder/src/routes/data.ts', 'w') as f:
     f.write("export const filters = ")

@@ -37,7 +37,7 @@ export async function instantiateDuckDb(): Promise<AsyncDuckDBConnection> {
   const db = new duckdb.AsyncDuckDB(logger, worker);
   await db.instantiate(bundle.mainModule, bundle.pthreadWorker);
   conn = await db.connect();
-  await conn.query(`IMPORT DATABASE 'http://localhost:5173/export';`);
+  await conn.query(`IMPORT DATABASE '${window.location.origin}/export';`);
 
   return conn;
 }
