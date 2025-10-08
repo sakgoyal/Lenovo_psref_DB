@@ -2,6 +2,9 @@ import duckdb_wasm from '@duckdb/duckdb-wasm/dist/duckdb-mvp.wasm?url';
 import mvp_worker from '@duckdb/duckdb-wasm/dist/duckdb-browser-mvp.worker.js?url';
 import duckdb_wasm_eh from '@duckdb/duckdb-wasm/dist/duckdb-eh.wasm?url';
 import eh_worker from '@duckdb/duckdb-wasm/dist/duckdb-browser-eh.worker.js?url';
+import duckdb_wasm_coi from '@duckdb/duckdb-wasm/dist/duckdb-coi.wasm?url';
+import coi_worker from '@duckdb/duckdb-wasm/dist/duckdb-browser-coi.worker.js?url';
+import coi_pthread_worker from '@duckdb/duckdb-wasm/dist/duckdb-browser-coi.pthread.worker.js?url';
 import type { AsyncDuckDBConnection, DuckDBBundles } from '@duckdb/duckdb-wasm';
 import { browser } from '$app/environment';
 import * as duckdb from '@duckdb/duckdb-wasm';
@@ -29,6 +32,11 @@ export async function instantiateDuckDb(): Promise<AsyncDuckDBConnection> {
       mainModule: duckdb_wasm_eh,
       mainWorker: eh_worker,
     },
+    coi: {
+      mainModule: duckdb_wasm_coi,
+      mainWorker: coi_worker,
+      pthreadWorker: coi_pthread_worker,
+    }
   };
   // Select a bundle based on browser checks
   const bundle = await duckdb.selectBundle(MANUAL_BUNDLES);
