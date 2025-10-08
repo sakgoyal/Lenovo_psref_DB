@@ -1,8 +1,12 @@
-import requests
+import json
 import os
 import re
+
 import duckdb
-import json
+import requests
+from selenium import webdriver
+
+driver = webdriver.Chrome()
 
 ## TODO: make postprocessing more useful by splitting CPU details into separate columns
 ## for more granular filtering options. ignore for now
@@ -95,6 +99,8 @@ def get_product_ids():
     response.raise_for_status()
     data: list[dict] = response.json()['data'] # data from all device categories. deeply nested
 
+    print('Product IDs:', data[0].get('subcollection'))
+
     return extract_product_ids(data[0].get('subcollection', [])) # get only laptop subcollection which is the first item
 
 for product_id in get_product_ids():
@@ -151,3 +157,4 @@ for column, options in filter:
 with open('finder/src/routes/data.ts', 'w') as f:
     f.write("export const filters = ")
     f.write(json.dumps(filter_dict, indent=4))
+driver.quit()

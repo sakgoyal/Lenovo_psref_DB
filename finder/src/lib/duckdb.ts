@@ -4,6 +4,7 @@ import duckdb_wasm_eh from '@duckdb/duckdb-wasm/dist/duckdb-eh.wasm?url';
 import eh_worker from '@duckdb/duckdb-wasm/dist/duckdb-browser-eh.worker.js?url';
 import type { AsyncDuckDBConnection, DuckDBBundles } from '@duckdb/duckdb-wasm';
 import { browser } from '$app/environment';
+import * as duckdb from '@duckdb/duckdb-wasm';
 
 let conn: AsyncDuckDBConnection | null = null;
 
@@ -17,7 +18,7 @@ export async function instantiateDuckDb(): Promise<AsyncDuckDBConnection> {
     Error("Can only instantiate DuckDB from browser.")
   }
 
-  const duckdb = await import('@duckdb/duckdb-wasm');
+
 
   const MANUAL_BUNDLES: DuckDBBundles = {
     mvp: {
