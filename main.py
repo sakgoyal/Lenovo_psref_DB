@@ -4,9 +4,6 @@ import re
 
 import duckdb
 import requests
-from selenium import webdriver
-
-driver = webdriver.Chrome()
 
 ## TODO: make postprocessing more useful by splitting CPU details into separate columns
 ## for more granular filtering options. ignore for now
@@ -157,4 +154,3 @@ for column, options in filter:
 with open('finder/src/routes/data.ts', 'w') as f:
     f.write("export const filters = ")
     f.write(json.dumps(filter_dict, indent=4))
-driver.quit()

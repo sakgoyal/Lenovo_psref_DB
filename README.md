@@ -8,17 +8,10 @@ This will be used to create a web application that allows users to search for Le
 
 I will have to set up a cron job to make sure that the database is updated regularly, as Lenovo updates their PSREF data frequently. This could get expensive. But this is just to explore the feasibility of such a project.
 
-
 ## How to deploy
+
 * (optional) run the database update initialization script with `python main.py`
 * `cd finder`
 * npm install
 * npm run build
 * npm run preview
-
-
-## How to run (development)
-* (optional) run the database update initialization script with `python main.py`
-* `cd finder`
-* npm install
-* npm run dev

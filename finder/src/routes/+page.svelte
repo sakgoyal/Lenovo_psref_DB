@@ -8,9 +8,11 @@
 	import { pushState } from "$app/navigation";
 	import { onMount } from "svelte";
 
+	const EXCLUDE = "EXCLUDE (TOPSELLER)";
+
 	const conn = instantiateDuckDb();
 	async function get_data() {
-		const data = (await (await conn).query("SELECT * FROM products LIMIT 100")).toArray().map((r) => Object.fromEntries(r));
+		const data = (await (await conn).query(`SELECT * ${EXCLUDE} FROM products LIMIT 100`)).toArray().map((r) => Object.fromEntries(r));
 		return data;
 	}
 
@@ -21,7 +23,7 @@
 				queryParts.push(`"${key}" IN (${values.map((v) => `'${v}'`).join(", ")})`);
 			}
 		}
-		const query = `SELECT * FROM products ${queryParts.length > 0 ? "WHERE " + queryParts.join(" AND ") : ""} LIMIT 100`;
+		const query = `SELECT * ${EXCLUDE} FROM products ${queryParts.length > 0 ? "WHERE " + queryParts.join(" AND ") : ""} LIMIT 100`;
 		console.log("Executing query:", query);
 		const ret = (await (await conn).query(query)).toArray().map((r) => Object.fromEntries(r));
 		console.log("Query result:", ret);
@@ -52,13 +54,15 @@
 
 	onMount(() => {
 		const urlParams = new URLSearchParams(window.location.search);
+		const params : typeof form_data = {};
 		urlParams.forEach((value, key) => {
 			if (form_data[key]) {
-				form_data[key] = [...form_data[key], value];
+				params[key] = [...form_data[key], value];
 			} else {
-				form_data[key] = [value];
+				params[key] = [value];
 			}
 		});
+		form_data = { ...form_data, ...params };
 		handleFormSubmit();
 	});
 	let form_data = $state<Record<string, string[]>>(
@@ -86,7 +90,7 @@
 	{#await data}
 		<p>Loading data...</p>
 	{:then data}
-		<Table items={data} dataTableOptions={{fixedColumns: false}}/>
+		<Table items={data} />
 	{/await}
 </div>
 
@@ -127,5 +131,12 @@
 		--sv-create-kbd-bg: #626262;
 		--sv-create-disabled-bg: #fcbaba;
 		--sv-loader-border: 2px solid #626262;
+	}
+	:global {
+		/* Make table row have a min width of 10em */
+		table > tbody > tr > td {
+			min-width: 15em;
+			width: max-content;
+		}
 	}
 </style>
