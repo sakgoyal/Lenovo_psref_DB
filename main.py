@@ -7,6 +7,8 @@ import requests
 
 ## TODO: make postprocessing more useful by splitting CPU details into separate columns
 ## for more granular filtering options. ignore for now
+## remove dependence on env cookie by implementing selenium flow to generate session cookie
+
 
 def download_data(product_id: str):
     from dotenv import load_dotenv
