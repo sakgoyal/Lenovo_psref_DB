@@ -1,31 +1,58 @@
 import json
 import os
 import re
+import time
 
 import duckdb
 import requests
+from selenium import webdriver
 
 ## TODO: make postprocessing more useful by splitting CPU details into separate columns
 ## for more granular filtering options. ignore for now
-## remove dependence on env cookie by implementing selenium flow to generate session cookie
 
 
-def download_data(product_id: str):
-    from dotenv import load_dotenv
-    load_dotenv()
-    headers = { 'cookie': os.getenv('COOKIE') }
-    if not headers['cookie']:
-        raise ValueError("Please set your cookie here before running.")
+def get_session_cookie():
+    # set headless mode
+    options = webdriver.ChromeOptions()
+    options.add_argument("--headless")
+    options.add_argument("--disable-gpu")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    driver = webdriver.Chrome(options=options)
 
+
+    try:
+        driver.get("https://psref.lenovo.com")
+        time.sleep(1)
+        driver.get("https://psref.lenovo.com/api/home/Menu/info")
+        time.sleep(1)
+        driver.get("https://psref.lenovo.com")
+        time.sleep(1)
+        #     response = requests.get('https://psref.lenovo.com/api/home/Menu/info')
+        # data: list[dict] = response.json()['data']
+        driver.get("https://psref.lenovo.com/api/home/Menu/info")
+        data = json.loads(driver.find_element("tag name", "pre").text).get('data')
+
+
+        cookies = driver.get_cookies()
+        cookie_string = "; ".join([f"{cookie['name']}={cookie['value']}" for cookie in cookies])
+
+        print("Cookies:", cookie_string)
+        return cookie_string, extract_product_ids(data[0].get('subcollection', []))
+
+    finally:
+        driver.quit()
+
+def download_data(product_id: str, cookie: str):
     url = f"https://psref.lenovo.com/api/search/DefinitionFilterAndSearch/ShowModel?pageindex=1&pagesize=300000&product_key={product_id}"
 
-    response = requests.get(url, headers=headers)
+    response = requests.get(url, headers={ 'cookie': cookie })
     response.raise_for_status()
-    json_data: dict = response.json()
-    data: dict = json_data.get('data')
+    json_data: dict[str,dict] = response.json()
+    data = json_data.get('data')
 
     if not data:
-        return print(f"No data found for {product_id}")
+        raise ValueError(f"No data found for {product_id}")
 
     def escape_csv(val):
         if val is None:
@@ -102,9 +129,10 @@ def get_product_ids():
 
     return extract_product_ids(data[0].get('subcollection', [])) # get only laptop subcollection which is the first item
 
-for product_id in get_product_ids():
+cookie, pIDs = get_session_cookie()
+for product_id in pIDs:
     print(f"Downloading {product_id}")
-    download_data(product_id)
+    download_data(product_id, cookie)
 
 duckdb.sql("CREATE TABLE products AS FROM read_csv('./out/*.csv', union_by_name = true);")
 
@@ -145,7 +173,7 @@ create_filter_values_table(distinct_values_dict)
 duckdb.execute("EXPORT DATABASE 'finder/static/export' (FORMAT parquet);")
 
 
-filter: list[tuple[str, str]] = duckdb.query("SELECT * FROM filter_values WHERE column_name NOT IN ('Optical', 'Docking', 'Included Upgrade', 'Announce Date', 'Display', 'Standard Ports', 'Operating System', 'Dimensions (WxDxH)', 'Product', 'End of Support');").fetchall()
+filter: list[tuple[str, str]] = duckdb.query("SELECT * FROM filter_values WHERE column_name NOT IN ('Optical', 'Docking', 'Included Upgrade', 'Announce Date', 'Standard Ports', 'Operating System', 'Dimensions (WxDxH)', 'Product', 'End of Support');").fetchall()
 filter_dict = {}
 for column, options in filter:
     val = json.loads(options)
