@@ -28,8 +28,6 @@ def get_session_cookie():
         time.sleep(1)
         driver.get("https://psref.lenovo.com")
         time.sleep(1)
-        #     response = requests.get('https://psref.lenovo.com/api/home/Menu/info')
-        # data: list[dict] = response.json()['data']
         driver.get("https://psref.lenovo.com/api/home/Menu/info")
         data = json.loads(driver.find_element("tag name", "pre").text).get('data')
 
@@ -48,7 +46,7 @@ def download_data(product_id: str, cookie: str):
 
     response = requests.get(url, headers={ 'cookie': cookie })
     response.raise_for_status()
-    json_data: dict[str,dict] = response.json()
+    json_data: dict[str, dict] = response.json()
     data = json_data.get('data')
 
     if not data:

@@ -1,0 +1,20 @@
+[project]
+name = "Lenovo_psref_DB"
+version = "0.1.0"
+description = "A script to process Lenovo PSREF data."
+requires-python = ">3.13"
+authors = [{ name = "Saksham", email = "sakgoy2001@gmail.com" }]
+keywords = ["Lenovo", "PSREF", "Database", "Scraping"]
+license = "GPL-3.0-only"
+dependencies = [
+    "duckdb",
+    "requests",
+    "selenium",
+]
+
+[tool.setuptools]
+include-package-data = false
+
+[tool.setuptools.packages.find]
+include = ["main.py"]
+exclude = ["out*", "finder*"]

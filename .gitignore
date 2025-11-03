@@ -1,6 +1,6 @@
 out/
 **.db
 **.db-journal
-finder/drizzle/
-.env
-finder/src/routes/data.ts
+**/*.egg-info/
+build/
+dist/

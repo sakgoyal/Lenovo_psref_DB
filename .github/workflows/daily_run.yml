@@ -1,0 +1,38 @@
+name: Daily Script Run
+
+on:
+  schedule:
+    - cron: "23 9 * * *" # Runs daily at 9:23 AM UTC
+  push:
+    branches:
+      - main # Also runs on every push to the main branch
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.13"
+
+    - name: Install dependencies
+      run: |
+        python3 -m pip install --upgrade pip
+        python3 -m pip install .
+
+    - name: Run script
+      run: python3 main.py
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git add .
+        timestamp=$(date -u)
+        git commit -m "Update ${timestamp}" || exit 0
+        git push
