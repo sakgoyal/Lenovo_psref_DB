@@ -8,6 +8,7 @@ keywords = ["Lenovo", "PSREF", "Database", "Scraping"]
 license = "GPL-3.0-only"
 dependencies = [
     "pandas",
+    "pyarrow",
     "requests>=2.32.4",
 ]
 
