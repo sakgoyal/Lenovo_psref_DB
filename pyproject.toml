@@ -2,7 +2,7 @@
 name = "psref_scraper"
 version = "0.1.0"
 description = "A script to process Lenovo PSREF data."
-requires-python = ">3.14"
+requires-python = ">=3.14"
 authors = [{ name = "Saksham", email = "sakgoy2001@gmail.com" }]
 keywords = ["Lenovo", "PSREF", "Database", "Scraping"]
 license = "GPL-3.0-only"
