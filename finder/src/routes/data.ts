@@ -93,6 +93,7 @@ export const filters = {
         "AMD 3015Ce (2C / 4T, 1.2 / 2.3GHz, 1MB L2 / 4MB L3)",
         "AMD 3015e (2C / 4T, 1.2 / 2.3GHz, 1MB L2 / 4MB L3)",
         "AMD Athlon Gold 7220U (2C / 4T, 2.4 / 3.7GHz, 1MB L2 / 4MB L3)",
+        "AMD Athlon Silver 10 (2C / 2T, 2.4 / 3.5GHz, 1MB L2 / 2MB L3)",
         "AMD Athlon Silver 7120U (2C / 2T, 2.4 / 3.5GHz, 1MB L2 / 2MB L3)",
         "AMD Ryzen 3 210 (4C / 8T, 3.0 / 4.7GHz, 4MB L2 / 8MB L3)",
         "AMD Ryzen 3 30 (4C / 8T, 2.4 / 4.1GHz, 2MB L2 / 4MB L3)",
@@ -213,7 +214,6 @@ export const filters = {
         "Intel Core Ultra 9 275HX, 24C (8P + 16E) / 24T, Max Turbo up to 5.4GHz, 36MB",
         "Intel Core Ultra 9 285H, 16C (6P + 8E + 2LPE) / 16T, Max Turbo up to 5.4GHz, 24MB",
         "Intel Core Ultra 9 285HX, 24C (8P + 16E) / 24T, Max Turbo up to 5.5GHz, 36MB",
-        "Intel Core i3-1215U, 6C (2P + 4E) / 8T, P-core 1.2 / 4.4GHz, E-core 0.9 / 3.3GHz, 10MB",
         "Intel Core i3-1305U, 5C (1P + 4E) / 6T, P-core 1.6 / 4.5GHz, E-core 1.2 / 3.3GHz, 10MB",
         "Intel Core i3-1315U, 6C (2P + 4E) / 8T, P-core 1.2 / 4.5GHz, E-core 0.9 / 3.3GHz, 10MB",
         "Intel Core i3-N300 (8C / 8T, 3.8GHz, 6MB)",
@@ -232,7 +232,6 @@ export const filters = {
         "Intel Core i5-1350P, 12C (4P + 8E) / 16T, P-core 1.9 / 4.7GHz, E-core 1.4 / 3.5GHz, 12MB",
         "Intel Core i5-13600HX, 14C (6P + 8E) / 20T, P-core 2.6 / 4.7GHz, E-core 1.9 / 3.6GHz, 24MB",
         "Intel Core i5-14500HX, 14C (6P + 8E) / 20T, P-core 2.6 / 4.9GHz, E-core 1.9 / 3.5GHz, 24MB",
-        "Intel Core i7-1255U, 10C (2P + 8E) / 12T, P-core 1.7 / 4.7GHz, E-core 1.2 / 3.5GHz, 12MB",
         "Intel Core i7-12650HX, 14C (6P + 8E) / 20T, P-core up to 4.7GHz, E-core up to 3.3GHz, 24MB",
         "Intel Core i7-1355U, 10C (2P + 8E) / 12T, P-core 1.7 / 5.0GHz, E-core 1.2 / 3.7GHz, 12MB",
         "Intel Core i7-1360P, 12C (4P + 8E) / 16T, P-core 2.2 / 5.0GHz, E-core 1.6 / 3.7GHz, 18MB",
@@ -253,7 +252,6 @@ export const filters = {
         "Intel N150 (4C / 4T, Max Turbo up to 3.6GHz, 6MB)",
         "Intel N200 (4C / 4T, Max Turbo up to 3.7GHz, 6MB)",
         "Intel N250 (4C / 4T, Max Turbo up to 3.8GHz, 6MB)",
-        "Intel Pentium Gold 8505, 5C (1P + 4E) / 6T, P-core 1.2 / 4.4GHz, E-core 0.9 / 3.3GHz, 8MB",
         "Intel Pentium Silver N6000 (4C / 4T, 1.1 / 3.3GHz, 4MB)",
         "Intel Processor U300, 5C (1P + 4E) / 6T, P-core 1.2 / 4.4GHz, E-core 0.9 / 3.3GHz, 8MB",
         "MediaTek Kompanio 520 (8C, 2x A76 @2.05GHz + 6x A55 @2.0GHz)",
@@ -265,6 +263,30 @@ export const filters = {
         "Snapdragon X Plus X1P-42-100, 8C, Max Turbo up to 3.4GHz (single-core) / 3.2GHz (multi-core), 30MB",
         "Snapdragon X Plus X1P-64-100, 10C, Max Turbo up to 3.4GHz (multi-core), 42MB",
         "Snapdragon X X1-26-100, 8C, Max Turbo up to 3.0GHz, 30MB"
+    ],
+    "AI PC Category": [
+        "AI PC",
+        "AI-Powered Gaming PC",
+        "AI-Ready Workstations",
+        "Copilot + PC, AI-Ready Workstations",
+        "Copilot+ PC",
+        "Copilot+ PC, AI-Ready Workstations"
+    ],
+    "NPU": [
+        "Integrated AMD Ryzen AI, up to 10 TOPS",
+        "Integrated AMD Ryzen AI, up to 16 TOPS",
+        "Integrated AMD Ryzen AI, up to 50 TOPS",
+        "Integrated Intel AI Boost up to 13 TOPS",
+        "Integrated Intel AI Boost up to 13 TOPS + Discrete NPU Card up to 32 TOPS",
+        "Integrated Intel AI Boost, up to 11 TOPS",
+        "Integrated Intel AI Boost, up to 12 TOPS",
+        "Integrated Intel AI Boost, up to 13 TOPS",
+        "Integrated Intel AI Boost, up to 40 TOPS",
+        "Integrated Intel AI Boost, up to 47 TOPS",
+        "Integrated Intel AI Boost, up to 48 TOPS",
+        "Integrated MediaTek NPU 650, up to 4 TOPS",
+        "Integrated MediaTek NPU 890, up to 50 TOPS",
+        "Integrated Qualcomm Hexagon NPU, up to 45 TOPS"
     ],
     "Graphics": [
         "AMD Radeon 610M Graphics",
@@ -491,7 +513,6 @@ export const filters = {
         "4GB Soldered LPDDR4x-2133",
         "4GB Soldered LPDDR4x-2933",
         "4GB Soldered LPDDR4x-3733",
-        "4GB Soldered LPDDR4x-4266",
         "4GB Soldered LPDDR5-4800",
         "4GB Soldered LPDDR5-5500",
         "4x 16GB SO-DIMM DDR5-5600 Non-ECC",
@@ -554,7 +575,6 @@ export const filters = {
         "No Slots, dual-channel (16GB models)",
         "No Slots, dual-channel (16GB or 24GB models)",
         "No Slots, dual-channel (8GB models)",
-        "No Slots, dual-channel (8GB or 16GB models)",
         "No Slots, single-channel",
         "No Slots, single-channel (4GB models)",
         "No Slots, single-channel (4GB or 8GB models)",
@@ -768,9 +788,7 @@ export const filters = {
         "One drive, up to 128GB M.2 2242 SSD",
         "One drive, up to 128GB eMMC 5.1 storage card",
         "One drive, up to 1TB M.2 2242 SSD",
-        "One drive, up to 1TB M.2 2242 SSD or 1TB M.2 2280 SSD",
         "One drive, up to 1TB M.2 2242 SSD or 2TB M.2 2280 SSD",
-        "One drive, up to 1TB M.2 2242 SSD or 512GB M.2 2280 SSD",
         "One drive, up to 1TB M.2 2280 SSD",
         "One drive, up to 256GB M.2 2242 SSD",
         "One drive, up to 256GB M.2 2242 SSD or 512GB M.2 2280 SSD",
@@ -830,18 +848,14 @@ export const filters = {
         "SoundWire, Cirrus Logic CS42L43 codec"
     ],
     "Speakers": [
-        "4 stereo speakers, 2W x2 (woofers on the side), 2W x2 (front-facing tweeters on hinge bar), optimized with Dolby Atmos, Smart Amplifier (AMP), sound by Bowers & Wilkins",
         "4 stereo speakers, 2W x2 (woofers), 2W x2 (tweeters), optimized with Dolby Atmos, Amplifier (AMP)",
         "4 stereo speakers, 2W x2 (woofers), 2W x2 (tweeters), optimized with Dolby Atmos, Smart Amplifier (AMP)",
         "4 stereo speakers, 2W x2 (woofers), 2W x2 (tweeters), optimized with Nahimic Audio, Smart Amplifier (AMP)",
         "4 stereo speakers, 2W x2 (woofers), 2W x2 (user-facing tweeters), optimized with Dolby Atmos, Smart Amplifier (AMP)",
-        "4 stereo speakers, 2W x2 (woofers), 2W x2 (user-facing tweeters), optimized with Dolby Atmos, Smart Amplifier (AMP), sound by Bowers & Wilkins",
         "4 stereo speakers, 3W x2 (woofers), 2W x2 (tweeters), optimized with Dolby Atmos, Smart Amplifier (AMP)",
         "6 stereo speakers, 2W x4 (dual side woofers), 2W x2 (tweeters), optimized with Dolby Atmos, Smart Amplifier (AMP)",
         "6 stereo speakers, 2W x4 (woofers), 2W x2 (tweeters), optimized with Nahimic Audio, Smart Amplifier (AMP)",
         "Front-facing stereo speakers, 2W x2, optimized with Dolby Audio",
-        "Models with discrete graphics: 6 stereo speakers, 2W x4 (dual side woofers), 2W x2 (tweeters), optimized with Dolby Atmos, Smart Amplifier (AMP)",
-        "Models with integrated graphics: 4 stereo speakers, 2W x2 (woofers), 2W x2 (tweeters), optimized with Dolby Atmos, Smart Amplifier (AMP)",
         "Stereo speakers (super linear speaker), 2W x2, audio by HARMAN, optimized with Nahimic Audio, Smart Amplifier (AMP)",
         "Stereo speakers (super linear speakers), 2W x2, Dolby Atmos",
         "Stereo speakers, 1.5W x2",
@@ -908,7 +922,6 @@ export const filters = {
         "FHD 1080p + IR with Privacy Shutter, ToF Sensor",
         "FHD 1080p with E-shutter",
         "FHD 1080p with Privacy Shutter",
-        "Front 5.0MP + IR / Rear 5.0MP",
         "Front 5.0MP + IR Discrete with Privacy Shutter",
         "Front 5.0MP + IR Discrete with Privacy Shutter / Rear 5.0MP",
         "Front 5.0MP + IR Discrete with Privacy Shutter / Rear 8.0MP",
@@ -933,7 +946,6 @@ export const filters = {
     ],
     "Battery": [
         "29Wh",
-        "35.6Wh",
         "38Wh",
         "39.3Wh",
         "41Wh",
@@ -1006,7 +1018,6 @@ export const filters = {
     "Display": [
         "10.95\" WUXGA (1920x1200) IPS 400nits Glossy / Anti-fingerprint, 72% NTSC, 60Hz, Gorilla Glass 3, Touch",
         "10.95\" WUXGA (1920x1200) IPS 400nits Glossy / Anti-fingerprint, 72% NTSC, 60Hz, T\u00dcV Low Blue Light, Gorilla Glass 3, Touch",
-        "11.5\" 2K (2000x1200) IPS 400nits Glossy, 97.5% DCI-P3, 60Hz, Glass, Touch",
         "11.6\" HD (1366x768) IPS 250nits Anti-glare 60Hz, 50% NTSC",
         "11.6\" HD (1366x768) IPS 250nits Anti-glare 60Hz, 50% NTSC, Touch",
         "11.6\" HD (1366x768) IPS 250nits Glossy / Anti-fingerprint 60Hz, 50% NTSC",
@@ -1019,7 +1030,6 @@ export const filters = {
         "12.2\" WUXGA (1920x1200) IPS 300nits Glossy / Anti-fingerprint, 50% NTSC, 60Hz, Corning Gorilla Glass, T\u00dcV Low Blue Light, Touch",
         "12.2\" WUXGA (1920x1200) IPS 300nits Glossy, 50% NTSC, T\u00dcV Low Blue Light, Touch",
         "12.3\" FHD+ (1920x1280) IPS 400nits Anti-reflection / Anti-smudge, 100% sRGB, Lower Power, Touch",
-        "12.4\" 2.5K WQXGA (2560x1600) LTPS 500nits Glossy / Anti-fingerprint, 95% DCI-P3, 60Hz, Dolby Vision, T\u00dcV Low Blue Light, Glass, Touch",
         "13.3\" FHD (1920x1080) OLED 400nits Glossy, 100% DCI-P3, 60Hz, Touch",
         "13.3\" WUXGA (1920x1200) IPS 300nits Anti-glare, 100% sRGB",
         "13.3\" WUXGA (1920x1200) IPS 300nits Anti-glare, 100% sRGB, Touch",
@@ -1063,9 +1073,6 @@ export const filters = {
         "14\" 2.8K WQXGA+ (2880x1800) OLED 1100nits (peak) / 500nits (typical) Glossy / Anti-fingerprint, 100% DCI-P3, 120Hz, Eyesafe, Dolby Vision, DisplayHDR True Black 1000, Glass, Touch, X-Rite, PureSight Pro",
         "14\" 2.8K WQXGA+ (2880x1800) OLED 1100nits (peak) / 500nits (typical) Glossy, 100% DCI-P3, 120Hz, Eyesafe, Dolby Vision, DisplayHDR True Black 1000, X-Rite, PureSight Pro",
         "14\" 2.8K WQXGA+ (2880x1800) OLED 400nits Glossy / Anti-fingerprint, 100% DCI-P3, 120Hz, Dolby Vision, DisplayHDR True Black 500, T\u00dcV Low Blue Light, Glass, Touch",
-        "14\" 2.8K WQXGA+ (2880x1800) OLED 400nits Glossy / Anti-fingerprint, 100% DCI-P3, 120Hz, Eyesafe, Dolby Vision, DisplayHDR True Black 500, Glass, Touch",
-        "14\" 2.8K WQXGA+ (2880x1800) OLED 400nits Glossy, 100% DCI-P3, 60Hz, T\u00dcV Low Blue Light, Glass, Touch",
-        "14\" 4K WQUXGA (3840x2400) OLED 400nits Glossy / Anti-fingerprint, 100% DCI-P3, 60Hz, Eyesafe, Dolby Vision, DisplayHDR True Black 500, Glass, Touch",
         "14\" 4K WQUXGA (3840x2400) OLED 600nits (peak) / 400nits (typical) Glossy / Anti-fingerprint, 100% DCI-P3, 60Hz, Eyesafe, Dolby Vision, DisplayHDR True Black 500, Glass, Touch",
         "14\" 4K WQUXGA (3840x2400) OLED 750nits (peak) / 600nits (typical) Glossy, 100% DCI-P3, 120Hz, Eyesafe, Dolby Vision, DisplayHDR True Black 600, Glass, Touch, X-Rite, PureSight Pro",
         "14\" FHD (1920x1080) IPS 250nits Anti-glare",
@@ -1128,13 +1135,11 @@ export const filters = {
         "14\" WUXGA (1920x1200) OLED 600nits (peak) / 400nits (typical) Glossy / Anti-fingerprint, 100% DCI-P3, 60Hz, Eyesafe, Dolby Vision, DisplayHDR True Black 500, Glass, Touch, X-Rite",
         "14\" WUXGA (1920x1200) OLED 600nits (peak) / 400nits (typical) Glossy, 100% DCI-P3, 60Hz, Eyesafe, Dolby Vision, DisplayHDR True Black 500, X-Rite",
         "14.5\" 2.5K WQXGA (2560x1600) IPS 350nits Anti-glare, 100% sRGB, 90Hz, Eyesafe, Dolby Vision",
-        "14.5\" 2.5K WQXGA (2560x1600) IPS 350nits Glossy / Anti-fingerprint, 100% sRGB, 90Hz, Eyesafe, Dolby Vision, Glass, Touch",
         "14.5\" 2.8K WQXGA+ (2880x1800) OLED 400nits Glossy, 100% P3, 100% sRGB, 120Hz, Eyesafe, Dolby Vision, DisplayHDR True Black 500, AGC Dragontrail Glass, X-Rite",
         "14.5\" 2.8K WQXGA+ (2880x1800) OLED 400nits Glossy, 100% P3, 120Hz, Eyesafe, Dolby Vision, DisplayHDR True Black 500, Glass, X-Rite",
         "14.5\" 3K (2944x1840) OLED 1000nits (peak) / 500nits (typical) Glossy / Anti-fingerprint, 100% DCI-P3, 100% sRGB, 90Hz, Eyesafe, Dolby Vision, DisplayHDR True Black 600, Glass, Touch, X-Rite, PureSight",
         "14.5\" 3K (2944x1840) OLED 1000nits (peak) / 500nits (typical) Glossy, 100% DCI-P3, 90Hz, Eyesafe, Dolby Vision, DisplayHDR True Black 600, Glass, X-Rite, PureSight Pro",
         "14.5\" 3K (3000x1876) OLED 1000nits (peak) / 500nits (typical) Glossy / Anti-fingerprint, 100% DCI-P3, 120Hz, Eyesafe, Dolby Vision, DisplayHDR True Black 1000, Glass, Touch, X-Rite, PureSight Pro",
-        "14.5\" 3K (3072x1920) IPS 400nits Anti-glare, 100% P3, 100% sRGB, 120Hz, Eyesafe, Dolby Vision, TCON",
         "14.5\" 3K (3072x1920) IPS 400nits Anti-glare, 100% P3, 120Hz, Eyesafe, Dolby Vision, TCON",
         "14.5\" 3K (3072x1920) IPS 400nits Glossy / Anti-fingerprint, 100% P3, 100% sRGB, 120Hz, Eyesafe, Dolby Vision, Glass, Touch, TCON",
         "14.5\" 3K (3072x1920) IPS 400nits Glossy, 100% P3, 120Hz, Eyesafe, Dolby Vision, Glass, Touch, TCON",
@@ -1179,10 +1184,8 @@ export const filters = {
         "15.6\" HD (1366x768) TN 220nits Anti-glare",
         "15.6\" WQHD (2560x1440) IPS 350nits Anti-glare, 100% sRGB, 165Hz, G-SYNC",
         "16\" 2.5K (2560x1600) IPS 350nits Anti-glare, 100% sRGB, 120Hz, Eyesafe",
-        "16\" 2.5K WQXGA (2560x1600) IPS 350nits Anti-glare, 100% sRGB, 120Hz, Eyesafe, Dolby Vision, TCON",
         "16\" 2.5K WQXGA (2560x1600) IPS 400nits Glossy / Anti-fingerprint, 100% sRGB, 60Hz, Dolby Vision, T\u00dcV Low Blue Light, Glass, Touch",
         "16\" 2.5K WQXGA (2560x1600) IPS 400nits Glossy, 100% sRGB, 60Hz, Dolby Vision, T\u00dcV Low Blue Light, Glass, Touch",
-        "16\" 2.5K WQXGA (2560x1600) IPS 400nits Glossy, 100% sRGB, 60Hz, T\u00dcV Low Blue Light, Glass, Touch",
         "16\" 2.8K (2880x1800) OLED 500nits (typical) / 1100nits (peak) Glossy, 100% DCI-P3, 120Hz VRR, DisplayHDR True Black 1000",
         "16\" 2.8K (2880x1800) OLED 500nits (typical) / 1100nits (peak) Glossy, 100% DCI-P3, 120Hz VRR, DisplayHDR True Black 1000, Glass, Touch",
         "16\" 2.8K (2880x1800) OLED 500nits Glossy, 100% DCI-P3, 120Hz, DisplayHDR True Black 1000",
@@ -1195,12 +1198,8 @@ export const filters = {
         "16\" 2K (2048x1280) OLED 400nits Glossy, 100% DCI-P3, 120Hz, Eyesafe, DisplayHDR True Black 500, Glass, Touch",
         "16\" 2K (2048x1280) OLED 400nits Glossy, 100% DCI-P3, 60Hz, T\u00dcV Low Blue Light, Glass, Touch",
         "16\" 3.2K (3200x2000) IPS 400nits Anti-glare, 100% DCI-P3, 165Hz, Eyesafe, Dolby Vision, TCON",
-        "16\" 3.2K (3200x2000) IPS 400nits Anti-glare, 100% P3, 100% sRGB, 165Hz, Eyesafe, Dolby Vision, TCON",
-        "16\" 3.2K (3200x2000) IPS 400nits Glossy / Anti-fingerprint, 100% P3, 100% sRGB, 165Hz, Eyesafe, Dolby Vision, Glass, Touch, TCON",
         "16\" 3.2K (3200x2000) IPS 430nits Anti-glare, 100% DCI-P3, 165Hz, Dolby Vision, G-SYNC, Low Blue Light",
         "16\" 3.2K (3200x2000) IPS 500nits Anti-glare, 100% DCI-P3, 165Hz, Dolby Vision, G-SYNC, Eyesafe, X-Rite",
-        "16\" 3.2K (3200x2000) Mini LED 1200nits (peak) / 600nits (typical) Anti-glare, 100% P3, 100% Adobe RGB, 100% sRGB, 165Hz, Eyesafe, Dolby Vision, DisplayHDR 1000, TCON",
-        "16\" 3.2K (3200x2000) Mini LED 1200nits (peak) / 600nits (typical) Glossy / Anti-fingerprint, 100% P3, 100% Adobe RGB, 100% sRGB, 165Hz, Eyesafe, Dolby Vision, DisplayHDR 1000, Glass, Touch, TCON",
         "16\" 3.2K (3200x2000) Mini LED 1200nits Anti-glare, 100% DCI-P3, 100% Adobe RGB, 100% sRGB, 165Hz, DisplayHDR 1000, Dolby Vision, G-SYNC, Low Blue Light",
         "16\" 3.2K (3200x2000) OLED, 1600nits (peak) / 1000nits (typical) Glossy / Anti-fingerprint, 100% DCI-P3, 100% Adobe RGB, 100% sRGB, 120Hz, Eyesafe, Dolby Vision, DisplayHDR 1000, AGC Dragontrail Glass, Touch, X-Rite, PureSight Pro",
         "16\" 3.2K (3200x2000) OLED, 1600nits (peak) / 1000nits (typical) Glossy, 100% DCI-P3, 100% Adobe RGB, 100% sRGB, 120Hz, Eyesafe, Dolby Vision, DisplayHDR 1000, X-Rite, PureSight Pro",
@@ -1276,7 +1275,6 @@ export const filters = {
         "17.3\" HD+ (1600x900) TN 250nits Anti-glare, 60% NTSC",
         "18\" WQUXGA (3840x2400) IPS 500nits Glossy, 100% DCI-P3, 240Hz / 440Hz, Dolby Vision, G-SYNC, DisplayHDR 400, 3D display, Low Blue Light, High Gaming Performance",
         "18\" WQUXGA (3840x2400) IPS 520nits Glossy, 100% DCI-P3, 240Hz / 440Hz , Dolby Vision, G-SYNC, DisplayHDR 400",
-        "2x 13.3\" 2.8K WQXGA+ (2880x1800) OLED 400nits Glossy / Anti-fingerprint, 100% DCI-P3, 60Hz, Eyesafe, Dolby Vision, DisplayHDR True Black 500, Glass, Touch",
         "2x 14\" 2.8K WQXGA+ (2880x1800) OLED 750nits (peak) / 500nits (typical) Glossy / Anti-fingerprint, 100% DCI-P3, 120Hz, Eyesafe, Dolby Vision, DisplayHDR True Black 600, Glass, Touch, PureSight",
         "8\" WUXGA (1920x1200) IPS 500nits Glossy / Anti-fingerprint, 100% sRGB, 48-120Hz VRR, Panda King Glass, Low Blue Light, Touch",
         "8.8\" WQXGA (2560x1600) IPS 500nits Glossy / Anti-fingerprint, 97% DCI-P3, 144Hz, Corning Gorilla Glass 5, Low Blue Light, Touch",
@@ -1295,12 +1293,17 @@ export const filters = {
         "OGS, 10-point Multi-touch",
         "On-cell, 10-point Multi-touch"
     ],
+    "Color Calibration": [
+        "AICCP Color Calibration",
+        "Factory Color Calibration",
+        "ICC Template Color Calibration",
+        "TCON Color Calibration",
+        "X-Rite Factory Color Calibration"
+    ],
     "Pen": [
         "Lenovo Digital Pen",
         "Lenovo Digital Pen 2",
         "Lenovo Digital Pen 2 without Battery",
-        "Lenovo Digital Pen 3",
-        "Lenovo Digital Pen 3 without Battery",
         "Lenovo Digital Pen without Battery",
         "Lenovo Integrated Pen",
         "Lenovo Integrated Pen (Garaged)",
@@ -1557,10 +1560,8 @@ export const filters = {
         "Buttonless Mylar surface multi-touch touchpad, 70 x 105 mm (2.76 x 4.13 inches)",
         "Buttonless Mylar surface multi-touch touchpad, 75 x 120 mm (2.95 x 4.72 inches)",
         "Buttonless Mylar surface multi-touch touchpad, supports Precision TouchPad (PTP)",
-        "Buttonless Mylar surface multi-touch touchpad, supports Precision TouchPad (PTP), 46 x 87 mm (1.81 x 3.43 inches)",
         "Buttonless Mylar surface multi-touch touchpad, supports Precision TouchPad (PTP), 60.5 x 104 mm (2.38 x 4.09 inches)",
         "Buttonless Mylar surface multi-touch touchpad, supports Precision TouchPad (PTP), 62 x 104 mm (2.44 x 4.09 inches)",
-        "Buttonless Mylar surface multi-touch touchpad, supports Precision TouchPad (PTP), 63 x 105 mm (2.48 x 4.13 inches)",
         "Buttonless Mylar surface multi-touch touchpad, supports Precision TouchPad (PTP), 69 x 104 mm (2.72 x 4.09 inches)",
         "Buttonless Mylar surface multi-touch touchpad, supports Precision TouchPad (PTP), 70 x 105 mm (2.76 x 4.13 inches)",
         "Buttonless Mylar surface multi-touch touchpad, supports Precision TouchPad (PTP), 75 x 120 mm (2.95 x 4.72 inches)",
@@ -1642,9 +1643,7 @@ export const filters = {
         "Less than 2.15 kg (4.74 lbs)",
         "Less than 2.5 kg (5.5 lbs)",
         "Models with integrated graphics | Starting at 1.60 kg (3.53 lbs) | Models with discrete graphics | Starting at 1.64 kg (3.61 lbs)",
-        "Pad: starting at 697 g (1.54 lbs) Folio keyboard: starting at 450 g (0.99 lbs) Total: starting at 1,147 g (2.53 lbs)",
         "Pad: starting at 700 g (1.54 lbs) Folio keyboard: starting at 320 g (0.70 lbs) Total: starting at 1,020 g (2.24 lbs)",
-        "Pad: starting at 839 g (1.85 lbs) Folio keyboard: starting at 350 g (0.77 lbs) Total: starting at 1,189 g (2.62 lbs)",
         "Starting at  2.24 kg (4.94 lbs)",
         "Starting at 1.08 kg (2.37 lbs)",
         "Starting at 1.09 kg (2.40 lbs)",
@@ -1742,7 +1741,6 @@ export const filters = {
         "Starting at 1.9 kg (4.19 lbs)",
         "Starting at 1.91 kg (4.21 lbs)",
         "Starting at 1.92 kg (4.23 lbs)",
-        "Starting at 1.93 kg (4.25 lbs)",
         "Starting at 1.94 kg (4.28 lbs)",
         "Starting at 1.95 kg (4.30 lbs)",
         "Starting at 1.96 kg (4.32 lbs)",
@@ -1752,7 +1750,6 @@ export const filters = {
         "Starting at 2 kg (4.41 lbs)",
         "Starting at 2.02 kg (4.45 lbs)",
         "Starting at 2.04 kg (4.49 lbs)",
-        "Starting at 2.05 kg (4.52 lbs)",
         "Starting at 2.07 kg (4.56 lbs)",
         "Starting at 2.1 kg (4.63 lbs)",
         "Starting at 2.2 kg (4.85 lbs)",
@@ -1843,7 +1840,6 @@ export const filters = {
         "PC + 20% CF + 50% GF + 30% PCC (Top), PC + 20% CF + 30% PCC (Bottom)",
         "PC + 20% CF + 50% GF + 30% PCC (Top), PC + 40% GF + 45% PCC (Bottom)",
         "PC + 20% CF + 50% GF + 30% PCC (Top), PC + 50% GF + 45% PCC (Bottom)",
-        "PC + 40% GF (Top), PC-ABS (Bottom)",
         "PC + ABS with Rubber Bumper (Top), PC + ABS (Bottom)",
         "PC + GF (Gamepad), PC-ABS (Controllers)",
         "PC / 50% GF with 30% PCC + PC / 20% CF (Top), PC / 20% CF with 30% PCC (Bottom)",
@@ -1860,7 +1856,6 @@ export const filters = {
     ],
     "Surface Treatment": [
         "Aluminium Anodized",
-        "Aluminium CNC (Anodized with Sandblasting)",
         "Aluminium CNC (Anodized with Sandblasting) with Mirror Finish Polishing",
         "Aluminium CNC (Anodized)",
         "Aluminium CNC (Top), Aluminium Stamping (Bottom)",
@@ -1965,9 +1960,7 @@ export const filters = {
         "Office Trial + McAfee+ Premium 15-month",
         "Office Trial + McAfee+ Premium 15-month + Absolute Home & Office Basic 1-year + Bufferzone Standard",
         "Office Trial + McAfee+ Premium 15-month + Lenovo AI Now",
-        "Office Trial + Norton Security Deluxe 15-month",
         "Office Trial + Norton Security Standard 15-month",
-        "Office Trial + Norton Security Standard 36-month",
         "ThinkShield Pro (SentinelOne, Sepio, Cigent) 1-year"
     ],
     "WLAN + Bluetooth": [
@@ -2097,8 +2090,7 @@ export const filters = {
         "ToF Human Presence Detection (2.8K models) | E-shutter | Windows Hello IR Camera",
         "ToF Human Presence Detection | E-shutter | Windows Hello IR Camera",
         "Ultrasonic Human Presence Detection (WUXGA models) | E-shutter | Windows Hello IR Camera",
-        "Ultrasonic Human Presence Detection | E-shutter | Windows Hello IR Camera",
-        "Windows Hello IR Camera"
+        "Ultrasonic Human Presence Detection | E-shutter | Windows Hello IR Camera"
     ],
     "Bundled Accessories": [
         "2x USB-C to DP",
@@ -2167,11 +2159,6 @@ export const filters = {
         "Pouch for Pen",
         "Pouch for Pen + USB-C to Audio Jack",
         "ThinkPad X12 Detachable Gen 2 Folio Keyboard",
-        "USB-C 3-in-1 Hub + Lenovo YOGA 14-inch Sleeve (Cosmic Blue)",
-        "USB-C 3-in-1 Hub + Lenovo YOGA 14-inch Sleeve (Luna Grey)",
-        "USB-C 3-in-1 Hub + Yoga Slim Mouse + Lenovo YOGA 14-inch Sleeve (Cosmic Blue)",
-        "USB-C 3-in-1 Hub + Yoga Slim Mouse + Lenovo YOGA 14-inch Sleeve (Luna Grey)",
-        "USB-C 3-in-1 Hub + Yoga Slim Mouse without battery + Lenovo YOGA 14-inch Sleeve (Cosmic Blue)",
         "USB-C to Audio Jack",
         "USB-C to DP",
         "USB-C to DP + Lenovo USB-C to Ethernet Adapter (1Gbps)",
@@ -2192,8 +2179,7 @@ export const filters = {
         "Yoga Slim Mouse + Lenovo YOGA 14-inch Sleeve (Luna Grey)",
         "Yoga Slim Mouse without Battery + Folio Stand",
         "Yoga Slim Mouse without Battery + Folio Stand + Lenovo YOGA 14-inch Sleeve (Tidal Teal)",
-        "Yoga Slim Mouse without Battery + Folio Stand + Lenovo YOGA True Wireless Stereo Earbuds",
-        "Yoga Slim Mouse without battery + Folio Stand"
+        "Yoga Slim Mouse without Battery + Folio Stand + Lenovo YOGA True Wireless Stereo Earbuds"
     ],
     "Green Certifications": [
         "Carbon Neutral Certified | ENERGY STAR 8.0 | EPEAT Gold Registered | ErP Lot 6/26 | RoHS",
@@ -2216,6 +2202,8 @@ export const filters = {
         "ENERGY STAR 9.0 | EPEAT Gold Registered | ErP Lot 3 | ErP Lot 6/26 | RoHS | TCO Certified 9.0",
         "ENERGY STAR 9.0 | EPEAT Gold Registered | ErP Lot 3 | FSC certified package | RoHS",
         "ENERGY STAR 9.0 | EPEAT Gold Registered | ErP Lot 3 | RoHS",
+        "ENERGY STAR 9.0 | EPEAT Gold Registered | ErP Lot 6/26 | FSC certified package | RoHS",
+        "ENERGY STAR 9.0 | EPEAT Gold Registered | ErP Lot 6/26 | FSC certified package | RoHS | TCO Certified 9.0",
         "ENERGY STAR 9.0 | EPEAT Gold Registered | ErP Lot 6/26 | RoHS",
         "ENERGY STAR 9.0 | EPEAT Gold Registered | ErP Lot 6/26 | RoHS | TCO Certified",
         "ENERGY STAR 9.0 | EPEAT Gold Registered | ErP Lot 6/26 | RoHS | TCO Certified 9.0",
@@ -2231,6 +2219,7 @@ export const filters = {
         "ENERGY STAR 9.0 | ErP Lot 6/26 | RoHS",
         "ENERGY STAR 9.0 | ErP Lot 6/26 | RoHS | TCO Certified, generation 10",
         "ENERGY STAR 9.0 | RoHS",
+        "EPEAT Gold Registered | ErP Lot 6/26 | RoHS | TCO Certified 9.0",
         "EPEAT Gold Registered | ErP Lot 6/26 | RoHS | TCO Certified, generation 10",
         "EPEAT Gold Registered | RoHS | TCO Certified 9.0",
         "EPEAT Gold Registered | RoHS | TCO Certified, generation 10",
@@ -2250,41 +2239,6 @@ export const filters = {
         "TCO Certified 9.0 | ErP Lot 3 | FSC certified package | RoHS",
         "TCO Certified 9.0 | ErP Lot 6/26 | FSC certified package | RoHS"
     ],
-    "Physical Locks": [
-        "Kensington Nano",
-        "Kensington Nano Security Slot, 2.65 x 6.15 mm"
-    ],
-    "AI PC Category": [
-        "AI PC",
-        "AI-Powered Gaming PC",
-        "AI-Ready Workstations",
-        "Copilot + PC, AI-Ready Workstations",
-        "Copilot+ PC",
-        "Copilot+ PC, AI-Ready Workstations"
-    ],
-    "NPU": [
-        "Integrated AMD Ryzen AI, up to 10 TOPS",
-        "Integrated AMD Ryzen AI, up to 16 TOPS",
-        "Integrated AMD Ryzen AI, up to 50 TOPS",
-        "Integrated Intel AI Boost up to 13 TOPS",
-        "Integrated Intel AI Boost up to 13 TOPS + Discrete NPU Card up to 32 TOPS",
-        "Integrated Intel AI Boost, up to 11 TOPS",
-        "Integrated Intel AI Boost, up to 12 TOPS",
-        "Integrated Intel AI Boost, up to 13 TOPS",
-        "Integrated Intel AI Boost, up to 40 TOPS",
-        "Integrated Intel AI Boost, up to 47 TOPS",
-        "Integrated Intel AI Boost, up to 48 TOPS",
-        "Integrated MediaTek NPU 650, up to 4 TOPS",
-        "Integrated MediaTek NPU 890, up to 50 TOPS",
-        "Integrated Qualcomm Hexagon NPU, up to 45 TOPS"
-    ],
-    "Color Calibration": [
-        "AICCP Color Calibration",
-        "Factory Color Calibration",
-        "ICC Template Color Calibration",
-        "TCON Color Calibration",
-        "X-Rite Factory Color Calibration"
-    ],
     "Mil-Spec Test": [
         "MIL-STD-810H ",
         "MIL-STD-810H  (11 test items)",
@@ -2292,6 +2246,25 @@ export const filters = {
         "MIL-STD-810H  (21 test items)",
         "MIL-STD-810H  (23 test items)",
         "MIL-STD-810H  (27 test items)"
+    ],
+    "SIM Card": [
+        "No physical SIM card inbox"
+    ],
+    "Physical Locks": [
+        "Kensington Nano",
+        "Kensington Nano Security Slot, 2.65 x 6.15 mm"
+    ],
+    "Special Features": [
+        "AI Chip: LA1",
+        "AI Chip: LA2-Q | Hybrid thermal solution (air cooling + liquid metal)",
+        "AI Chip: LA3",
+        "AI Chip: LA3 | Modern Standby",
+        "AI Chip: LA3-P",
+        "AI Chip: LA3-P | Hybrid thermal solution (liquid cooling + air cooling + liquid metal)",
+        "Legion Coldfront 2.0 cooling system",
+        "Legion Coldfront 5.0 cooling system",
+        "Legion Coldfront cooling system",
+        "Modern Standby"
     ],
     "NFC": [
         "NFC"
@@ -2311,24 +2284,11 @@ export const filters = {
         "1x USB-C (USB 10Gbps / USB 3.2 Gen 2), with DisplayPort 1.4",
         "1x USB-C (USB 20Gbps / USB 3.2 Gen 2x2), with USB PD 3.1 and DisplayPort 1.4"
     ],
-    "Special Features": [
-        "AI Chip: LA1",
-        "AI Chip: LA2-Q | Hybrid thermal solution (air cooling + liquid metal)",
-        "AI Chip: LA3",
-        "AI Chip: LA3 | Modern Standby",
-        "AI Chip: LA3-P",
-        "AI Chip: LA3-P | Hybrid thermal solution (liquid cooling + air cooling + liquid metal)",
-        "Legion Coldfront 2.0 cooling system",
-        "Legion Coldfront 5.0 cooling system",
-        "Legion Coldfront cooling system",
-        "Modern Standby"
+    "ThinkShield": [
+        "ThinkShield is a comprehensive security solution that encompasses hardware, software, and supply chain components. For more detials, visit <a href=\"https://www.lenovo.com/us/en/software/thinkshield\"target=\"_blank\"><u>here</u></a>"
     ],
-    "RAID Preset": [
-        "RAID 0",
-        "RAID 1"
-    ],
-    "SIM Card": [
-        "No physical SIM card inbox"
+    "Smart Card Reader": [
+        "Smart Card Reader"
     ],
     "System Management": [
         "AMD PRO Manageability",
@@ -2339,10 +2299,8 @@ export const filters = {
         "Non-DASH",
         "Non-vPro"
     ],
-    "ThinkShield": [
-        "ThinkShield is a comprehensive security solution that encompasses hardware, software, and supply chain components. For more detials, visit <a href=\"https://www.lenovo.com/us/en/software/thinkshield\"target=\"_blank\"><u>here</u></a>"
-    ],
-    "Smart Card Reader": [
-        "Smart Card Reader"
+    "RAID Preset": [
+        "RAID 0",
+        "RAID 1"
     ]
 }
