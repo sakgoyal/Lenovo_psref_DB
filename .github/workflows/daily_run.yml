@@ -3,9 +3,6 @@ name: Daily Script Run
 on:
   schedule:
     - cron: "23 9 * * *" # Runs daily at 9:23 AM UTC
-  push:
-    branches:
-      - main # Also runs on every push to the main branch
 
 jobs:
   run-script:
