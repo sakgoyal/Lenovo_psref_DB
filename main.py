@@ -1,10 +1,15 @@
 import json
 import re
+import sys
+import time
 from pathlib import Path
 from typing import NotRequired, TypedDict
 
 import pandas as pd
-import requests
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
 
 REGEX_REPLACEMENTS = {
     re.compile(r"(\^\|\^)?Various docking.*?</u></a>"): "Various",
@@ -38,28 +43,44 @@ REGEX_REPLACEMENTS = {
     re.compile(r"\xa0"): " ", # incoming data is UTF-16. so we need to strip all these out to compress them
 }
 
-s = requests.Session()
+chrome_options = Options()
+chrome_options.add_argument("--headless")
+chrome_options.add_argument("--disable-gpu")
+chrome_options.add_argument("--no-sandbox")
+chrome_options.add_argument("--disable-dev-shm-usage")
+chrome_options.add_argument("--window-size=1920,1080")
+chrome_options.add_argument("--disable-extensions")
+chrome_options.add_argument("--disable-popup-blocking")
+chrome_options.add_argument("--disable-infobars")
+driver = webdriver.Chrome(options=chrome_options)
 
+print("Fetching product IDs...", flush=True)
 
 def get_product_ids():
-    s.headers.update({
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-    })
+    driver.get("https://psref.lenovo.com")
+    time.sleep(2)
+    driver.get("https://psref.lenovo.com/filter/")
+    time.sleep(2)
 
-    s.get("https://psref.lenovo.com", timeout=10)
-    s.get("https://psref.lenovo.com/api/home/Menu/info", timeout=10)
-    s.get("https://psref.lenovo.com", timeout=10)
+    driver.get("https://psref.lenovo.com/api/home/Menu/info")
+    time.sleep(2)
 
-    response = s.get("https://psref.lenovo.com/api/home/Menu/info", timeout=10)
-    response.raise_for_status()
-    json = response.json()
-    data = json.get('data')
+    driver.get("https://psref.lenovo.com")
+    time.sleep(1)
+
+    driver.get("https://psref.lenovo.com/api/home/Menu/info")
+    time.sleep(3)
+
+    json_data = driver.find_element("tag name", "pre").text
+    data = json.loads(json_data).get('data')
 
     if not data:
         raise ValueError("Could not get menu data from API")
     return data
 
 API_DATA = get_product_ids()
+
+print("Fetched product IDs.", flush=True)
 
 def extract_product_ids(data: list["ProductIDs"]):
     product_ids: list[str] = []
@@ -78,9 +99,9 @@ def download_data(product_id: str):
     print(f"{product_id}: Downloading...", end="", flush=True)
     url = f"https://psref.lenovo.com/api/search/DefinitionFilterAndSearch/ShowModel?pageindex=1&pagesize=300000&product_key={product_id}"
 
-    response = s.get(url)
-    response.raise_for_status()
-    json_data = response.json()
+    driver.get(url)
+    WebDriverWait(driver, 10).until(EC.presence_of_element_located(("tag name", "pre")))
+    json_data = json.loads(driver.find_element("tag name", "pre").text)
     data: ShowModel = json_data.get('data')
     print("Processing...", end="", flush=True)
 
@@ -114,10 +135,13 @@ def download_data(product_id: str):
 
     print("Done.", flush=True)
 
-for product_id in product_ids:
+for i, product_id in enumerate(product_ids):
+    if len(sys.argv) > 1:
+        if i >= int(sys.argv[1]):
+            break
     download_data(product_id)
 
-df_list = [pd.read_csv(f) for f in Path("./out").glob("*.csv")]
+df_list = [pd.read_csv(f) for f in Path("./out").rglob("*.csv")]
 combined_df = pd.concat(df_list, ignore_index=True, sort=False).astype(str)
 combined_df.to_parquet("database/products.parquet", index=False, compression=None)
 
@@ -180,3 +204,6 @@ class ProductIDs(TypedDict):
 	type: str
 	subcollection: list["ProductIDs"] # recursive type
 	info: ProductInfo
+
+# Close the WebDriver at the end of the script
+driver.quit()

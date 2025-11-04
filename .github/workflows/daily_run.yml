@@ -22,7 +22,10 @@ jobs:
         # pip-install: --upgrade pandas pyarrow requests
         cache: 'pip'
 
-    - name: Run script
+    - name: Install Deps
+      run: python3 -m pip install .
+
+    - name: Run Script
       run: python3 main.py
 
     - name: Create Pull Request
