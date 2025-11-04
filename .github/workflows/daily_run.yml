@@ -23,7 +23,7 @@ jobs:
         cache: 'pip'
 
     - name: Install Deps
-      run: python3 -m pip install .
+      run: python3 -m pip install --upgrade .
 
     - name: Run Script
       run: python3 main.py

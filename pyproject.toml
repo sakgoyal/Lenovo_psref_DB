@@ -10,6 +10,7 @@ dependencies = [
     "pandas",
     "pyarrow",
     "requests>=2.32.4",
+    "selenium",
 ]
 
 [tool.setuptools]
