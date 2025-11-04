@@ -1,53 +1,88 @@
 import json
-import os
 import re
-import time
+from pathlib import Path
+from typing import NotRequired, TypedDict
 
-import duckdb
+import pandas as pd
 import requests
-from selenium import webdriver
 
-## TODO: make postprocessing more useful by splitting CPU details into separate columns
-## for more granular filtering options. ignore for now
+REGEX_REPLACEMENTS = {
+    re.compile(r"(\^\|\^)?Various docking.*?</u></a>"): "Various",
+    re.compile(r"Non-WWAN"): "",
+    re.compile(r"NVIDIA (GeForce )?"): "",
+    re.compile(r"Boost Clock "): "",
+    re.compile(r"TGP "): "",
+    re.compile(r"None"): "",
+    re.compile(r"RoHS compliant"): "RoHS",
+    re.compile(r"military test passed"): "",
+    re.compile(r"Integrated AMD Radeon "): "AMD Radeon ",
+    re.compile(r"Memory soldered to systemboard, no slots"): "No Slots",
+    re.compile(r"microSD Card Reader"): "microSD",
+    re.compile(r"TPM 2.0 Enabled"): "TPM 2.0",
+    re.compile(r"1x Ethernet \(RJ-45\)"): "Ethernet",
+    re.compile(r"100/1000M \(RJ-45\)"): "1GbE",
+    re.compile(r"2.5GbE \(RJ-45\)"): "2.5GbE",
+    re.compile(r"No [oO]nboard Ethernet"): "",
+    re.compile(r"Pen Not Supported"): "",
+    re.compile(r"No support"): "",
+    re.compile(r"No card reader"): "",
+    re.compile(r"Non-AI PC"): "",
+    re.compile(r"No smart card reader"): "",
+    re.compile(r"High Definition \(HD\) Audio, "): "",
+    re.compile(r"No color calibration"): "",
+    re.compile(r"Kensington Nano Security Slot, 2.5 x 6 mm"): "Kensington Nano",
+    re.compile(r"No physical locks"): "",
+    re.compile(r"Headphone \/ microphone combo jack \(3.5mm\)"): "3.5mm Combo Jack",
+    re.compile(r"\^\|\^"): " | ",
+    re.compile(r"IR camera for Windows Hello \(facial recognition\)"): "Windows Hello IR Camera",
+    re.compile(r"\xa0"): " ", # incoming data is UTF-16. so we need to strip all these out to compress them
+}
+
+s = requests.Session()
 
 
-def get_session_cookie():
-    # set headless mode
-    options = webdriver.ChromeOptions()
-    options.add_argument("--headless")
-    options.add_argument("--disable-gpu")
-    options.add_argument("--no-sandbox")
-    options.add_argument("--disable-dev-shm-usage")
-    driver = webdriver.Chrome(options=options)
+def get_product_ids():
+    s.headers.update({
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    })
 
+    s.get("https://psref.lenovo.com", timeout=10)
+    s.get("https://psref.lenovo.com/api/home/Menu/info", timeout=10)
+    s.get("https://psref.lenovo.com", timeout=10)
 
-    try:
-        driver.get("https://psref.lenovo.com")
-        time.sleep(1)
-        driver.get("https://psref.lenovo.com/api/home/Menu/info")
-        time.sleep(1)
-        driver.get("https://psref.lenovo.com")
-        time.sleep(1)
-        driver.get("https://psref.lenovo.com/api/home/Menu/info")
-        data = json.loads(driver.find_element("tag name", "pre").text).get('data')
+    response = s.get("https://psref.lenovo.com/api/home/Menu/info", timeout=10)
+    response.raise_for_status()
+    json = response.json()
+    data = json.get('data')
 
+    if not data:
+        raise ValueError("Could not get menu data from API")
+    return data
 
-        cookies = driver.get_cookies()
-        cookie_string = "; ".join([f"{cookie['name']}={cookie['value']}" for cookie in cookies])
+API_DATA = get_product_ids()
 
-        print("Cookies:", cookie_string)
-        return cookie_string, extract_product_ids(data[0].get('subcollection', []))
+def extract_product_ids(data: list["ProductIDs"]):
+    product_ids: list[str] = []
+    for item in data:
+        if item.get('type') == 'product':
+            product_ids.append(item.get('id'))
+        if item.get('subcollection'):
+            product_ids.extend(extract_product_ids(item['subcollection']))
+    return product_ids
 
-    finally:
-        driver.quit()
+product_ids = extract_product_ids(API_DATA[0].get('subcollection', []))
 
-def download_data(product_id: str, cookie: str):
+dataframes = []  # List to store DataFrames in memory
+
+def download_data(product_id: str):
+    print(f"{product_id}: Downloading...", end="", flush=True)
     url = f"https://psref.lenovo.com/api/search/DefinitionFilterAndSearch/ShowModel?pageindex=1&pagesize=300000&product_key={product_id}"
 
-    response = requests.get(url, headers={ 'cookie': cookie })
+    response = s.get(url)
     response.raise_for_status()
-    json_data: dict[str, dict] = response.json()
-    data = json_data.get('data')
+    json_data = response.json()
+    data: ShowModel = json_data.get('data')
+    print("Processing...", end="", flush=True)
 
     if not data:
         raise ValueError(f"No data found for {product_id}")
@@ -62,8 +97,7 @@ def download_data(product_id: str, cookie: str):
             return f'"{s}"'
         return s
 
-    if not os.path.exists('out'):
-        os.makedirs('out')
+    Path("./out").mkdir(parents=True, exist_ok=True)
 
     cols = data.get('cols', [])
     rows = data.get('rows', [])
@@ -74,111 +108,75 @@ def download_data(product_id: str, cookie: str):
 
     with open(f"out/{product_id}.csv", "w", encoding="utf-8") as f:
         text = "\n".join(out)
-        replacement = {
-            r"(\^\|\^)?Various docking.*?</u></a>": "Various",
-            r"Non-WWAN": "",
-            r"NVIDIA (GeForce )?": "",
-            r"Boost Clock ": "",
-            r"TGP ": "",
-            r"None": "",
-            r"RoHS compliant": "RoHS",
-            r"military test passed": "",
-            r"Integrated AMD Radeon ": "AMD Radeon ",
-            r"Memory soldered to systemboard, no slots": "No Slots",
-            r"microSD Card Reader": "microSD",
-            r"TPM 2.0 Enabled": "TPM 2.0",
-            r"1x Ethernet \(RJ-45\)": "Ethernet",
-            r"100/1000M \(RJ-45\)": "1GbE",
-            r"2.5GbE \(RJ-45\)": "2.5GbE",
-            r"No [oO]nboard Ethernet": "",
-            r"Pen Not Supported": "",
-            r"No support": "",
-            r"No card reader": "",
-            r"Non-AI PC": "",
-            r"No smart card reader": "",
-            r"High Definition \(HD\) Audio, ": "",
-            r"No color calibration": "",
-            r"Kensington Nano Security Slot, 2.5 x 6 mm": "Kensington Nano",
-            r"No physical locks": "",
-            r"Headphone \/ microphone combo jack \(3.5mm\)": "3.5mm Combo Jack",
-            r"\^\|\^": " | ",
-            r"IR camera for Windows Hello \(facial recognition\)": "Windows Hello IR Camera",
-            r"\xa0": " ", # incoming data is UTF-16. so we need to strip all these out to compress them
-        }
-        for pattern, repl in replacement.items():
-            text = re.sub(pattern, repl, text)
+        for pattern, repl in REGEX_REPLACEMENTS.items():
+            text = pattern.sub(repl, text)
         f.write(text)
 
-def extract_product_ids(data: list[dict]) -> list[str]:
-    product_ids = []
-    for item in data:
-        if item.get('type') == 'product':
-            product_ids.append(item.get('id'))
-        if item.get('subcollection'):
-            product_ids.extend(extract_product_ids(item['subcollection']))
-    return product_ids
+    print("Done.", flush=True)
 
-def get_product_ids():
-    response = requests.get('https://psref.lenovo.com/api/home/Menu/info')
-    response.raise_for_status()
-    data: list[dict] = response.json()['data'] # data from all device categories. deeply nested
+for product_id in product_ids:
+    download_data(product_id)
 
-    print('Product IDs:', data[0].get('subcollection'))
+df_list = [pd.read_csv(f) for f in Path("./out").glob("*.csv")]
+combined_df = pd.concat(df_list, ignore_index=True, sort=False).astype(str)
+combined_df.to_parquet("database/products.parquet", index=False, compression=None)
 
-    return extract_product_ids(data[0].get('subcollection', [])) # get only laptop subcollection which is the first item
-
-cookie, pIDs = get_session_cookie()
-for product_id in pIDs:
-    print(f"Downloading {product_id}")
-    download_data(product_id, cookie)
-
-duckdb.sql("CREATE TABLE products AS FROM read_csv('./out/*.csv', union_by_name = true);")
-
-def get_cols() -> list[str]:
+def get_cols():
     omit_list = ["EAN / UPC / JAN", "Model", "Machine Type", "TopSeller", "Monitor Cable", "Controls", "Others", "ISV Certifications", "Base Warranty", "Other Certifications", "Included Upgrade", "End of Support", "Announce Date"]
-    rows = duckdb.execute("SELECT name FROM pragma_table_info('products')").fetchall()
-    column_names: list[str] = [row[0] for row in rows]
-    return [col for col in column_names if col not in omit_list]
-
-def get_distinct_values(column_names: list[str]):
-    distinct_values_dict: dict[str, list[str]] = {}
-
-    for column in column_names:
-        rows = duckdb.execute(f'SELECT DISTINCT "{column}" FROM "products"').fetchall()
-        results = [row[0] for row in rows]
-        distinct_values_dict[column] = results
-
-    return distinct_values_dict
-
-def create_filter_values_table(distinct_values: dict[str, list[str]]):
-    duckdb.execute("DROP TABLE IF EXISTS filter_values")
-    duckdb.execute("""
-        CREATE TABLE filter_values (
-            column_name TEXT,
-            options TEXT
-        );
-    """)
-
-    for column, values in distinct_values.items():
-        values_json = json.dumps(values)
-        duckdb.execute("INSERT INTO filter_values (column_name, options) VALUES (?, ?)", (column, values_json))
+    return [col for col in combined_df.columns.to_list() if col not in omit_list]
 
 column_names = get_cols()
+
+def get_distinct_values(column_names: list[str]):
+    return {col: combined_df[col].dropna().unique().tolist() for col in column_names}
+
 distinct_values_dict = get_distinct_values(column_names)
+
+def create_filter_values_table(distinct_values: dict[str, list[str]]):
+    filter_values_list = [
+        {"column_name": col, "options": json.dumps(values)}
+        for col, values in distinct_values.items()
+    ]
+    pd.DataFrame(filter_values_list).to_parquet("database/filter_values.parquet", index=False, compression=None)
 
 create_filter_values_table(distinct_values_dict)
 
-duckdb.execute("EXPORT DATABASE 'finder/static/export' (FORMAT parquet);")
 
+filter_df = pd.read_parquet("database/filter_values.parquet")
+filter_df = filter_df[~filter_df['column_name'].isin(['Region', "Screen-to-Body Ratio", 'Optical', 'Docking', 'Included Upgrade', 'Announce Date', 'Standard Ports', 'Operating System', 'Dimensions (WxDxH)', 'Product', 'End of Support'])]
+filter = filter_df.itertuples(index=False, name=None)
 
-filter: list[tuple[str, str]] = duckdb.query("SELECT * FROM filter_values WHERE column_name NOT IN ('Optical', 'Docking', 'Included Upgrade', 'Announce Date', 'Standard Ports', 'Operating System', 'Dimensions (WxDxH)', 'Product', 'End of Support');").fetchall()
 filter_dict = {}
 for column, options in filter:
     val = json.loads(options)
     # sort values and remove empty strings
     val = sorted([v for v in val if v])
+    val = [v for v in val if v.lower() != 'nan']
     filter_dict[column] = val
 
 with open('finder/src/routes/data.ts', 'w') as f:
     f.write("export const filters = ")
     f.write(json.dumps(filter_dict, indent=4))
+
+
+## type definitions
+
+class ShowModel(TypedDict):
+	cols: list[str]
+	rows: list[list[str]]
+
+
+class ProductInfo(TypedDict):
+	href: NotRequired[str]
+	MarketingName: NotRequired[str]
+	isNewProduct: NotRequired[bool]
+	ProductID: NotRequired[str]
+	ConfigLastUpdateTime: NotRequired[str]
+	SpecLastUpdateTime: NotRequired[str]
+
+class ProductIDs(TypedDict):
+	id: str
+	name: str
+	type: str
+	subcollection: list["ProductIDs"] # recursive type
+	info: ProductInfo
