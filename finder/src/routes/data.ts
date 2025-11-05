@@ -2219,7 +2219,6 @@ export const filters = {
         "ENERGY STAR 9.0 | ErP Lot 6/26 | RoHS",
         "ENERGY STAR 9.0 | ErP Lot 6/26 | RoHS | TCO Certified, generation 10",
         "ENERGY STAR 9.0 | RoHS",
-        "EPEAT Gold Registered | ErP Lot 6/26 | RoHS | TCO Certified 9.0",
         "EPEAT Gold Registered | ErP Lot 6/26 | RoHS | TCO Certified, generation 10",
         "EPEAT Gold Registered | RoHS | TCO Certified 9.0",
         "EPEAT Gold Registered | RoHS | TCO Certified, generation 10",
