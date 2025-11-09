@@ -1869,6 +1869,7 @@ export const filters = {
         "Anodizing",
         "Anodizing Sandblasting",
         "Anodizing Sandblasting (Top), Texture (Bottom)",
+        "Anodizing Sandblasting with laser FIFA pattern",
         "Forged Carbon (Soft Painted)",
         "IMR (In-Mold Decoration by Roller)",
         "IMR (Top), Texture (Bottom)",
