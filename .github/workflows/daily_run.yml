@@ -34,7 +34,7 @@ jobs:
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v7
       with:
-        commit-message: ${{ steps.vars.outputs.pr_title }}
+        commit-message: ${{ steps.vars.outputs.pr_text }}
         title: ${{ steps.vars.outputs.pr_text }}
         body: |
           Automated daily update.
