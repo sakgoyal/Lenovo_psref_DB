@@ -3,6 +3,7 @@ name: Daily Script Run
 on:
   schedule:
     - cron: "23 9 * * *" # Runs daily at 9:23 AM UTC
+  workflow_dispatch:
 
 jobs:
   run-script:
