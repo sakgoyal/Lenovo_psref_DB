@@ -1204,7 +1204,6 @@ export const filters = {
         "16\" WQXGA (2560x1600) IPS 500nits Anti-glare, 100% sRGB, 240Hz, DisplayHDR 400, Dolby Vision, G-SYNC, Low Blue Light, High Gaming Performance",
         "16\" WQXGA (2560x1600) OLED 1100nits (peak) / 500nits (typical) Glossy, 100% DCI-P3, 165Hz, DisplayHDR True Black 1000, Dolby Vision, G-SYNC, Low Blue Light, High Gaming Performance",
         "16\" WQXGA (2560x1600) OLED 500nits (Typical) / 1100nits (Peak) Glossy, 100% DCI-P3, 165Hz, DisplayHDR True Black 1000, Dolby Vision, G-SYNC, Low Blue Light, High Gaming Performance, Flicker Free",
-        "16\" WQXGA (2560x1600) OLED 500nits (Typical) / 1100nits (Peak) Glossy, 100% DCI-P3, 240Hz, DisplayHDR True Black 1000, Dolby Vision, G-SYNC, Low Blue Light, High Gaming Performance, Flicker Free",
         "16\" WQXGA (2560x1600) OLED 500nits (typical) / 1100nits (peak) Glossy, 100% DCI-P3, 165Hz, DisplayHDR True Black 1000, Dolby Vision, G-SYNC",
         "16\" WQXGA (2560x1600) OLED 500nits (typical) / 1100nits (peak) Glossy, 100% DCI-P3, 240Hz, DisplayHDR True Black 1000, Dolby Vision, G-SYNC",
         "16\" WQXGA (2560x1600) OLED 500nits (typical) / 1100nits (peak) Glossy, 100% DCI-P3, 240Hz, DisplayHDR True Black 1000, Dolby Vision, G-SYNC, Low Blue Light, High Gaming Performance, Flicker Free",
