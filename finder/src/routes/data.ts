@@ -684,6 +684,7 @@ export const filters = {
     ],
     "Storage Slot": [
         "Four M.2 slots \u2022 One M.2 2280 PCIe 5.0 x4 slot \u2022 Three M.2 2280 PCIe 4.0 x4 slots",
+        "Lunar Lake: one M.2 2280 PCIe 4.0 x4 slot",
         "Models with 38Wh battery: one 2.5\" drive slot + one M.2 slot \u2022 One 2.5\" SATA HDD slot \u2022 One M.2 2280 PCIe 3.0 x4 slot",
         "Models with 38Wh battery: one 2.5\" drive slot + one M.2 slot \u2022 One 2.5\" SATA HDD slot \u2022 One M.2 2280 PCIe 4.0 x4 slot",
         "Models with 38Wh battery: one 2.5\" drive slot + one M.2 slot \u2022 One 2.5\" SATA HDD slot \u2022 One M.2 PCIe 4.0 x4 slot",
@@ -696,7 +697,6 @@ export const filters = {
         "Models with OLED panel: one M.2 2242 PCIe 4.0 x4 slot",
         "Models with U series processor: one M.2 2280 PCIe 4.0 x4 slot",
         "Models with V or H series processor: one M.2 2280 PCIe 5.0 x4 slot",
-        "Models with V series processor: one M.2 2280 PCIe 4.0 x4 slot",
         "Models with discrete graphics: one M.2 2242 PCIe 4.0 x4 slot",
         "Models with integrated graphics and IPS display: Two M.2 2280 PCIe 4.0 x4 slots",
         "One M.2 2242 PCIe 3.0 x2 slot",
