@@ -1,8 +1,8 @@
 # Lenovo PSREF Database Generator
 
-This project is a Python script that generates a SQLITE database of Lenovo PSREF (Product Specifications Reference) data.
+This project is a Rust program that generates a parquet database of Lenovo PSREF (Product Specifications Reference) data.
 
-Currently, it scrapes all currently available (not withdrawn) laptops from the PSREF website and creates a Sqlite database containing the specifications of these laptops.
+Currently, it scrapes all currently available (not withdrawn) laptops from the PSREF website.
 
 <!-- This will be used to create a web application that allows users to search for Lenovo laptops in detail. Most websites do not allow such a granular search. Especially not for the entire range of laptops that Lenovo offers. -->
 
@@ -10,8 +10,6 @@ Currently, it scrapes all currently available (not withdrawn) laptops from the P
 
 ## How to run
 
-* run the database update script with `python main.py`
-<!-- * `cd finder`
-* npm install
-* npm run build
-* npm run preview -->
+```sh
+cargo run --release
+```

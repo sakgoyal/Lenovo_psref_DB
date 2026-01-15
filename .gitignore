@@ -1,8 +1,1 @@
-out/
-**.db
-**.db-journal
-**/*.egg-info/
-build/
-dist/
-__pycache__/**
 target/
