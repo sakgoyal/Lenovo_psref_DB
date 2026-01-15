@@ -5,7 +5,6 @@ use std::collections::{HashMap, HashSet};
 use std::error::Error;
 use std::fs::{self, File};
 use std::io::Write;
-use std::path::Path;
 use std::sync::LazyLock;
 
 type Result<T> = std::result::Result<T, Box<dyn Error>>;
@@ -76,24 +75,15 @@ fn extract_product_ids(items: &[ProductIDs]) -> Vec<String> {
     ids
 }
 
-fn escape_csv(val: &str) -> String {
-    let s = val.replace('"', "\"\"").replace(['\r', '\n'], " ");
-    if s.contains([',', '"', '\n', '\r']) {
-        format!("\"{}\"", s)
-    } else {
-        s
-    }
-}
-
 fn apply_replacements(text: &str) -> String {
     let mut result = text.to_string();
     for (pattern, replacement) in REGEX_REPLACEMENTS.iter() {
         result = pattern.replace_all(&result, *replacement).to_string();
     }
-    result
+    result.replace(['\r', '\n'], " ").trim().to_string()
 }
 
-fn download_data(client: &reqwest::blocking::Client, product_id: &str) -> Result<()> {
+fn fetch_product_df(client: &reqwest::blocking::Client, product_id: &str) -> Result<DataFrame> {
     print!("{}: Downloading...", product_id);
     std::io::stdout().flush()?;
 
@@ -109,25 +99,29 @@ fn download_data(client: &reqwest::blocking::Client, product_id: &str) -> Result
         .json()
         .map_err(|e| format!("Failed to parse JSON: {}", e))?;
 
+    let data = response.data.ok_or("No data found")?;
+
     print!("Processing...");
     std::io::stdout().flush()?;
 
-    let data = response.data.ok_or("No data found")?;
+    let mut cols_data: Vec<Vec<String>> = vec![Vec::with_capacity(data.rows.len()); data.cols.len()];
 
-    let mut csv_lines = Vec::with_capacity(data.rows.len() + 1);
-    csv_lines.push(data.cols.iter().map(|c| escape_csv(c)).collect::<Vec<_>>().join(","));
-
-    for row in &data.rows {
-        csv_lines.push(row.iter().map(|c| escape_csv(c)).collect::<Vec<_>>().join(","));
+    for row in data.rows {
+        for (i, cell) in row.into_iter().enumerate() {
+            if i < cols_data.len() {
+                cols_data[i].push(apply_replacements(&cell));
+            }
+        }
     }
 
-    let text = csv_lines.join("\n");
-    let text = apply_replacements(&text);
-
-    fs::write(format!("out/{}.csv", product_id), text)?;
+    // Convert Series to Columns
+    let columns: Vec<Column> = data.cols.into_iter()
+        .zip(cols_data)
+        .map(|(name, vals)| Series::new(name.into(), vals).into())
+        .collect();
 
     println!("Done.");
-    Ok(())
+    Ok(DataFrame::new(columns)?)
 }
 
 const OMIT_COLUMNS: &[&str] = &[
@@ -142,87 +136,6 @@ const FILTER_OMIT_COLUMNS: &[&str] = &[
     "Product", "End of Support",
 ];
 
-fn merge_csvs_to_parquet() -> Result<DataFrame> {
-    let out_path = Path::new("out");
-    let mut dfs: Vec<DataFrame> = Vec::new();
-
-    for entry in fs::read_dir(out_path)? {
-        let entry = entry?;
-        let path = entry.path();
-        if path.extension().is_some_and(|e| e == "csv") {
-            let df = CsvReadOptions::default()
-                .with_infer_schema_length(Some(0))
-                .with_has_header(true)
-                .try_into_reader_with_file_path(Some(path.clone()))?
-                .finish()?;
-            dfs.push(df);
-        }
-    }
-
-    if dfs.is_empty() {
-        return Err("No CSV files found in out/".into());
-    }
-
-    // Collect all unique column names and sort them for consistent ordering
-    let mut all_columns: Vec<String> = dfs
-        .iter()
-        .flat_map(|df| df.get_column_names_owned())
-        .collect::<HashSet<_>>()
-        .into_iter()
-        .map(|s| s.to_string())
-        .collect();
-    all_columns.sort();
-
-    // Align all DataFrames to have the same columns in the same order
-    let aligned_dfs: Vec<DataFrame> = dfs
-        .into_iter()
-        .map(|df| {
-            // Check which columns exist
-            let existing_cols: HashSet<String> = df
-                .get_column_names()
-                .into_iter()
-                .map(|s| s.to_string())
-                .collect();
-
-            let mut lf = df.lazy();
-
-            // Add missing columns as null
-            for col_name in &all_columns {
-                if !existing_cols.contains(col_name) {
-                    lf = lf.with_column(lit(NULL).cast(DataType::String).alias(col_name.as_str()));
-                }
-            }
-
-            // Cast all columns to string
-            for col_name in &all_columns {
-                lf = lf.with_column(col(col_name.as_str()).cast(DataType::String));
-            }
-
-            // Select columns in consistent order
-            let col_exprs: Vec<Expr> = all_columns.iter().map(|c| col(c.as_str())).collect();
-            lf = lf.select(col_exprs);
-
-            lf.collect().unwrap()
-        })
-        .collect();
-
-    // Concatenate all DataFrames
-    let combined = concat(
-        aligned_dfs.iter().map(|df| df.clone().lazy()).collect::<Vec<_>>(),
-        UnionArgs::default(),
-    )?
-    .collect()?;
-
-    fs::create_dir_all("database")?;
-    let file = File::create("database/products.parquet")?;
-    ParquetWriter::new(file)
-        .with_compression(ParquetCompression::Uncompressed)
-        .finish(&mut combined.clone())?;
-
-    println!("Saved database/products.parquet with {} rows.", combined.height());
-    Ok(combined)
-}
-
 fn get_distinct_values(df: &DataFrame) -> Result<HashMap<String, Vec<String>>> {
     let omit_set: HashSet<&str> = OMIT_COLUMNS.iter().copied().collect();
     let mut result: HashMap<String, Vec<String>> = HashMap::new();
@@ -232,12 +145,12 @@ fn get_distinct_values(df: &DataFrame) -> Result<HashMap<String, Vec<String>>> {
             continue;
         }
 
-        let series = df.column(col_name)?;
-        let unique = series.unique()?.cast(&DataType::String)?;
+        let unique = df.column(col_name)?.unique()?.cast(&DataType::String)?;
         let mut values: Vec<String> = unique
             .str()?
             .into_iter()
-            .filter_map(|opt| opt.map(|s| s.to_string()))
+            .flatten()
+            .map(|s| s.to_string())
             .filter(|s| !s.is_empty() && s.to_lowercase() != "nan")
             .collect();
         values.sort();
@@ -248,41 +161,33 @@ fn get_distinct_values(df: &DataFrame) -> Result<HashMap<String, Vec<String>>> {
 }
 
 fn create_filter_values_parquet(distinct_values: &HashMap<String, Vec<String>>) -> Result<()> {
-    let mut col_names: Vec<String> = Vec::new();
-    let mut options: Vec<String> = Vec::new();
+    let (col_names, options): (Vec<String>, Vec<String>) = distinct_values.iter()
+        .map(|(k, v)| (k.clone(), serde_json::to_string(v).unwrap_or_default()))
+        .unzip();
 
-    for (col, vals) in distinct_values {
-        col_names.push(col.clone());
-        options.push(serde_json::to_string(vals)?);
-    }
-
-    let df = DataFrame::new(vec![
-        Column::new("column_name".into(), col_names),
-        Column::new("options".into(), options),
+    // Convert Series to Columns
+    let mut df = DataFrame::new(vec![
+        Series::new("column_name".into(), col_names).into(),
+        Series::new("options".into(), options).into(),
     ])?;
 
     let file = File::create("database/filter_values.parquet")?;
-    ParquetWriter::new(file)
-        .with_compression(ParquetCompression::Uncompressed)
-        .finish(&mut df.clone())?;
+    ParquetWriter::new(file).finish(&mut df)?;
 
     println!("Saved database/filter_values.parquet");
     Ok(())
 }
 
 fn generate_typescript_filters(distinct_values: &HashMap<String, Vec<String>>) -> Result<()> {
-    let filter_omit_full: HashSet<&str> = OMIT_COLUMNS
-        .iter()
+    let filter_omit_full: HashSet<&str> = OMIT_COLUMNS.iter()
         .chain(FILTER_OMIT_COLUMNS.iter())
         .copied()
         .collect();
 
-    let mut filter_dict: HashMap<&str, &Vec<String>> = HashMap::new();
-    for (col, vals) in distinct_values {
-        if !filter_omit_full.contains(col.as_str()) {
-            filter_dict.insert(col.as_str(), vals);
-        }
-    }
+    let filter_dict: HashMap<&str, &Vec<String>> = distinct_values.iter()
+        .filter(|(k, _)| !filter_omit_full.contains(k.as_str()))
+        .map(|(k, v)| (k.as_str(), v))
+        .collect();
 
     fs::create_dir_all("finder/src/routes")?;
     let mut file = File::create("finder/src/routes/data.ts")?;
@@ -293,62 +198,58 @@ fn generate_typescript_filters(distinct_values: &HashMap<String, Vec<String>>) -
 }
 
 fn main() -> Result<()> {
-    fs::create_dir_all("out")?;
-
     let client = reqwest::blocking::Client::builder()
         .user_agent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36")
         .build()?;
 
     println!("Fetching product IDs...");
-
     let response: ApiResponse<Vec<ProductIDs>> = client
         .get("https://psref.lenovo.com/api/home/Menu/info")
-        .send()
-        .map_err(|e| format!("Failed to fetch menu: {}", e))?
-        .json()
-        .map_err(|e| format!("Failed to parse menu JSON: {}", e))?;
+        .send()?
+        .json()?;
 
-    let menu_data = response.data.ok_or("No menu data")?;
-
-    let product_ids = if let Some(first) = menu_data.first() {
-        if let Some(ref sub) = first.subcollection {
-            extract_product_ids(sub)
-        } else {
-            Vec::new()
-        }
-    } else {
-        Vec::new()
-    };
+    let product_ids = response.data
+        .as_ref()
+        .and_then(|d| d.first())
+        .and_then(|f| f.subcollection.as_ref())
+        .map(|s| extract_product_ids(s))
+        .unwrap_or_default();
 
     println!("Fetched {} product IDs.", product_ids.len());
 
     let limit: Option<usize> = std::env::args().nth(1).and_then(|s| s.parse().ok());
+    let mut dfs: Vec<DataFrame> = Vec::new();
 
     for (i, product_id) in product_ids.iter().enumerate() {
         if let Some(max) = limit {
-            if i >= max {
-                break;
-            }
+            if i >= max { break; }
         }
-        if let Err(e) = download_data(&client, product_id) {
-            eprintln!("Error processing {}: {}", product_id, e);
+        match fetch_product_df(&client, product_id) {
+            Ok(df) => dfs.push(df),
+            Err(e) => eprintln!("Error processing {}: {}", product_id, e),
         }
     }
 
-    println!("Merging CSVs to Parquet...");
-    let combined_df = merge_csvs_to_parquet()?;
+    if dfs.is_empty() {
+        return Err("No data fetched.".into());
+    }
+
+    println!("Merging DataFrames...");
+    let mut combined = polars::functions::concat_df_diagonal(&dfs)?;
+
+    fs::create_dir_all("database")?;
+    let file = File::create("database/products.parquet")?;
+    ParquetWriter::new(file).finish(&mut combined)?;
+    println!("Saved database/products.parquet with {} rows.", combined.height());
 
     println!("Extracting distinct values...");
-    let distinct_values = get_distinct_values(&combined_df)?;
+    let distinct_values = get_distinct_values(&combined)?;
 
     println!("Creating filter values parquet...");
     create_filter_values_parquet(&distinct_values)?;
 
     println!("Generating TypeScript filters...");
     generate_typescript_filters(&distinct_values)?;
-
-    println!("Closing Client...");
-    drop(client);
 
     println!("Done!");
     Ok(())
