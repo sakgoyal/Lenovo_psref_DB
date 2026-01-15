@@ -1,7 +1,7 @@
 use polars::prelude::*;
 use regex::Regex;
 use serde::Deserialize;
-use std::collections::{HashMap, HashSet};
+use std::collections::{BTreeMap, HashMap, HashSet};
 use std::error::Error;
 use std::fs::{self, File};
 use std::io::Write;
@@ -160,6 +160,9 @@ fn get_distinct_values(df: &DataFrame) -> Result<HashMap<String, Vec<String>>> {
     Ok(result)
 }
 
+// Function to save distinct values from each column into a Parquet file
+// This file will have two columns: "column_name" and "options"
+// where "options" is all possible distinct values for that column
 fn create_filter_values_parquet(distinct_values: &HashMap<String, Vec<String>>) -> Result<()> {
     let (col_names, options): (Vec<String>, Vec<String>) = distinct_values.iter()
         .map(|(k, v)| (k.clone(), serde_json::to_string(v).unwrap_or_default()))
@@ -184,10 +187,17 @@ fn generate_typescript_filters(distinct_values: &HashMap<String, Vec<String>>) -
         .copied()
         .collect();
 
-    let filter_dict: HashMap<&str, &Vec<String>> = distinct_values.iter()
-        .filter(|(k, _)| !filter_omit_full.contains(k.as_str()))
-        .map(|(k, v)| (k.as_str(), v))
-        .collect();
+    // Use BTreeMap for automatic alphabetical sorting by keys
+    let mut filter_dict: BTreeMap<&str, Vec<String>> = BTreeMap::new();
+
+    for (k, v) in distinct_values.iter() {
+        if !filter_omit_full.contains(k.as_str()) {
+            // Clone and sort values alphabetically
+            let mut sorted_values = v.clone();
+            sorted_values.sort();
+            filter_dict.insert(k.as_str(), sorted_values);
+        }
+    }
 
     let mut file = File::create("./data.ts")?;
     writeln!(file, "export const filters = {}", serde_json::to_string_pretty(&filter_dict)?)?;
