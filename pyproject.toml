@@ -7,10 +7,17 @@ authors = [{ name = "Saksham", email = "sakgoy2001@gmail.com" }]
 keywords = ["Lenovo", "PSREF", "Database", "Scraping"]
 license = "GPL-3.0-only"
 dependencies = [
-    "pandas",
-    "pyarrow",
+    "pandas>=2.3.3",
+    # "polars>=1.35.2",
+    "pyarrow>=22.0.0",
     "requests>=2.32.4",
-    "selenium",
+    "selenium>=4.38.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pandas-stubs>=2.3.3.251201",
+    "mypy"
 ]
 
 [tool.setuptools]
@@ -19,3 +26,36 @@ include-package-data = false
 [tool.setuptools.packages.find]
 include = ["main.py"]
 exclude = ["out*", "finder*", "database*"]
+
+[tool.mypy]
+strict = true
+show_error_codes = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+warn_return_any = true
+warn_unreachable = true
+no_implicit_reexport = true
+strict_equality = true
+strict_equality_for_none = true
+strict_bytes = true
+extra_checks = true
+follow_untyped_imports = true
+disallow_any_expr = true
+disallow_any_decorated = true
+disallow_any_explicit = true
+disallow_any_generics = true
+disallow_any_unimported = true
+disallow_subclassing_any = true
+disallow_untyped_calls = true
+disallow_incomplete_defs = true
+disallow_untyped_decorators = true
+# warn_redundant_casts = true
+warn_unused_configs = true
+warn_incomplete_stub = true
+check_untyped_defs = true
+no_implicit_optional = true
+local_partial_types = true
+strict_concatenate = true
+disallow_untyped_defs = true
+strict_optional = true
+follow_imports_for_stubs = true

@@ -2,16 +2,18 @@ import json
 import re
 import sys
 import time
+from collections.abc import Iterator
 from pathlib import Path
-from typing import NotRequired, TypedDict
+from typing import Any, NotRequired, TypedDict
 
 import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
-REGEX_REPLACEMENTS = {
+REGEX_REPLACEMENTS: dict[re.Pattern[str], str] = {
     re.compile(r"(\^\|\^)?Various docking.*?</u></a>"): "Various",
     re.compile(r"Non-WWAN"): "",
     re.compile(r"NVIDIA (GeForce )?"): "",
@@ -56,7 +58,7 @@ driver = webdriver.Chrome(options=chrome_options)
 
 print("Fetching product IDs...", flush=True)
 
-def get_product_ids():
+def get_product_ids() -> list[ProductIDs]:
     driver.get("https://psref.lenovo.com")
     time.sleep(2)
     driver.get("https://psref.lenovo.com/filter/")
@@ -71,8 +73,9 @@ def get_product_ids():
     driver.get("https://psref.lenovo.com/api/home/Menu/info")
     time.sleep(3)
 
-    json_data = driver.find_element("tag name", "pre").text
-    data = json.loads(json_data).get('data')
+    json_data = driver.find_element(By.TAG_NAME, "pre").text
+    response: dict[str, Any] = json.loads(json_data)
+    data: list[ProductIDs] | None = response.get('data')
 
     if not data:
         raise ValueError("Could not get menu data from API")
@@ -82,7 +85,7 @@ API_DATA = get_product_ids()
 
 print("Fetched product IDs.", flush=True)
 
-def extract_product_ids(data: list["ProductIDs"]):
+def extract_product_ids(data: list["ProductIDs"]) -> list[str]:
     product_ids: list[str] = []
     for item in data:
         if item.get('type') == 'product':
@@ -93,22 +96,22 @@ def extract_product_ids(data: list["ProductIDs"]):
 
 product_ids = extract_product_ids(API_DATA[0].get('subcollection', []))
 
-dataframes = []  # List to store DataFrames in memory
+dataframes: list[pd.DataFrame] = []  # List to store DataFrames in memory
 
-def download_data(product_id: str):
+def download_data(product_id: str) -> None:
     print(f"{product_id}: Downloading...", end="", flush=True)
     url = f"https://psref.lenovo.com/api/search/DefinitionFilterAndSearch/ShowModel?pageindex=1&pagesize=300000&product_key={product_id}"
 
     driver.get(url)
-    WebDriverWait(driver, 10).until(EC.presence_of_element_located(("tag name", "pre")))
-    json_data = json.loads(driver.find_element("tag name", "pre").text)
-    data: ShowModel = json_data.get('data')
+    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, "pre")))
+    json_data: dict[str, Any] = json.loads(driver.find_element(By.TAG_NAME, "pre").text)
+    data: ShowModel | None = json_data.get('data')
     print("Processing...", end="", flush=True)
 
     if not data:
         raise ValueError(f"No data found for {product_id}")
 
-    def escape_csv(val):
+    def escape_csv(val: str | None) -> str:
         if val is None:
             return ""
         s = str(val)
@@ -145,18 +148,18 @@ df_list = [pd.read_csv(f) for f in Path("./out").rglob("*.csv")]
 combined_df = pd.concat(df_list, ignore_index=True, sort=False).astype(str)
 combined_df.to_parquet("database/products.parquet", index=False, compression=None)
 
-def get_cols():
+def get_cols() -> list[str]:
     omit_list = ["EAN / UPC / JAN", "Model", "Machine Type", "TopSeller", "Monitor Cable", "Controls", "Others", "ISV Certifications", "Base Warranty", "Other Certifications", "Included Upgrade", "End of Support", "Announce Date"]
     return [col for col in combined_df.columns.to_list() if col not in omit_list]
 
 column_names = get_cols()
 
-def get_distinct_values(column_names: list[str]):
+def get_distinct_values(column_names: list[str]) -> dict[str, list[str]]:
     return {col: combined_df[col].dropna().unique().tolist() for col in column_names}
 
 distinct_values_dict = get_distinct_values(column_names)
 
-def create_filter_values_table(distinct_values: dict[str, list[str]]):
+def create_filter_values_table(distinct_values: dict[str, list[str]]) -> None:
     filter_values_list = [
         {"column_name": col, "options": json.dumps(values)}
         for col, values in distinct_values.items()
@@ -168,11 +171,11 @@ create_filter_values_table(distinct_values_dict)
 
 filter_df = pd.read_parquet("database/filter_values.parquet")
 filter_df = filter_df[~filter_df['column_name'].isin(['Region', "Screen-to-Body Ratio", 'Optical', 'Docking', 'Included Upgrade', 'Announce Date', 'Standard Ports', 'Operating System', 'Dimensions (WxDxH)', 'Product', 'End of Support'])]
-filter = filter_df.itertuples(index=False, name=None)
+filter: Iterator[tuple[str, list[str]]] = filter_df.itertuples(index=False, name=None)
 
-filter_dict = {}
+filter_dict: dict[str, list[str]] = {}
 for column, options in filter:
-    val = json.loads(options)
+    val: list[str] = json.loads(options)
     # sort values and remove empty strings
     val = sorted([v for v in val if v])
     val = [v for v in val if v.lower() != 'nan']
