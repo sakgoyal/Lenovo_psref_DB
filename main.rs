@@ -189,11 +189,10 @@ fn generate_typescript_filters(distinct_values: &HashMap<String, Vec<String>>) -
         .map(|(k, v)| (k.as_str(), v))
         .collect();
 
-    fs::create_dir_all("finder/src/routes")?;
-    let mut file = File::create("finder/src/routes/data.ts")?;
+    let mut file = File::create("./data.ts")?;
     writeln!(file, "export const filters = {}", serde_json::to_string_pretty(&filter_dict)?)?;
 
-    println!("Saved finder/src/routes/data.ts");
+    println!("Saved ./data.ts");
     Ok(())
 }
 
