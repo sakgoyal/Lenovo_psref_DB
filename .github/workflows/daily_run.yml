@@ -5,6 +5,9 @@ on:
     - cron: "23 9 * * *" # Runs daily at 9:23 AM UTC
   workflow_dispatch:
 
+env:
+  CARGO_TERM_COLOR: always
+
 jobs:
   run-script:
     runs-on: ubuntu-latest
@@ -14,17 +17,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v5
-    - uses: actions/setup-python@v6
-      with:
-        python-version: '3.14'
-        # pip-install: --upgrade pandas pyarrow requests
-        cache: 'pip'
+    - run: cargo run --release --verbose
 
-    - name: Install Deps
-      run: python3 -m pip install --upgrade .
-
-    - name: Run Script
-      run: python3 main.py
 
     - name: Set output variables
       id: vars
