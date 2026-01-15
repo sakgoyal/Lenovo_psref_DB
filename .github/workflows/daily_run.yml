@@ -16,8 +16,11 @@ jobs:
       pull-requests: write
 
     steps:
-    - uses: actions/checkout@v5
-    - run: cargo run --release --verbose
+    - uses: actions/checkout@v6
+    - name: Cache cargo build
+      uses: Swatinem/rust-cache@v2
+    - run: cargo build --release --verbose
+    - run: cargo run --release
 
 
     - name: Set output variables
