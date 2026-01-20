@@ -945,6 +945,7 @@ export const filters = {
     "1-Zone RGB Backlit, Spanish (LA)",
     "1-Zone RGB Backlit, Swiss",
     "1-Zone RGB Backlit, Thai",
+    "1-Zone RGB Backlit, Traditional Chinese",
     "1-Zone RGB Backlit, Turkish",
     "1-Zone RGB Backlit, Ukrainian",
     "24-Zone RGB Backlit, Arabic",
@@ -1618,7 +1619,8 @@ export const filters = {
     "65W USB-C Slim (3-pin)",
     "65W USB-C Slim (Wall-mount)",
     "65W USB-C Slim GaN (2-pin)",
-    "65W USB-C Slim GaN (3-pin)"
+    "65W USB-C Slim GaN (3-pin)",
+    "No Power Adapter"
   ],
   "Processor": [
     "AMD Athlon Gold 7220U (2C / 4T, 2.4 / 3.7GHz, 1MB L2 / 4MB L3)",
@@ -2118,6 +2120,7 @@ export const filters = {
     "WWAN Upgradable to 5G"
   ],
   "Weight": [
+    "-",
     "Around 1.15 kg (2.54 lbs)",
     "Around 1.17 kg (2.58 lbs)",
     "Around 1.23 kg (2.71 lbs)",
