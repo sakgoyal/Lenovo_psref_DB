@@ -135,6 +135,8 @@ export const filters = {
     "Lenovo WL310 Bluetooth Silent Mouse without Battery + Lenovo E310 True Wireless Stereo Earbuds (White) + Lenovo 16\" Laptop ECO Backpack B210 (Black)",
     "Lenovo Yoga 14\" Sleeve (Cosmic Blue)",
     "Lenovo Yoga 14\" Sleeve (Luna Grey)",
+    "Lenovo Yoga Tote Sleeve 14\" (Blue)",
+    "Lenovo Yoga Tote Sleeve 14\" (Seashell)",
     "ThinkPad X12 Detachable Gen 2 Folio Keyboard",
     "USB-C to DP",
     "USB-C to DP + Lenovo USB-C to Ethernet Adapter (1Gbps)",
@@ -144,6 +146,7 @@ export const filters = {
     "USB-C to VGA",
     "USB-C to VGA + Lenovo USB-C to Ethernet Adapter (1Gbps)",
     "USB-C to VGA + Lenovo USB-C to Ethernet Adapter (2.5Gbps)",
+    "Yoga Mouse (Tidal Teal) + Lenovo Yoga Tote Sleeve 14\" (Blue)",
     "Yoga Pro Mouse (Tidal Teal)",
     "Yoga Pro Mouse (Tidal Teal) + Lenovo USB-C 4-in-1 Hub Gen 2",
     "Yoga Slim Mouse (Luna Grey)",
@@ -314,6 +317,7 @@ export const filters = {
     "Grey",
     "Grey, FIFA Edition",
     "Iron Grey",
+    "Jelly Mint",
     "Luna Grey",
     "Nebula Nocturne",
     "Onyx Grey",
@@ -537,6 +541,7 @@ export const filters = {
     "14\" 2.8K WQXGA+ (2880x1800) OLED 1100nits (peak) / 500nits (typical) Glossy / Anti-fingerprint, 100% DCI-P3, 120Hz, Dolby Vision, TÜV Low Blue Light, DisplayHDR True Black 1000, Glass, Touch",
     "14\" 2.8K WQXGA+ (2880x1800) OLED 1100nits (peak) / 500nits (typical) Glossy / Anti-fingerprint, 100% DCI-P3, 120Hz, Eyesafe, Dolby Vision, DisplayHDR True Black 1000, Glass, Touch",
     "14\" 2.8K WQXGA+ (2880x1800) OLED 1100nits (peak) / 500nits (typical) Glossy / Anti-fingerprint, 100% DCI-P3, 120Hz, Eyesafe, Dolby Vision, DisplayHDR True Black 1000, Glass, Touch, X-Rite, PureSight Pro",
+    "14\" 2.8K WQXGA+ (2880x1800) OLED 1100nits (peak) / 500nits (typical) Glossy / Anti-fingerprint, 100% DCI-P3, 120Hz, Eyesafe, Dolby Vision, TÜV Low Blue Light, DisplayHDR True Black 1000, Glass, Touch, X-Rite",
     "14\" 2.8K WQXGA+ (2880x1800) OLED 1100nits (peak) / 500nits (typical) Glossy, 100% DCI-P3, 120Hz, Eyesafe, Dolby Vision, DisplayHDR True Black 1000, X-Rite, PureSight Pro",
     "14\" 2.8K WQXGA+ (2880x1800) OLED 400nits Glossy / Anti-fingerprint, 100% DCI-P3, 120Hz, Dolby Vision, DisplayHDR True Black 500, TÜV Low Blue Light, Glass, Touch",
     "14\" 4K WQUXGA (3840x2400) OLED 600nits (peak) / 400nits (typical) Glossy / Anti-fingerprint, 100% DCI-P3, 60Hz, Eyesafe, Dolby Vision, DisplayHDR True Black 500, Glass, Touch",
@@ -928,6 +933,7 @@ export const filters = {
   ],
   "Keyboard": [
     "1-Zone RGB Backlit, Arabic",
+    "1-Zone RGB Backlit, Belgian",
     "1-Zone RGB Backlit, Bulgarian",
     "1-Zone RGB Backlit, Czech / Slovak",
     "1-Zone RGB Backlit, English",
@@ -945,6 +951,7 @@ export const filters = {
     "1-Zone RGB Backlit, Spanish (LA)",
     "1-Zone RGB Backlit, Swiss",
     "1-Zone RGB Backlit, Thai",
+    "1-Zone RGB Backlit, Traditional Chinese",
     "1-Zone RGB Backlit, Turkish",
     "1-Zone RGB Backlit, Ukrainian",
     "24-Zone RGB Backlit, Arabic",
@@ -1584,6 +1591,8 @@ export const filters = {
     "Lenovo Yoga Pen (Luna Grey)",
     "Lenovo Yoga Pen (Seashell)",
     "Lenovo Yoga Pen (Tidal Teal)",
+    "Lenovo Yoga Pen Gen 2 with Case (Seashell)",
+    "Lenovo Yoga Pen Gen 2 with Case (Tidal Teal)",
     "Pen Upgradable (Purchase Separately)"
   ],
   "Physical Locks": [
@@ -1618,7 +1627,8 @@ export const filters = {
     "65W USB-C Slim (3-pin)",
     "65W USB-C Slim (Wall-mount)",
     "65W USB-C Slim GaN (2-pin)",
-    "65W USB-C Slim GaN (3-pin)"
+    "65W USB-C Slim GaN (3-pin)",
+    "No Power Adapter"
   ],
   "Processor": [
     "AMD Athlon Gold 7220U (2C / 4T, 2.4 / 3.7GHz, 1MB L2 / 4MB L3)",
@@ -1688,6 +1698,7 @@ export const filters = {
     "AMD Ryzen AI 5 330 (4C / 8T, 2.0 / 4.5GHz, 4MB L2 / 8MB L3)",
     "AMD Ryzen AI 5 340 (6C / 12T, 2.0 / 4.8GHz, 6MB L2 / 16MB L3)",
     "AMD Ryzen AI 5 430 (4C / 8T, 2.0 / 4.5GHz, 4MB L2 / 8MB L3)",
+    "AMD Ryzen AI 5 435 (6C / 12T, 2.0 / 4.5GHz, 6MB L2 / 8MB L3)",
     "AMD Ryzen AI 5 PRO 340 (6C / 12T, 2.0 /4.8GHz, 6MB L2 / 16MB L3)",
     "AMD Ryzen AI 7 350 (8C / 16T, 2.0 / 5.0GHz, 8MB L2 / 16MB L3)",
     "AMD Ryzen AI 7 445 (6C / 12T, 2.0 / 4.6GHz, 6MB L2 / 8MB L3)",
@@ -2118,6 +2129,7 @@ export const filters = {
     "WWAN Upgradable to 5G"
   ],
   "Weight": [
+    "-",
     "Around 1.15 kg (2.54 lbs)",
     "Around 1.17 kg (2.58 lbs)",
     "Around 1.23 kg (2.71 lbs)",
