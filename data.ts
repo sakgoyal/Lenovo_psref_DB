@@ -135,6 +135,8 @@ export const filters = {
     "Lenovo WL310 Bluetooth Silent Mouse without Battery + Lenovo E310 True Wireless Stereo Earbuds (White) + Lenovo 16\" Laptop ECO Backpack B210 (Black)",
     "Lenovo Yoga 14\" Sleeve (Cosmic Blue)",
     "Lenovo Yoga 14\" Sleeve (Luna Grey)",
+    "Lenovo Yoga Tote Sleeve 14\" (Blue)",
+    "Lenovo Yoga Tote Sleeve 14\" (Seashell)",
     "ThinkPad X12 Detachable Gen 2 Folio Keyboard",
     "USB-C to DP",
     "USB-C to DP + Lenovo USB-C to Ethernet Adapter (1Gbps)",
@@ -144,6 +146,7 @@ export const filters = {
     "USB-C to VGA",
     "USB-C to VGA + Lenovo USB-C to Ethernet Adapter (1Gbps)",
     "USB-C to VGA + Lenovo USB-C to Ethernet Adapter (2.5Gbps)",
+    "Yoga Mouse (Tidal Teal) + Lenovo Yoga Tote Sleeve 14\" (Blue)",
     "Yoga Pro Mouse (Tidal Teal)",
     "Yoga Pro Mouse (Tidal Teal) + Lenovo USB-C 4-in-1 Hub Gen 2",
     "Yoga Slim Mouse (Luna Grey)",
@@ -221,6 +224,7 @@ export const filters = {
     "Office Professional 2021 + McAfee+ Premium 36-month",
     "Office Trial",
     "Office Trial + Absolute Home & Office Basic 1-year",
+    "Office Trial + Absolute Home & Office Basic 1-year + Blancco File Eraser Enterprise Edition Software 3-year",
     "Office Trial + Absolute Home & Office Basic 1-year + Bufferzone Standard",
     "Office Trial + Absolute Home & Office Basic 1-year + Lenovo AI Now",
     "Office Trial + Adobe Creative Cloud Photography Plan 1-year Membership",
@@ -268,6 +272,7 @@ export const filters = {
     "Front 5.0MP + IR Discrete with Privacy Shutter / Rear 8.0MP",
     "Front 5.0MP with Privacy Shutter",
     "Front 5.0MP with Privacy Shutter + Rear 5.0MP",
+    "Front 5.0MP with Privacy Shutter + Rear 8.0MP",
     "Front 5.0MP with Privacy Shutter / Rear 8.0MP",
     "Front FHD 1080p + IR Hybrid with Privacy Shutter",
     "Front FHD 1080p + IR Hybrid with Privacy Shutter + Rear 5.0MP",
@@ -277,6 +282,7 @@ export const filters = {
     "Front FHD 1080p with Privacy Shutter / Rear 5.0MP",
     "Front HD 720p with Privacy Shutter",
     "Front HD 720p with Privacy Shutter + Rear 5.0MP",
+    "Front HD 720p with Privacy Shutter + Rear 8.0MP",
     "Front HD 720p with Privacy Shutter / Rear 5.0MP",
     "HD 720p",
     "HD 720p with E-shutter",
@@ -314,6 +320,7 @@ export const filters = {
     "Grey",
     "Grey, FIFA Edition",
     "Iron Grey",
+    "Jelly Mint",
     "Luna Grey",
     "Nebula Nocturne",
     "Onyx Grey",
@@ -371,6 +378,7 @@ export const filters = {
     "PC-ABS + 15% Talc (Top), PC-ABS + 15% Talc + 50% PCC (Bottom)",
     "PC-ABS + 15% Talc+ TPU (Top), PC-ABS + 15% Talc (Bottom)",
     "PC-ABS + 40% GF (Top), PC-ABS + 40% GF (Bottom)",
+    "PC-ABS + Rubber (Top), PC-ABS + 15% Talc (Bottom)",
     "PU",
     "Recycled Aluminium + Silicone Vegan Leather (Top), Aluminium (Bottom)",
     "Stainless Magnesium"
@@ -928,6 +936,7 @@ export const filters = {
   ],
   "Keyboard": [
     "1-Zone RGB Backlit, Arabic",
+    "1-Zone RGB Backlit, Belgian",
     "1-Zone RGB Backlit, Bulgarian",
     "1-Zone RGB Backlit, Czech / Slovak",
     "1-Zone RGB Backlit, English",
@@ -945,6 +954,7 @@ export const filters = {
     "1-Zone RGB Backlit, Spanish (LA)",
     "1-Zone RGB Backlit, Swiss",
     "1-Zone RGB Backlit, Thai",
+    "1-Zone RGB Backlit, Traditional Chinese",
     "1-Zone RGB Backlit, Turkish",
     "1-Zone RGB Backlit, Ukrainian",
     "24-Zone RGB Backlit, Arabic",
@@ -1238,6 +1248,7 @@ export const filters = {
   ],
   "Max Storage Support": [
     "-",
+    "128GB UFS 2.1 on systemboard",
     "128GB UFS 2.2 on systemboard",
     "128GB UFS 3.1 on systemboard",
     "128GB eMMC 5.1 on systemboard",
@@ -1246,6 +1257,7 @@ export const filters = {
     "256GB UFS 4.0 on systemboard",
     "256GB eMMC 5.1 on systemboard",
     "32GB eMMC 5.1 on systemboard",
+    "64GB UFS 2.1 on systemboard",
     "64GB UFS 2.2 on systemboard",
     "64GB eMMC 5.1 on systemboard",
     "64GB eMMC 5.1 on systemboard | 128GB eMMC 5.1 on systemboard",
@@ -1436,6 +1448,7 @@ export const filters = {
     "8GB Soldered LPDDR5-5200",
     "8GB Soldered LPDDR5-5500",
     "8GB Soldered LPDDR5-6400",
+    "8GB Soldered LPDDR5x-4800",
     "8GB Soldered LPDDR5x-6400",
     "8GB Soldered LPDDR5x-8000"
   ],
@@ -1584,10 +1597,13 @@ export const filters = {
     "Lenovo Yoga Pen (Luna Grey)",
     "Lenovo Yoga Pen (Seashell)",
     "Lenovo Yoga Pen (Tidal Teal)",
+    "Lenovo Yoga Pen Gen 2 with Case (Seashell)",
+    "Lenovo Yoga Pen Gen 2 with Case (Tidal Teal)",
     "Pen Upgradable (Purchase Separately)"
   ],
   "Physical Locks": [
     "Kensington Nano",
+    "Kensington Nano Security Slot",
     "Kensington Nano Security Slot, 2.65 x 6.15 mm"
   ],
   "Power Adapter": [
@@ -1618,7 +1634,8 @@ export const filters = {
     "65W USB-C Slim (3-pin)",
     "65W USB-C Slim (Wall-mount)",
     "65W USB-C Slim GaN (2-pin)",
-    "65W USB-C Slim GaN (3-pin)"
+    "65W USB-C Slim GaN (3-pin)",
+    "No Power Adapter"
   ],
   "Processor": [
     "AMD Athlon Gold 7220U (2C / 4T, 2.4 / 3.7GHz, 1MB L2 / 4MB L3)",
@@ -1688,6 +1705,7 @@ export const filters = {
     "AMD Ryzen AI 5 330 (4C / 8T, 2.0 / 4.5GHz, 4MB L2 / 8MB L3)",
     "AMD Ryzen AI 5 340 (6C / 12T, 2.0 / 4.8GHz, 6MB L2 / 16MB L3)",
     "AMD Ryzen AI 5 430 (4C / 8T, 2.0 / 4.5GHz, 4MB L2 / 8MB L3)",
+    "AMD Ryzen AI 5 435 (6C / 12T, 2.0 / 4.5GHz, 6MB L2 / 8MB L3)",
     "AMD Ryzen AI 5 PRO 340 (6C / 12T, 2.0 /4.8GHz, 6MB L2 / 16MB L3)",
     "AMD Ryzen AI 7 350 (8C / 16T, 2.0 / 5.0GHz, 8MB L2 / 16MB L3)",
     "AMD Ryzen AI 7 445 (6C / 12T, 2.0 / 4.6GHz, 6MB L2 / 8MB L3)",
@@ -1869,6 +1887,7 @@ export const filters = {
     "128GB SSD M.2 2242 PCIe 3.0 NVMe",
     "128GB SSD M.2 2242 PCIe 3.0x4 NVMe",
     "128GB SSD M.2 2242 PCIe 3.0x4 NVMe + 1TB HDD 5400rpm 2.5\"",
+    "128GB UFS 2.1",
     "128GB UFS 2.2",
     "128GB UFS 3.1",
     "128GB eMMC 5.1",
@@ -1924,6 +1943,7 @@ export const filters = {
     "512GB SSD M.2 2280 PCIe 4.0x4 NVMe Opal 2.0",
     "512GB SSD M.2 2280 PCIe 4.0x4 Performance NVMe Opal 2.0",
     "512GB SSD M.2 2280 PCIe 5.0x4 Performance NVMe Opal 2.0",
+    "64GB UFS 2.1",
     "64GB UFS 2.2",
     "64GB eMMC 5.1"
   ],
@@ -2118,6 +2138,7 @@ export const filters = {
     "WWAN Upgradable to 5G"
   ],
   "Weight": [
+    "-",
     "Around 1.15 kg (2.54 lbs)",
     "Around 1.17 kg (2.58 lbs)",
     "Around 1.23 kg (2.71 lbs)",
