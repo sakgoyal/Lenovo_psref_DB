@@ -204,6 +204,7 @@ export const filters = {
     "Microsoft 365 Personal",
     "Microsoft 365 Personal + Lenovo AI Now",
     "Microsoft 365 Personal 24-month",
+    "Microsoft 365 Personal 3-month",
     "Norton Security Deluxe 15-month",
     "Norton Security Deluxe 15-month + Intel Connectivity Performance Suite",
     "Norton Security Standard 36-month + Bufferzone Standard 1-year",
@@ -301,6 +302,7 @@ export const filters = {
     "3-in-1 Card Reader",
     "4-in-1 Card Reader",
     "MicroSD Card Reader",
+    "No Card Reader",
     "SD 7.0 Card Reader",
     "SD Card Reader",
     "SD Express 7.0 Card Reader",
@@ -405,6 +407,7 @@ export const filters = {
     "AICCP Color Calibration",
     "Factory Color Calibration",
     "ICC Template Color Calibration",
+    "No Color Calibration",
     "TCON Color Calibration",
     "X-Rite Factory Color Calibration"
   ],
@@ -612,7 +615,6 @@ export const filters = {
     "14\" WUXGA (1920x1200) OLED 400nits Glossy / Anti-fingerprint, 100% DCI-P3, 60Hz, Eyesafe, Dolby Vision, DisplayHDR True Black 500, Glass, Touch",
     "14\" WUXGA (1920x1200) OLED 400nits Glossy, 100% DCI-P3",
     "14\" WUXGA (1920x1200) OLED 400nits Glossy, 100% DCI-P3, 60Hz",
-    "14\" WUXGA (1920x1200) OLED 400nits Glossy, 100% DCI-P3, 60Hz, DisplayHDR True Black 500",
     "14\" WUXGA (1920x1200) OLED 400nits Glossy, 100% DCI-P3, 60Hz, Eyesafe, Dolby Vision, DisplayHDR True Black 500",
     "14\" WUXGA (1920x1200) OLED 400nits Glossy, 100% DCI-P3, 60Hz, Glass, Touch",
     "14\" WUXGA (1920x1200) OLED 400nits Glossy, 100% DCI-P3, 60Hz, TÜV Low Blue Light, Glass, Touch",
@@ -758,6 +760,7 @@ export const filters = {
     "16\" WUXGA (1920x1200) IPS 400nits Anti-glare, 45% NTSC, 60Hz, TÜV Low Blue Light",
     "16\" WUXGA (1920x1200) IPS 400nits Anti-glare, 45% NTSC, Eyesafe, Touch",
     "16\" WUXGA (1920x1200) IPS 400nits Anti-glare, 45% NTSC, Touch",
+    "16\" WUXGA (1920x1200) IPS 400nits Glossy / Anti-fingerprint, 45% NTSC, 60Hz, Dolby Vision, TÜV Low Blue Light, Glass, Touch",
     "16\" WUXGA (1920x1200) IPS 500nits Anti-glare, 100% sRGB, 60Hz, Low Power",
     "16\" WUXGA (1920x1200) IPS 500nits Anti-glare, 100% sRGB, 60Hz, Low Power, Eyesafe, TÜV Low Blue Light",
     "16\" WUXGA (1920x1200) IPS 500nits Anti-glare, 100% sRGB, Low Power",
@@ -785,6 +788,7 @@ export const filters = {
     "2.5GbE"
   ],
   "Fingerprint Reader": [
+    "No Fingerprint Reader",
     "Touch Style, Integrated in Power Button",
     "Touch Style, Match-on-Chip, Integrated in Power Button",
     "Touch Style, Match-on-Chip, in Keyboard Key",
@@ -868,12 +872,15 @@ export const filters = {
     "RTX 5050 8GB GDDR7, 2370MHz, 100W, 440 AI TOPS",
     "RTX 5050 8GB GDDR7, 2662MHz, 100W, 440 AI TOPS",
     "RTX 5050 8GB GDDR7, 2662MHz, 115W, 440 AI TOPS",
+    "RTX 5050 8GB GDDR7, 2662MHz, 65W, 440 AI TOPS",
     "RTX 5060 8GB GDDR7",
     "RTX 5060 8GB GDDR7 Laptop GPU",
     "RTX 5060 8GB GDDR7, 1455MHz, 65W, 572 AI TOPS",
     "RTX 5060 8GB GDDR7, 2497MHz, 100W, 572 AI TOPS",
     "RTX 5060 8GB GDDR7, 2497MHz, 105W, 572 AI TOPS",
     "RTX 5060 8GB GDDR7, 2497MHz, 115W, 572 AI TOPS",
+    "RTX 5060 8GB GDDR7, 2497MHz, 65W, 572 AI TOPS",
+    "RTX 5070 12GB GDDR7, 2347MHz, 100W, 798 AI TOPS",
     "RTX 5070 8GB GDDR7",
     "RTX 5070 8GB GDDR7 Laptop GPU",
     "RTX 5070 8GB GDDR7, 2347MHz, 115W, 798 AI TOPS",
@@ -958,6 +965,7 @@ export const filters = {
     "1-Zone RGB Backlit, Greek",
     "1-Zone RGB Backlit, Hungarian",
     "1-Zone RGB Backlit, Italian",
+    "1-Zone RGB Backlit, Japanese",
     "1-Zone RGB Backlit, Korean",
     "1-Zone RGB Backlit, Nordic (DK/FI/NO/SV)",
     "1-Zone RGB Backlit, Portuguese",
@@ -1512,7 +1520,8 @@ export const filters = {
     "MIL-STD-810H  (27 test items)"
   ],
   "NFC": [
-    "NFC"
+    "NFC",
+    "No NFC"
   ],
   "NPU": [
     "Integrated AMD Ryzen AI, up to 10 TOPS",
@@ -1670,7 +1679,7 @@ export const filters = {
     "AMD Ryzen 5 150 (6C / 12T, 3.3 / 4.55GHz, 3MB L2 / 16MB L3)",
     "AMD Ryzen 5 220 (6C / 12T, 3.2 / 4.9GHz, 6MB L2 / 16MB L3)",
     "AMD Ryzen 5 230 (6C / 12T, 3.5 / 4.9GHz, 6MB L2 / 16MB L3)",
-    "AMD Ryzen 5 240 (6C / 12T, 4.3 / 5.0GHz, 6MB L2 / 16MB L3)",
+    "AMD Ryzen 5 240 (6C / 12T, 4.3 / 5GHz, 6MB L2 / 16MB L3)",
     "AMD Ryzen 5 40 (4C / 8T, 2.8 / 4.3GHz, 2MB L2 / 4MB L3)",
     "AMD Ryzen 5 5500U (6C / 12T, 2.1 / 4.0GHz, 3MB L2 / 8MB L3)",
     "AMD Ryzen 5 5625U (6C / 12T, 2.3 / 4.3GHz, 3MB L2 / 16MB L3)",
@@ -1854,6 +1863,7 @@ export const filters = {
     "Microsoft Pluton TPM 2.0"
   ],
   "Smart Card Reader": [
+    "No Smart Card Reader",
     "Smart Card Reader"
   ],
   "Speakers": [
@@ -2318,6 +2328,7 @@ export const filters = {
     "Starting at 1.82 kg (4.03 lbs)",
     "Starting at 1.83 kg (4.02 lbs)",
     "Starting at 1.83 kg (4.03 lbs)",
+    "Starting at 1.83 kg (4.04 lbs)",
     "Starting at 1.84 kg / 4.06 lbs",
     "Starting at 1.85 kg (4.08 lbs)",
     "Starting at 1.87 kg (4.12 lbs)",
