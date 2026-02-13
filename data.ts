@@ -1345,6 +1345,7 @@ export const filters = {
     "16GB LPCAMM2 LPDDR5x-7500",
     "16GB SODIMM DDR4-3200",
     "16GB SODIMM DDR5-4800",
+    "16GB SODIMM DDR5-5600",
     "16GB Soldered DDR4-2933",
     "16GB Soldered DDR4-3200",
     "16GB Soldered DDR5-5200",
@@ -2129,7 +2130,6 @@ export const filters = {
   ],
   "WLAN + Bluetooth": [
     "11ac 2x2 + BT5.0",
-    "AMD Wi-Fi 6E RZ616, 11ax 2x2 + BT5.3",
     "AMD Wi-Fi 6E RZ616, 802.11ax 2x2 + BT5.3",
     "Intel Killer Wi-Fi 6E AX1675i, 802.11ax 2x2 + BT5.3",
     "Intel Killer Wi-Fi 7 BE1750x, 802.11be 2x2 + BT5.4",
@@ -2270,6 +2270,7 @@ export const filters = {
     "Starting at 1.27 kg (2.80 lbs)",
     "Starting at 1.28 kg (2.82 lbs)",
     "Starting at 1.29 kg (2.84 lbs)",
+    "Starting at 1.29 kg (2.85 lbs)",
     "Starting at 1.30 kg (2.86 lbs)",
     "Starting at 1.30 kg (2.87 lbs)",
     "Starting at 1.31 kg (2.89 lbs)",
