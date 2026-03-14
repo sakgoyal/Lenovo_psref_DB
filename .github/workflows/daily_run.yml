@@ -20,6 +20,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
 
       - name: Cache cargo build
         uses: Swatinem/rust-cache@v2
@@ -29,12 +31,13 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          if [[ -n "$(git status --porcelain)" ]]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+          git pull --rebase
+
+          if [[ -n "$(git status --porcelain)" ]]; then
             git add -A
             git commit -m "Update Daily $(date -u +'%B %d, %Y')"
-            git pull --rebase
             git push
           fi
