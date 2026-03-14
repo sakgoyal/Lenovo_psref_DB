@@ -121,7 +121,7 @@ fn fetch_product_df(client: &reqwest::blocking::Client, product_id: &str) -> Res
         .collect();
 
     println!("Done.");
-    Ok(DataFrame::new(columns)?)
+    Ok(DataFrame::new_infer_height(columns)?)
 }
 
 const OMIT_COLUMNS: &[&str] = &[
@@ -169,7 +169,7 @@ fn create_filter_values_parquet(distinct_values: &HashMap<String, Vec<String>>) 
         .unzip();
 
     // Convert Series to Columns
-    let mut df = DataFrame::new(vec![
+    let mut df = DataFrame::new_infer_height(vec![
         Series::new("column_name".into(), col_names).into(),
         Series::new("options".into(), options).into(),
     ])?;
