@@ -5,6 +5,10 @@ on:
     - cron: "23 9 * * *"
   workflow_dispatch:
 
+concurrency:
+  group: daily-script-run
+  cancel-in-progress: false
+
 env:
   CARGO_TERM_COLOR: always
 
