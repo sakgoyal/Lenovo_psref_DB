@@ -1563,6 +1563,7 @@ export const filters = {
     "8GB Soldered LPDDR5-5500",
     "8GB Soldered LPDDR5-6400",
     "8GB Soldered LPDDR5X-4800",
+    "8GB Soldered LPDDR5X-6400",
     "8GB Soldered LPDDR5X-8000",
     "8GB Soldered LPDDR5x-4800",
     "8GB Soldered LPDDR5x-6400"
