@@ -1527,7 +1527,6 @@ export const filters = {
     "64GB Soldered LPDDR5X-8400",
     "64GB Soldered LPDDR5X-8448",
     "64GB Soldered LPDDR5X-9600",
-    "64GB Soldered LPDDR5x-7467",
     "8GB + 16GB SODIMM DDR5-5600",
     "8GB + 32GB SODIMM DDR5-5600",
     "8GB SODIMM DDR4-2933",
