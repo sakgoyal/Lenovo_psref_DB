@@ -590,7 +590,7 @@ export const filters = {
     "14\" 2.8K (2880x1800) OLED 500nits Anti-glare / Anti-reflection / Anti-smudge, 100% DCI-P3, 120Hz VRR, DisplayHDR True Black 500, Dolby Vision, Touch",
     "14\" 2.8K (2880x1800) OLED 500nits Anti-glare / Anti-reflection / Anti-smudge, 100% DCI-P3, 120Hz VRR, Dolby Vision, Touch",
     "14\" 2.8K (2880x1800) OLED 500nits Anti-glare / Anti-reflection / Anti-smudge, 100% DCI-P3, Eyesafe, UL Low Blue Light, Touch",
-    "14\" 2.8K (2880x1800) OLED 500nits Anti-glare, 100% DCI-P3, 120Hz VRR, DisplayHDR True Black 1000, Dolby Vision",
+    "14\" 2.8K (2880x1800) OLED 500nits Anti-glare, 100% DCI-P3, 120Hz VRR, DisplayHDR True Black 500, Dolby Vision",
     "14\" 2.8K (2880x1800) OLED 500nits Anti-reflection / Anti-smudge, 100% DCI-P3, 120Hz VRR, DisplayHDR True Black 500, Touch",
     "14\" 2.8K (2880x1800) OLED 500nits Anti-reflection / Anti-smudge, 100% DCI-P3, 30-120Hz VRR, DisplayHDR True Black 600, Dolby Vision, Touch",
     "14\" 2.8K (2880x1800) OLED 500nits Glossy, 100% DCI-P3, 120Hz",
