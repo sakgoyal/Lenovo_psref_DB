@@ -990,6 +990,7 @@ export const filters = {
   "Green Certifications": [
     "Carbon Neutral Certified | ENERGY STAR 8.0 | EPEAT Gold Registered | ErP Lot 6/26 | RoHS",
     "Carbon Neutral Certified | ENERGY STAR 9.0 | EPEAT Gold Registered | ErP Lot 6/26 | RoHS",
+    "Carbon Neutral Certified | ENERGY STAR 9.0 | ErP Lot 6/26 | RoHS",
     "Carbon Neutral Certified | EPEAT Gold Registered | ErP Lot 6/26 | RoHS",
     "Carbon Neutral Certified | ErP Lot 3 | RoHS",
     "Carbon Neutral Certified | ErP Lot 6/26 | RoHS",
@@ -1555,7 +1556,8 @@ export const filters = {
     "8GB Soldered LPDDR5-6400",
     "8GB Soldered LPDDR5X-4800",
     "8GB Soldered LPDDR5X-6400",
-    "8GB Soldered LPDDR5X-8000"
+    "8GB Soldered LPDDR5X-8000",
+    "8GB Soldered LPDDR5X-8448"
   ],
   "Memory Slots": [
     "Arrow Lake: two DDR5 SODIMM / CSODIMM slots, dual-channel capable",
@@ -1866,6 +1868,7 @@ export const filters = {
     "Intel Core 3 100U, 6C (2P + 4E) / 8T, P-core 1.2 / 4.7GHz, E-core 0.9 / 3.3GHz, 10MB Intel Smart Cache",
     "Intel Core 3 N350 (8C / 8T, Max Turbo up to 3.9GHz, 6MB Intel Smart Cache)",
     "Intel Core 3 N355 (8C / 8T, Max Turbo up to 3.9GHz, 6MB Intel Smart Cache)",
+    "Intel Core 3 processor 304, 5C / 5T, Max Turbo up to 4.3Ghz, 6MB Intel Smart Cache",
     "Intel Core 5 120U, 10C (2P + 8E) / 12T, P-core 1.4 / 5.0GHz, E-core 0.9 / 3.8GHz, 12MB Intel Smart Cache",
     "Intel Core 5 120U, 10C (2P + 8E) / 12T, P-core 1.4 / 5GHz, E-core 0.9 / 3.8GHz, 12MB Intel Smart Cache",
     "Intel Core 5 210H, 8C (4P + 4E) / 12T, P-core 2.2 / 4.8GHz, E-core 1.6 / 3.6GHz, 12MB Intel Smart Cache",
