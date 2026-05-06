@@ -1702,6 +1702,7 @@ export const filters = {
     "Lenovo Digital Pen 2",
     "Lenovo Digital Pen 2 without Battery",
     "Lenovo Digital Pen without Battery",
+    "Lenovo Garaged Pen",
     "Lenovo Integrated Pen",
     "Lenovo Integrated Pen (Garaged, AES)",
     "Lenovo Integrated Pen for 300e/500e Yoga Chromebook Gen 4 (Garaged)",
