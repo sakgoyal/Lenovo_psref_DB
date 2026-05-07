@@ -577,6 +577,7 @@ export const filters = {
     "13.3\" WUXGA (1920x1200) IPS 400nits Anti-glare / Anti-smudge, 100% sRGB, Touch",
     "13.3\" WUXGA (1920x1200) IPS 400nits Anti-glare, 100% sRGB",
     "13.3\" WUXGA (1920x1200) IPS 400nits Anti-glare, 100% sRGB, 60Hz",
+    "13.3\" WUXGA (1920x1200) IPS 400nits Anti-glare, 100% sRGB, 60Hz, Touch",
     "13.3\" WUXGA (1920x1200) IPS 400nits Anti-glare, 100% sRGB, Low Power",
     "13.3\" WUXGA (1920x1200) IPS 400nits Anti-glare, 100% sRGB, Low Power, Touch",
     "13.3\" WUXGA (1920x1200) IPS 400nits Anti-glare, 100% sRGB, Touch",
