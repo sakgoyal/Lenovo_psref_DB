@@ -2211,6 +2211,7 @@ export const filters = {
     "Wi-Fi 6, 802.11ax 2x2 + BT5.4",
     "Wi-Fi 6E, 802.11ax 2x2 + BT5.2",
     "Wi-Fi 6E, 802.11ax 2x2 + BT5.3",
+    "Wi-Fi 6E, 802.11ax 2x2 + BT5.4",
     "Wi-Fi 7, 802.11be 2x2 + BT5.3",
     "Wi-Fi 7, 802.11be 2x2 + BT5.4"
   ],
