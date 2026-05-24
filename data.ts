@@ -1026,6 +1026,7 @@ export const filters = {
     "1-Zone RGB Backlit, French / English",
     "1-Zone RGB Backlit, German",
     "1-Zone RGB Backlit, Greek",
+    "1-Zone RGB Backlit, Hebrew",
     "1-Zone RGB Backlit, Hungarian",
     "1-Zone RGB Backlit, Icelandic",
     "1-Zone RGB Backlit, Italian",
@@ -1314,7 +1315,7 @@ export const filters = {
     "Up to 64GB DDR5-5600 (overclock) offering",
     "Up to 64GB DDR5-5600 offering",
     "Up to 64GB DDR5-6400 offering",
-    "Up to 64GB LPCAMM2 LPDDR5X-6800",
+    "Up to 64GB LPCAMM2 LPDDR5X-7467",
     "Up to 96GB (1x 96GB LPCAMM2), upgradable",
     "Up to 96GB (2x 48GB DDR5 CSODIMM)",
     "Up to 96GB (2x 48GB DDR5 SODIMM)"
@@ -1594,10 +1595,10 @@ export const filters = {
     "1x Power Connector",
     "1x Smart Card Reader",
     "1x Smart Card Reader | 1x Nano-SIM Card Slot",
-    "1x USB-C (Thunderbolt 4 / USB4 40Gbps), with USB PD 45-65W and DisplayPort 2.1",
+    "1x USB-C (Thunderbolt 4 / USB4 40Gbps), with USB PD 15-65W and DisplayPort 2.1",
     "1x USB-C (USB 10Gbps / USB 3.2 Gen 2)",
     "1x USB-C (USB 10Gbps / USB 3.2 Gen 2), with DisplayPort 1.4",
-    "1x USB-C (USB 20Gbps / USB 3.2 Gen 2x2), with USB PD 45-65W and DisplayPort 1.4"
+    "1x USB-C (USB 20Gbps / USB 3.2 Gen 2x2), with USB PD 15-65W and DisplayPort 1.4"
   ],
   "Other Security": [
     "-",
