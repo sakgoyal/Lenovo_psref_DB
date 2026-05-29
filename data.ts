@@ -379,6 +379,7 @@ export const filters = {
     "Onyx Grey",
     "Polar Blue",
     "Sand",
+    "Sea Salt Grey",
     "Seafoam Green",
     "Seashell",
     "Slate Grey",
@@ -628,6 +629,7 @@ export const filters = {
     "14\" FHD (1920x1080) TN 300nits Anti-glare, 45% NTSC, 60Hz",
     "14\" HD (1366x768) TN 250nits Anti-glare",
     "14\" HD (1366x768) TN 250nits Anti-glare, 45% NTSC",
+    "14\" WQXGA (2560x1600) IPS 400nits Anti-glare, 100% sRGB, 120Hz",
     "14\" WUXGA (1920x1200) IPS 300nits Anti-glare, 100% sRGB",
     "14\" WUXGA (1920x1200) IPS 300nits Anti-glare, 100% sRGB, 60Hz",
     "14\" WUXGA (1920x1200) IPS 300nits Anti-glare, 45% NTSC",
@@ -672,6 +674,7 @@ export const filters = {
     "14\" WUXGA (1920x1200) IPS 500nits Anti-glare, 100% sRGB, ThinkPad Privacy Guard, Touch",
     "14\" WUXGA (1920x1200) IPS 500nits Anti-reflection / Anti-smudge, 100% sRGB, 60Hz, Low Power, Touch",
     "14\" WUXGA (1920x1200) IPS 500nits Anti-reflection / Anti-smudge, 100% sRGB, Low Power, Touch",
+    "14\" WUXGA (1920x1200) OLED 300nits Glossy, 100% DCI-P3, 60Hz",
     "14\" WUXGA (1920x1200) OLED 400nits Anti-glare, 100% DCI-P3, 60Hz, DisplayHDR True Black 500, Dolby Vision",
     "14\" WUXGA (1920x1200) OLED 400nits Glossy / Anti-fingerprint, 100% DCI-P3, 100% sRGB, 60Hz, Dolby Vision, TÜV Low Blue Light, Glass, Touch",
     "14\" WUXGA (1920x1200) OLED 400nits Glossy / Anti-fingerprint, 100% DCI-P3, 60Hz, Dolby Vision, TÜV Low Blue Light, DisplayHDR True Black 500, Glass, Touch",
@@ -1519,6 +1522,7 @@ export const filters = {
     "8GB Soldered LPDDR5X-6400",
     "8GB Soldered LPDDR5X-8000",
     "8GB Soldered LPDDR5X-8448",
+    "96GB LPCAMM2 LPDDR5X-7467",
     "96GB LPCAMM2 LPDDR5X-7500"
   ],
   "Memory Slots": [
@@ -1715,6 +1719,7 @@ export const filters = {
     "45W USB-C (3-pin)",
     "65W Round Tip (3-pin)",
     "65W USB-C (2-pin)",
+    "65W USB-C (2-pin, Wall-mount)",
     "65W USB-C (3-pin)",
     "65W USB-C Nano GaN (2-pin, Wall-mount)",
     "65W USB-C Nano GaN (3-pin, Wall-mount)",
@@ -1925,6 +1930,7 @@ export const filters = {
     "RAID 1"
   ],
   "SIM Card": [
+    "No Support",
     "No physical SIM card inbox"
   ],
   "Security Chip": [
@@ -2243,6 +2249,8 @@ export const filters = {
   ],
   "Weight": [
     "-",
+    "Around 1.06 kg (2.34 lbs)",
+    "Around 1.14 kg (2.51 lbs)",
     "Around 1.15 kg (2.54 lbs)",
     "Around 1.17 kg (2.58 lbs)",
     "Around 1.23 kg (2.71 lbs)",
