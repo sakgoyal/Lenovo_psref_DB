@@ -667,6 +667,7 @@ export const filters = {
     "14\" WUXGA (1920x1200) IPS 500nits Anti-glare, 100% sRGB, 60Hz, Low Power, Touch",
     "14\" WUXGA (1920x1200) IPS 500nits Anti-glare, 100% sRGB, 60Hz, ThinkPad Privacy Guard",
     "14\" WUXGA (1920x1200) IPS 500nits Anti-glare, 100% sRGB, 60Hz, ThinkPad Privacy Guard, Touch",
+    "14\" WUXGA (1920x1200) IPS 500nits Anti-glare, 100% sRGB, 60Hz, Touch",
     "14\" WUXGA (1920x1200) IPS 500nits Anti-glare, 100% sRGB, Low Power, Eyesafe, UL Low Blue Light",
     "14\" WUXGA (1920x1200) IPS 500nits Anti-glare, 100% sRGB, Low Power, Eyesafe, UL Low Blue Light, Touch",
     "14\" WUXGA (1920x1200) IPS 500nits Anti-glare, 100% sRGB, Low Power, Touch",
