@@ -902,7 +902,6 @@ export const filters = {
     "Integrated Qualcomm Adreno GPU",
     "Intel Arc A530M 4GB GDDR6",
     "Intel Arc Pro A30M Graphics 4GB GDDR6",
-    "OB",
     "RTX 1000 Ada Generation 6GB GDDR6",
     "RTX 2000 Ada Generation 8GB GDDR6",
     "RTX 2050 4GB GDDR6, 1575MHz, 65W",
