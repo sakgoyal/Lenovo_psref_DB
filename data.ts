@@ -369,7 +369,6 @@ export const filters = {
     "Mystic Violet",
     "Nebula",
     "Nebula Nocturne",
-    "Obsolete",
     "Onyx Grey",
     "Onyx Grey (with 4-Zone RGB Backlit Keyboard)",
     "Onyx Grey (with White Backlit Keyboard)",
