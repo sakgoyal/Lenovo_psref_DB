@@ -1420,7 +1420,6 @@ export const filters = {
     "32GB LPCAMM2 LPDDR5X-7467",
     "32GB LPCAMM2 LPDDR5X-7500",
     "32GB LPCAMM2 LPDDR5X-8533",
-    "32GB SODIMM DDR5-5600",
     "32GB Soldered LPDDR5-6400",
     "32GB Soldered LPDDR5X-6400",
     "32GB Soldered LPDDR5X-7467",
