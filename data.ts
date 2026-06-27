@@ -1289,7 +1289,8 @@ export const filters = {
     "Up to 64GB LPCAMM2 LPDDR5X-7467",
     "Up to 96GB (1x 96GB LPCAMM2), upgradable",
     "Up to 96GB (2x 48GB DDR5 CSODIMM)",
-    "Up to 96GB (2x 48GB DDR5 SODIMM)"
+    "Up to 96GB (2x 48GB DDR5 SODIMM)",
+    "Wildcat Lake: Up to 32GB DDR5-5600"
   ],
   "Max Storage Support": [
     "-",
@@ -1344,7 +1345,8 @@ export const filters = {
     "Up to two drives, 2x M.2 SSD • M.2 2280 SSD up to 2TB each",
     "Up to two drives, 2x M.2 SSD • M.2 2280 SSD up to 4TB, 2TB each",
     "Up to two drives, 2x M.2 SSD • M.2 2280 SSD up to 8TB, 4TB each • RAID 0/1 support",
-    "Up to two drives, 2x M.2 SSD • M.2 SSD up to 1TB each"
+    "Up to two drives, 2x M.2 SSD • M.2 SSD up to 1TB each",
+    "Wildcat Lake: one drive, up to 1TB M.2 2242 SSD"
   ],
   "Memory": [
     "128GB Soldered LPDDR5X-8000",
@@ -1511,7 +1513,8 @@ export const filters = {
     "Raptor Lake, Meteor Lake and Arrow Lake: two DDR5 SODIMM slots, dual-channel capable",
     "Two DDR5 CSODIMM slots, dual-channel capable",
     "Two DDR5 SODIMM / CSODIMM slots, dual-channel capable",
-    "Two DDR5 SODIMM slots, dual-channel capable"
+    "Two DDR5 SODIMM slots, dual-channel capable",
+    "Wildcat Lake: one DDR5 SODIMM slot"
   ],
   "Microphone": [
     "2x, 360°",
@@ -1699,6 +1702,7 @@ export const filters = {
     "AMD Ryzen 3 7330U (4C / 8T, 2.3 / 4.3GHz, 2MB L2 / 8MB L3)",
     "AMD Ryzen 3 7335U (4C / 8T, 3.0 / 4.3GHz, 2MB L2 / 8MB L3)",
     "AMD Ryzen 3 PRO 210 (4C / 8T, 3.0 / 4.7GHz, 4MB L2 / 8MB L3)",
+    "AMD Ryzen 5 125 (4C / 8T, 2.8 / 4.5 GHz, 4MB L2 / 8MB L3)",
     "AMD Ryzen 5 150 (6C / 12T, 3.3 / 4.55GHz, 3MB L2 / 16MB L3)",
     "AMD Ryzen 5 220 (6C / 12T, 3.2 / 4.9GHz, 6MB L2 / 16MB L3)",
     "AMD Ryzen 5 230 (6C / 12T, 3.5 / 4.9GHz, 6MB L2 / 16MB L3)",
@@ -1723,6 +1727,7 @@ export const filters = {
     "AMD Ryzen 5 PRO 7545U (6C / 12T, 3.2 / 4.9GHz, 6MB L2 / 16MB L3)",
     "AMD Ryzen 5 PRO 8540U (6C / 12T, 3.2 / 4.9GHz, 6MB L2 / 16MB L3)",
     "AMD Ryzen 5 PRO 8640HS (6C / 12T, 3.5 / 4.9GHz, 6MB L2 / 16MB L3)",
+    "AMD Ryzen 7 155 (6C / 12T, 3 / 4.7 GHz, 6MB L2 / 16MB L3)",
     "AMD Ryzen 7 170 (8C / 16T, 3.2 / 4.75GHz, 4MB L2 / 16MB L3)",
     "AMD Ryzen 7 250 (8C / 16T, 3.3 / 5.1GHz, 8MB L2 / 16MB L3)",
     "AMD Ryzen 7 260 (8C / 16T, 3.8 / 5.1GHz, 8MB L2 / 16MB L3)",
@@ -2045,6 +2050,7 @@ export const filters = {
     "UFS on systemboard, no slots",
     "UFS on systemboard, no slots (UFS models)",
     "UFS on systemboard, one M.2 2242 PCIe 3.0 x2 slot (UFS models)",
+    "Wildcat Lake: one M.2 2242 PCIe 4.0 x4 slot",
     "eMMC on systemboard, no slots"
   ],
   "Surface Treatment": [
