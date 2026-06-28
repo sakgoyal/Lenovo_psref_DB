@@ -1244,7 +1244,6 @@ export const filters = {
     "White Backlit, Ukrainian"
   ],
   "Max Memory": [
-    "-",
     "128GB soldered memory, not upgradable",
     "12GB soldered memory, not upgradable",
     "16GB soldered memory, not upgradable",
@@ -1488,7 +1487,6 @@ export const filters = {
     "96GB LPCAMM2 LPDDR5X-7500"
   ],
   "Memory Slots": [
-    "-",
     "Arrow Lake: two DDR5 SODIMM / CSODIMM slots, dual-channel capable",
     "Four DDR5 SODIMM slots, dual-channel capable",
     "Lunar Lake: memory soldered to systemboard, no slots, dual-channel",
@@ -2008,7 +2006,6 @@ export const filters = {
     "64GB eMMC 5.1"
   ],
   "Storage Slot": [
-    "-",
     "Four M.2 slots • One M.2 2280 PCIe 5.0 x4 slot • Three M.2 2280 PCIe 4.0 x4 slots",
     "Lunar Lake: one M.2 2280 PCIe 4.0 x4 slot",
     "Models with 38Wh battery: one 2.5\" drive slot + one M.2 slot • One 2.5\" SATA HDD slot • One M.2 2280 PCIe 3.0 x4 slot",
