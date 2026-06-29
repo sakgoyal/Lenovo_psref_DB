@@ -272,6 +272,7 @@ export const filters = {
     "Office Trial + Bufferzone Standard",
     "Office Trial + Bufferzone Standard + Lenovo AI Now",
     "Office Trial + Lenovo AI Now",
+    "Office Trial + Lenovo AI Now + Absolute Home & Office Basic 1-year + Blancco File Eraser Enterprise Edition Software 3-year",
     "Office Trial + McAfee+ Premium 15-month",
     "Office Trial + McAfee+ Premium 15-month + Absolute Home & Office Basic 1-year + Bufferzone Standard",
     "Office Trial + McAfee+ Premium 15-month + Lenovo AI Now",
@@ -941,7 +942,6 @@ export const filters = {
     "RTX PRO 5000 Blackwell Generation 24GB GDDR7 Laptop GPU"
   ],
   "Green Certifications": [
-    "Carbon Neutral Certified | ENERGY STAR 8.0 | EPEAT Gold Registered | ErP Lot 6/26 | RoHS",
     "Carbon Neutral Certified | ENERGY STAR 9.0 | EPEAT Gold Registered | ErP Lot 6/26 | RoHS",
     "Carbon Neutral Certified | ENERGY STAR 9.0 | ErP Lot 6/26 | RoHS",
     "Carbon Neutral Certified | EPEAT Gold Registered | ErP Lot 6/26 | RoHS",
@@ -967,6 +967,7 @@ export const filters = {
     "ENERGY STAR 9.0 | ErP Lot 6/26 | FSC certified package | RoHS",
     "ENERGY STAR 9.0 | ErP Lot 6/26 | RoHS",
     "ENERGY STAR 9.0 | RoHS",
+    "EPEAT Gold Registered | ErP Lot 6/26 | RoHS",
     "EPEAT Gold Registered | ErP Lot 6/26 | RoHS | TCO Certified, generation 10",
     "EPEAT Gold Registered | RoHS | TCO Certified, generation 10",
     "ErP Lot 3 | FSC certified package | RoHS",
