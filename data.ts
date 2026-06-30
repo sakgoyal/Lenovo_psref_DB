@@ -31,6 +31,7 @@ export const filters = {
   ],
   "Battery": [
     "29Wh",
+    "33.3Wh",
     "38Wh",
     "39.3Wh",
     "41Wh",
@@ -1382,6 +1383,7 @@ export const filters = {
     "1x 24GB SODIMM DDR5-4800",
     "1x 24GB SODIMM DDR5-5200",
     "1x 24GB SODIMM DDR5-5600",
+    "1x 24GB SODIMM DDR5-5600 Non-ECC",
     "1x 32GB CSODIMM DDR5-5600",
     "1x 32GB CSODIMM DDR5-6400 Non-ECC",
     "1x 32GB SODIMM DDR5-5200",
@@ -1567,9 +1569,12 @@ export const filters = {
     "1x 2.5GbE RJ-45",
     "1x Nano-SIM Card Slot",
     "1x Nano-SIM Card Slot | 1x 2.5GbE RJ-45",
+    "1x Nano-SIM Card Slot | 1x SD Express 7.0 Card Reader",
     "1x Power Connector",
+    "1x SD Express 7.0 Card Reader",
     "1x Smart Card Reader",
     "1x Smart Card Reader | 1x Nano-SIM Card Slot",
+    "1x Smart Card Reader | 1x SD Express 7.0 Card Reader",
     "1x USB-C (Thunderbolt 4 / USB4 40Gbps), with USB PD 15-65W and DisplayPort 2.1",
     "1x USB-C (USB 10Gbps / USB 3.2 Gen 2)",
     "1x USB-C (USB 10Gbps / USB 3.2 Gen 2), with DisplayPort 1.4",
@@ -1885,6 +1890,7 @@ export const filters = {
     "RAID 1"
   ],
   "SIM Card": [
+    "No SIM card included (nano‑SIM card slot available)",
     "No Support",
     "No physical SIM card inbox",
     "No physical SIM card inbox (nano-SIM card slot available)"
