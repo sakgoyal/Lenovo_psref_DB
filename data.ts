@@ -936,7 +936,6 @@ export const filters = {
     "Carbon Neutral Certified | EPEAT Gold Registered | ErP Lot 6/26 | RoHS",
     "Carbon Neutral Certified | ErP Lot 3 | RoHS",
     "Carbon Neutral Certified | ErP Lot 6/26 | RoHS",
-    "ENERGY STAR 8.0 | EPEAT Gold Registered | ErP Lot 6/26 | RoHS",
     "ENERGY STAR 8.0 | EPEAT Gold Registered | RoHS | TCO Certified, generation 10",
     "ENERGY STAR 8.0 | ErP Lot 3 | RoHS",
     "ENERGY STAR 8.0 | ErP Lot 6/26 | RoHS",
