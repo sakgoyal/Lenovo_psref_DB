@@ -272,7 +272,6 @@ export const filters = {
     "Office Trial + Bufferzone Standard",
     "Office Trial + Bufferzone Standard + Lenovo AI Now",
     "Office Trial + Lenovo AI Now",
-    "Office Trial + Lenovo AI Now + Absolute Home & Office Basic 1-year + Blancco File Eraser Enterprise Edition Software 3-year",
     "Office Trial + McAfee+ Premium 15-month",
     "Office Trial + McAfee+ Premium 15-month + Absolute Home & Office Basic 1-year + Bufferzone Standard",
     "Office Trial + McAfee+ Premium 15-month + Lenovo AI Now",
@@ -321,7 +320,6 @@ export const filters = {
     "HD 720p with E-shutter",
     "HD 720p with Privacy Shutter",
     "UHD 10.0MP + IR Discrete with Privacy Shutter, MIPI, ToF Sensor",
-    "UHD 10.0MP with Large Sensor + IR Discrete, with E-Shutter, MIPI",
     "UHD 10.0MP with Large Sensor + IR Discrete, with E-Shutter, ToF Sensor, MIPI",
     "UHD 8.0MP + IR Discrete with Privacy Shutter, MIPI, Computer Vision",
     "UHD 8.0MP with Large Sensor + IR Discrete, with E-Shutter, ToF Sensor, MIPI"
@@ -590,7 +588,6 @@ export const filters = {
     "14\" 2.8K WQXGA+ (2880x1800) IPS 500nits Glossy, 100% sRGB, 120Hz, TÜV Low Blue Light, Glass, Touch",
     "14\" 2.8K WQXGA+ (2880x1800) OLED 1100nits (peak) / 500nits (typical) Glossy / Anti-fingerprint, 100% DCI-P3, 100% sRGB, 99% Adobe RGB, 120Hz, Eyesafe, Dolby Vision, Flicker Free, DisplayHDR True Black 1000, Corning Gorilla Glass 3, Touch, X-Rite, PureSight Pro",
     "14\" 2.8K WQXGA+ (2880x1800) OLED 1100nits (peak) / 500nits (typical) Glossy / Anti-fingerprint, 100% DCI-P3, 100% sRGB, 99% Adobe RGB, 120Hz, Eyesafe, Dolby Vision, Flicker Free, DisplayHDR True Black 1000, Glass, Touch, X-Rite, PureSight Pro",
-    "14\" 2.8K WQXGA+ (2880x1800) OLED 1100nits (peak) / 500nits (typical) Glossy / Anti-fingerprint, 100% DCI-P3, 120Hz VRR, Dolby Vision, DisplayHDR True Black 1000, Glass, Touch",
     "14\" 2.8K WQXGA+ (2880x1800) OLED 1100nits (peak) / 500nits (typical) Glossy / Anti-fingerprint, 100% DCI-P3, 120Hz, Dolby Vision, TÜV Low Blue Light, DisplayHDR True Black 1000, Glass, Touch",
     "14\" 2.8K WQXGA+ (2880x1800) OLED 1100nits (peak) / 500nits (typical) Glossy / Anti-fingerprint, 100% DCI-P3, 120Hz, Eyesafe, Dolby Vision, DisplayHDR True Black 1000, Glass, Touch",
     "14\" 2.8K WQXGA+ (2880x1800) OLED 1100nits (peak) / 500nits (typical) Glossy / Anti-fingerprint, 100% DCI-P3, 120Hz, Eyesafe, Dolby Vision, Flicker Free, DisplayHDR True Black 1000, Glass, Touch, X-Rite, PureSight Pro",
@@ -1927,8 +1924,7 @@ export const filters = {
     "AI Chip: LA3-P | Hybrid thermal solution (liquid cooling + air cooling + liquid metal)",
     "Legion Coldfront 2.0 cooling system",
     "Legion Coldfront cooling system",
-    "Modern Standby",
-    "The display supports auto-twist, hands-free interaction, and AI face tracking, enabling automatic rotation and alignment to the user's position for hands-free comfort and effortless adaptability"
+    "Modern Standby"
   ],
   "Storage": [
     "128GB SSD M.2 2242 PCIe 3.0x4 NVMe",
@@ -2227,7 +2223,6 @@ export const filters = {
     "Gamepad with controllers | Around 920 g (2.03 lbs) | Controllers only | Less than 210 g (0.46 lbs)",
     "Less than 1.25 kg (2.76 lbs)",
     "Less than 1.37 kg (3.02 lbs)",
-    "Less than 1.4 kg (3.09 lbs)",
     "Less than 1.55 kg (3.42 lbs)",
     "Less than 1.63 kg (3.59 lbs)",
     "Less than 1.8 kg (3.97 lbs)",
