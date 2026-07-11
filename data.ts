@@ -1,11 +1,14 @@
 export const filters = {
   "AI PC Category": [
     "AI PC",
+    "AI PC, AI-Powered Gaming PC",
     "AI-Powered Gaming PC",
     "AI-Ready Workstations",
     "Copilot + PC, AI-Ready Workstations",
     "Copilot+ PC",
-    "Copilot+ PC, AI-Ready Workstations"
+    "Copilot+ PC, AI-Powered Gaming PC",
+    "Copilot+ PC, AI-Ready Workstations",
+    "Copliot+ PC, AI-Powered Gaming PC"
   ],
   "Audio Chip": [
     "ALC5682I-VS-CGT codec",
