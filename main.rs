@@ -148,7 +148,7 @@ fn get_distinct_values(df: &DataFrame) -> Result<HashMap<String, Vec<String>>> {
         let unique = df.column(col_name)?.unique()?.cast(&DataType::String)?;
         let mut values: Vec<String> = unique
             .str()?
-            .into_iter()
+            .iter()
             .flatten()
             .map(|s| s.to_string())
             .filter(|s| !s.is_empty() && s.to_lowercase() != "nan")
