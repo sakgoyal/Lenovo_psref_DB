@@ -80,6 +80,7 @@ export const filters = {
     "FIFA World Cup Edition Bluetooth Yoga Mouse without Battery (Cosmic Blue)",
     "Folio Stand + Folio Keyboard",
     "Lenovo 15.6\" Laptop Casual Toploader",
+    "Lenovo 15.6\" Laptop Casual Toploader + Lenovo WL310 Bluetooth Silent Mouse without Battery",
     "Lenovo 15.6\" Laptop Casual Toploader + Wireless Mouse",
     "Lenovo 16\" Laptop ECO Backpack B210 (Black)",
     "Lenovo 16\" Laptop ECO Backpack B210 (Black) + Lenovo E310 True Wireless Stereo Earbuds (White) + Lenovo WL310 Bluetooth Silent Mouse (Grey)",
