@@ -2138,6 +2138,7 @@ export const filters = {
   ],
   "Weight": [
     "-",
+    "Around 0.89 kg (1.96 lbs)",
     "Around 1.06 kg (2.34 lbs)",
     "Around 1.14 kg (2.51 lbs)",
     "Around 1.15 kg (2.54 lbs)",
