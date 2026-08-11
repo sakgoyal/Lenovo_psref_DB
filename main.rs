@@ -213,7 +213,7 @@ fn main() -> Result<()> {
 
     println!("Fetching product IDs...");
     let response: ApiResponse<Vec<ProductIDs>> = client
-        .get("https://psref.lenovo.com/api/home/Menu/info")
+        .get("https://psref.lenovo.com/api/home/menu/info?IsPreviewProduct=true")
         .send()?
         .json()?;
 
