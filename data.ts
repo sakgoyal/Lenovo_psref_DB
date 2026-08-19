@@ -1514,8 +1514,7 @@ export const filters = {
     "MIL-STD-810H  (20 test items)",
     "MIL-STD-810H  (21 test items)",
     "MIL-STD-810H  (23 test items)",
-    "MIL-STD-810H  (27 test items)",
-    "Work in progress"
+    "MIL-STD-810H  (27 test items)"
   ],
   "NFC": [
     "NFC",
@@ -2144,6 +2143,7 @@ export const filters = {
     "Quectel EM061K-GL, 4G LTE CAT6, with Embedded eSIM",
     "Quectel EM160R-GL, 4G LTE CAT16, with Embedded eSIM",
     "Quectel RM520N-GL, 5G Sub-6 GHz, with Embedded eSIM",
+    "Rolling Wireless RW220-GL, 4G LTE CAT1, with Embedded eSIM",
     "Rolling Wireless RW350R-GL, 5G Sub-6 GHz, with Embedded eSIM",
     "Snapdragon X12 LTE Modem, 4G LTE CAT12, with Embedded eSIM",
     "Snapdragon X12 LTE Modem, 4G LTE CAT6, with Embedded eSIM",
