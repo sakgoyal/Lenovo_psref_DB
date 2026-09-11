@@ -311,6 +311,7 @@ export const filters = {
     "Office Trial + Adobe Photoshop Elements 2025 & Premiere Elements 2025 3-year",
     "Office Trial + Adobe Photoshop Elements 2025 & Premiere Elements 2025 3-year + Lenovo AI Now",
     "Office Trial + Adobe Photoshop Elements 2026 & Premiere Elements 2025 3-year",
+    "Office Trial + Blancco Drive Eraser",
     "Office Trial + Blancco Drive Eraser + Lenovo AI Now",
     "Office Trial + Blancco Drive Eraser Enterprise 1-year + Lenovo AI Now",
     "Office Trial + Blancco Drive Eraser Enterprise 3-year",
