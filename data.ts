@@ -80,6 +80,7 @@ export const filters = {
     "FIFA World Cup Edition Bluetooth Yoga Mouse (Cosmic Blue) + Lenovo Yoga Tote Sleeve 14\" (Blue)",
     "FIFA World Cup Edition Bluetooth Yoga Mouse without Battery (Cosmic Blue)",
     "Folio Stand + Folio Keyboard",
+    "HDMI to VGA",
     "HDMI to VGA + Lenovo USB-C to Ethernet Adapter (1Gbps)",
     "Lenovo 15.6\" Laptop Casual Toploader",
     "Lenovo 15.6\" Laptop Casual Toploader + Lenovo WL310 Bluetooth Silent Mouse without Battery",
