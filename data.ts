@@ -2118,7 +2118,7 @@ export const filters = {
     "Non-vPro"
   ],
   "ThinkShield": [
-    "ThinkShield is a comprehensive security solution that encompasses hardware, software, and supply chain components. For more detials, visit <a href=\"https://www.lenovo.com/us/en/software/thinkshield/\"target=\"_blank\"><u>here</u></a>"
+    "ThinkShield is a comprehensive security solution that encompasses hardware, software, and supply chain components. For more details, visit <a href=\"https://www.lenovo.com/us/en/software/thinkshield/\"target=\"_blank\"><u>here</u></a>"
   ],
   "Touchpad": [
     "Buttonless Mylar surface multi-touch touchpad, 60.5 x 104 mm (2.38 x 4.09 inches)",
