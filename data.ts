@@ -1761,6 +1761,7 @@ export const filters = {
     "AMD Ryzen 5 150 (6C / 12T, 3.3 / 4.55GHz, 3MB L2 / 16MB L3)",
     "AMD Ryzen 5 216 (6C / 12T, 2.9 / 4.7GHz, 6MB L2 / 16MB L3)",
     "AMD Ryzen 5 220 (6C / 12T, 3.2 / 4.9GHz, 6MB L2 / 16MB L3)",
+    "AMD Ryzen 5 224 (6C / 12T, 3.3 / 4.8GHz, 6MB L2 / 16MB L3)",
     "AMD Ryzen 5 230 (6C / 12T, 3.5 / 4.9GHz, 6MB L2 / 16MB L3)",
     "AMD Ryzen 5 240 (6C / 12T, 4.3 / 5.0GHz, 6MB L2 / 16MB L3)",
     "AMD Ryzen 5 40 (4C / 8T, 2.8 / 4.3GHz, 2MB L2 / 4MB L3)",
