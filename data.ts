@@ -892,8 +892,8 @@ export const filters = {
     "No Fingerprint Reader",
     "Touch Style, Integrated in Power Button",
     "Touch Style, Match-on-Chip, Integrated in Power Button",
+    "Touch Style, Match-on-Chip, Integrated in Power Button on Keyboard",
     "Touch Style, Match-on-Chip, in Keyboard Key",
-    "Touch Style, Match-on-Chip, in Power Button on Keyboard",
     "Touch Style, Match-on-Chip, on Keyboard",
     "Touch Style, Match-on-Chip, on Palm Rest",
     "Touch Style, on Keyboard",
@@ -2454,7 +2454,6 @@ export const filters = {
     "Starting at 988 g (2.18 lbs)",
     "Starting at 990 g (2.18 lbs)",
     "Tablet: 0.76 kg (1.67 lbs) Folio keyboard: 0.34 kg (0.75 lbs) Total: 1.1 kg (2.42 lbs)",
-    "Tablet: starting at 510 g (1.12 lbs) Folio Stand: starting at 159 g (0.35 lbs) Tablet + Folio Stand + Folio Keyboard: starting at 1.101 kg (2.43 lbs)",
-    "around 0.76 kg (1.67 lbs)"
+    "Tablet: starting at 510 g (1.12 lbs) Folio Stand: starting at 159 g (0.35 lbs) Tablet + Folio Stand + Folio Keyboard: starting at 1.101 kg (2.43 lbs)"
   ]
 }
