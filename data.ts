@@ -2368,6 +2368,7 @@ export const filters = {
     "Starting at 1.45 kg (3.20 lbs)",
     "Starting at 1.46 kg (3.22 lbs)",
     "Starting at 1.47 kg (3.24 lbs)",
+    "Starting at 1.48 kg (3.26 lbs)",
     "Starting at 1.49 kg (3.28 lbs)",
     "Starting at 1.5 kg (3.31 lbs)",
     "Starting at 1.51 kg (3.33 lbs)",
