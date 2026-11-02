@@ -415,8 +415,7 @@ export const filters = {
     "MicroSD Card Reader",
     "SD Card Reader",
     "SD Express 7.0 Card Reader",
-    "SD Express 8.0 Card Reader",
-    "microSD"
+    "SD Express 8.0 Card Reader"
   ],
   "Case Color": [
     "Abyss Blue",
@@ -525,7 +524,6 @@ export const filters = {
     "AICCP Color Calibration",
     "Factory Color Calibration",
     "ICC Template Color Calibration",
-    "No Color Calibration",
     "TCON Color Calibration",
     "X-Rite Factory Color Calibration",
     "X-Rite Factory Color Calibration, TCON Color Calibration"
@@ -538,7 +536,6 @@ export const filters = {
     "Australia",
     "Austria",
     "Azerbaijan",
-    "Belarus",
     "Belgium",
     "Bolivia",
     "Brazil",
@@ -890,7 +887,6 @@ export const filters = {
     "2.5GbE"
   ],
   "Fingerprint Reader": [
-    "No Fingerprint Reader",
     "No fingerprint reader",
     "Touch Style, Integrated in Power Button",
     "Touch Style, Match-on-Chip, Integrated in Power Button",
