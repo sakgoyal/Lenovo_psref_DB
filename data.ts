@@ -1766,6 +1766,7 @@ export const filters = {
     "AMD Ryzen 3 7320U (4C / 8T, 2.4 / 4.1GHz, 2MB L2 / 4MB L3)",
     "AMD Ryzen 3 7330U (4C / 8T, 2.3 / 4.3GHz, 2MB L2 / 8MB L3)",
     "AMD Ryzen 3 7335U (4C / 8T, 3.0 / 4.3GHz, 2MB L2 / 8MB L3)",
+    "AMD Ryzen 3 PRO 205 (4C / 8T, 2.8 / 4.6GHz, 4MB L2 / 8MB L3)",
     "AMD Ryzen 3 PRO 210 (4C / 8T, 3.0 / 4.7GHz, 4MB L2 / 8MB L3)",
     "AMD Ryzen 5 125 (4C / 8T, 2.8 / 4.5GHz, 4MB L2 / 8MB L3)",
     "AMD Ryzen 5 150 (6C / 12T, 3.3 / 4.55GHz, 3MB L2 / 16MB L3)",
