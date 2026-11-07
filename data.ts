@@ -2187,7 +2187,6 @@ export const filters = {
     "10-point Multi-touch",
     "Add-on Film Touch, 10-point Multi-touch",
     "Direct Bonding, 10-point Multi-touch",
-    "GMF / GF2, 10-point Multi-touch",
     "GMF, 10-point Multi-touch",
     "In-cell, 10-point Multi-touch",
     "OGM, 10-point Multi-touch",
