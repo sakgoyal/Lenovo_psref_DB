@@ -81,7 +81,6 @@ export const filters = {
     "FIFA World Cup Edition Bluetooth Yoga Mouse without Battery (Cosmic Blue)",
     "Folio Stand + Folio Keyboard",
     "HDMI to VGA",
-    "HDMI to VGA + Lenovo USB-C to Ethernet Adapter (1Gbps)",
     "Lenovo 15.6\" Laptop Casual Toploader",
     "Lenovo 15.6\" Laptop Casual Toploader + Lenovo WL310 Bluetooth Silent Mouse without Battery",
     "Lenovo 15.6\" Laptop Casual Toploader + Wireless Mouse",
@@ -227,8 +226,10 @@ export const filters = {
     "Absolute Control 1-year",
     "Absolute Control 1-year (AP)",
     "Absolute Control 1-year (LA)",
+    "Absolute Control 1-year (LA) + Lenovo AI Now",
     "Absolute Control 3-year",
     "Absolute Control 3-year (LA)",
+    "Absolute Control 3-year (LA) + Intel Connectivity Performance Suite",
     "Absolute Home & Office Basic 1-year",
     "Absolute Home & Office Basic 1-year + Bufferzone Standard 1-year",
     "Absolute Home & Office Basic 1-year + Intel Connectivity Performance Suite",
@@ -252,7 +253,6 @@ export const filters = {
     "Chrome OS Zero-Touch Enrollment",
     "Google Management Console License for Chrome Enterprise",
     "Intel Connectivity Performance Suite",
-    "Intel Connectivity Performance Suite + Absolute Control 3-year (LA)",
     "Intel Connectivity Performance Suite + Absolute Home & Office Basic 1-year",
     "Intel Connectivity Performance Suite + Bufferzone Standard 1-year",
     "Intel Connectivity Performance Suite + Bufferzone Standard 1-year + Absolute Home & Office Basic 1-year",
@@ -341,6 +341,8 @@ export const filters = {
     "Office Trial + Bufferzone Standard",
     "Office Trial + Bufferzone Standard + Lenovo AI Now",
     "Office Trial + Lenovo AI Now",
+    "Office Trial + Lenovo AI Now + Absolute Home & Office Basic 1-year + Blancco File Eraser Enterprise Edition Software 3-year",
+    "Office Trial + Lenovo AI Now + Adobe Photoshop Elements 2026 & Premiere Elements 2025 3-year",
     "Office Trial + Lenovo Qira",
     "Office Trial + Lenovo Qira + Bufferzone Standard Plus",
     "Office Trial + McAfee+ Premium 15-month",
@@ -361,7 +363,6 @@ export const filters = {
     "ThinkShield Remote Supervisor Password 3-year + Lenovo AI Now",
     "ThinkShield Remote Supervisor Password 3-year + Lenovo AI Now + ThinkShield Pro (SentinelOne, Sepio, Cigent) 1-year",
     "ThinkShield Remote Supervisor Password 3-year + ThinkShield Pro (SentinelOne, Sepio, Cigent) 1-year",
-    "ThinkShield Remote Supervisor Password 4-year",
     "ThinkShield Remote Supervisor Password 4-year + Intel Connectivity Performance Suite"
   ],
   "Camera": [
@@ -598,6 +599,7 @@ export const filters = {
     "North West LA Group",
     "Norway",
     "Pakistan",
+    "Paraguay",
     "Peru",
     "Philippines",
     "Poland",
@@ -1530,7 +1532,6 @@ export const filters = {
     "64GB Soldered LPDDR5X-9600",
     "64GB Soldered LPDDR5x-6400",
     "8GB + 16GB SODIMM DDR5-5600",
-    "8GB + 32GB SODIMM DDR5-5600",
     "8GB Soldered DDR4-3200",
     "8GB Soldered DDR4-3200 + 1x 8GB SODIMM DDR4-3200",
     "8GB Soldered DDR5-4800",
@@ -1589,12 +1590,22 @@ export const filters = {
     "2x, Array (Front) + Mono (Rear)",
     "4x, Array",
     "Dual-microphone array",
+    "Dual-microphone array (front) + single microphone (rear)",
+    "Dual-microphone array, 360° far-field",
+    "Dual-microphone array, 360° far-field, Dolby Voice",
+    "Dual-microphone array, 360° far-field, Elevoc Voice",
+    "Dual-microphone array, 360° far-field, Lenovo Clear Voice",
+    "Dual-microphone array, 360° far-field, Qualcomm Fluence Voice",
+    "Dual-microphone array, Elevoc Voice",
     "Dual-microphone array, Google Assistant support",
+    "Dual-microphone array, far-field, Dolby Voice",
+    "Dual-microphone array, smart noise-cancelling",
     "Mono",
     "Mono (Front)",
     "Mono (Front) + Mono (Rear)",
     "Quad-microphone 3D array",
     "Quad-microphone array",
+    "Single microphone (front) + single microphone (rear)",
     "Triple-microphone 3D array, noise-cancelling"
   ],
   "Mil-Spec Test": [
@@ -1607,6 +1618,7 @@ export const filters = {
   ],
   "NFC": [
     "NFC",
+    "Near Field Communication",
     "No NFC"
   ],
   "NPU": [
@@ -1661,6 +1673,7 @@ export const filters = {
     "Camera privacy shutter (camera models)",
     "Camera privacy shutter (camera models) | Computer Vision-based User Presence Sensing on Image Signal Processor (ISP)",
     "Camera privacy shutter (camera models) | Glance by Mirametrix",
+    "Camera privacy shutter (camera models) | Ultrasonic Human Presence Detection",
     "Camera privacy shutter (camera models) | Ultrasonic Human Presence Detection (IR camera models) | Windows Hello IR Camera",
     "Camera privacy shutter (camera models) | Ultrasonic Human Presence Detection (IR camera models) | Windows Hello IR Camera | Glance by Mirametrix",
     "Camera privacy shutter (camera models) | Ultrasonic Human Presence Detection (IR camera models) | Windows Hello IR Camera | Privacy Guard with Privacy Alert (models with ThinkPad Privacy Guard display)",
@@ -1968,7 +1981,8 @@ export const filters = {
   ],
   "Smart Card Reader": [
     "No Smart Card Reader",
-    "Smart Card Reader"
+    "Smart Card Reader",
+    "Smart card reader, supports ISO 7816 and EMV"
   ],
   "Speakers": [
     "4 stereo speakers, 1.2W x2 (woofers), 1W x2 (tweeters), optimized with Nahimic Audio, Smart Amplifier (AMP)",
@@ -2036,7 +2050,6 @@ export const filters = {
     "1TB SSD M.2 2280 PCIe 5.0x4 Performance NVMe",
     "1TB SSD M.2 2280 PCIe 5.0x4 Performance NVMe Opal 2.0",
     "1TB SSD M.2 2280 PCIe 5.0x4 Performance NVMe Opal 2.0 + 1TB SSD M.2 2280 PCIe 4.0x4 NVMe Opal 2.0",
-    "1TB SSD M.2 2280 PCIe 5.0x4 Performance NVMe Opal 2.0 + 512GB SSD M.2 2280 PCIe 4.0x4 NVMe Opal 2.0",
     "256GB SSD M.2 2242 PCIe 3.0x4 NVMe",
     "256GB SSD M.2 2242 PCIe 4.0x4 NVMe",
     "256GB SSD M.2 2242 PCIe 4.0x4 NVMe + 1TB HDD 5400rpm 2.5\"",
@@ -2058,7 +2071,6 @@ export const filters = {
     "2x 1TB SSD M.2 2280 PCIe 4.0x4 NVMe Opal 2.0",
     "2x 1TB SSD M.2 2280 PCIe 5.0x4 Performance NVMe Opal 2.0",
     "2x 2TB SSD M.2 2280 PCIe 5.0x4 Performance NVMe Opal 2.0",
-    "2x 4TB SSD M.2 2280 PCIe 5.0x4 Performance NVMe Opal 2.0",
     "32GB eMMC 5.1",
     "3x 1TB SSD M.2 2280 PCIe 4.0x4 NVMe Opal 2.0",
     "3x 4TB SSD M.2 2280 PCIe 5.0x4 Performance NVMe Opal 2.0",
@@ -2194,13 +2206,20 @@ export const filters = {
   "Touchscreen": [
     "10-point Multi-touch",
     "Add-on Film Touch, 10-point Multi-touch",
+    "Capacitive-type multi-touch, supports 10-point touch",
     "Direct Bonding, 10-point Multi-touch",
-    "GMF, 10-point Multi-touch",
+    "Direct bonding, capacitive touch, 10-point multi-touch",
+    "GMF (Glass Metal Film) touch, 10-point multi-touch",
+    "In-cell touch, 10-point multi-touch",
     "In-cell, 10-point Multi-touch",
+    "Non-touch",
+    "OGM (One Glass Metal mesh) touch, 10-point multi-touch",
     "OGM, 10-point Multi-touch",
+    "OGS (One Glass Solution) touch, 10-point multi-touch",
     "OGS, 10-point Multi-touch",
+    "On-cell touch, 10-point multi-touch",
     "On-cell, 10-point Multi-touch",
-    "Out-cell, 10-point Multi-touch"
+    "Out-cell touch, 10-point multi-touch"
   ],
   "WLAN + Bluetooth": [
     "AMD Wi-Fi 6E RZ616, 802.11ax 2x2 + BT5.3",
